@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150907184434) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "bookings", force: :cascade do |t|
     t.integer  "listing_id"
     t.integer  "renter_id"
@@ -23,7 +20,7 @@ ActiveRecord::Schema.define(version: 20150907184434) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "bookings", ["listing_id"], name: "index_bookings_on_listing_id", using: :btree
+  add_index "bookings", ["listing_id"], name: "index_bookings_on_listing_id"
 
   create_table "favourites", force: :cascade do |t|
     t.integer  "user_id"
@@ -32,8 +29,8 @@ ActiveRecord::Schema.define(version: 20150907184434) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "favourites", ["listing_id"], name: "index_favourites_on_listing_id", using: :btree
-  add_index "favourites", ["user_id"], name: "index_favourites_on_user_id", using: :btree
+  add_index "favourites", ["listing_id"], name: "index_favourites_on_listing_id"
+  add_index "favourites", ["user_id"], name: "index_favourites_on_user_id"
 
   create_table "listings", force: :cascade do |t|
     t.integer  "user_id"
@@ -59,7 +56,7 @@ ActiveRecord::Schema.define(version: 20150907184434) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
+  add_index "listings", ["user_id"], name: "index_listings_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -73,8 +70,4 @@ ActiveRecord::Schema.define(version: 20150907184434) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "bookings", "listings"
-  add_foreign_key "favourites", "listings"
-  add_foreign_key "favourites", "users"
-  add_foreign_key "listings", "users"
 end
