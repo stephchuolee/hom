@@ -1,0 +1,99 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @listing.user %>
+</p>
+
+<p>
+  <strong>Square footage:</strong>
+  <%= @listing.square_footage %>
+</p>
+
+<p>
+  <strong>Bedroom:</strong>
+  <%= @listing.bedroom %>
+</p>
+
+<p>
+  <strong>Bathroom:</strong>
+  <%= @listing.bathroom %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @listing.price %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @listing.address %>
+</p>
+
+<p>
+  <strong>Furnished:</strong>
+  <%= @listing.furnished %>
+</p>
+
+<p>
+  <strong>Pets:</strong>
+  <%= @listing.pets %>
+</p>
+
+<p>
+  <strong>Smoking:</strong>
+  <%= @listing.smoking %>
+</p>
+
+<p>
+  <strong>Floor number:</strong>
+  <%= @listing.floor_number %>
+</p>
+
+<p>
+  <strong>Parking space:</strong>
+  <%= @listing.parking_space %>
+</p>
+
+<p>
+  <strong>Storage space:</strong>
+  <%= @listing.storage_space %>
+</p>
+
+<p>
+  <strong>Balcony:</strong>
+  <%= @listing.balcony %>
+</p>
+
+<p>
+  <strong>Available date:</strong>
+  <%= @listing.available_date %>
+</p>
+
+<p>
+  <strong>Minimum lease:</strong>
+  <%= @listing.minimum_lease %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @listing.image %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @listing.title %>
+</p>
+
+<p>
+  <strong>Rental type:</strong>
+  <%= @listing.rental_type %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @listing.description %>
+</p>
+
+<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'Back', listings_path %>
