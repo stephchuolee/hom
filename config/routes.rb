@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
 
-#  root to: "users#index"
- 
+ root :to => "sessions#index"
+
   # custom routing /dashboard, will use jsx to render actual page
 #  get "/dashboard"
 
   resource :session
-  
+
   resources :users do
-  # bookings should be available under /users/id/bookings 
+  # bookings should be available under /users/id/bookings
     resources :bookings, only: [:show, :index]
-  # all listings should belong to a user 
+  # all listings should belong to a user
     resources :listings do
   # bookings belong to listings
       resources :bookings, only: [:new, :destroy]
