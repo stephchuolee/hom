@@ -7,6 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav>
+  <ul>
+    <li>
+      <span>
+        <%= form_tag "/listings/search", method: "get" do %>
+        <%= label_tag(:city, "Search for a city:") %>
+        <%= text_field_tag(:city) %>
+        <%= submit_tag("Search") %>
+        <% end %>
+      </span>
+    </li>
+  </ul>
+</nav>
+
 
 <%= yield %>
 
