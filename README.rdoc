@@ -5,6 +5,20 @@
 * System dependencies
 
 * Configuration
+***Must install imagemagick in order to run Image Upload feature
+For OSX:
+
+In terminal, run: 
+$ brew install imagemagick
+If you do not have homebrew, please install first:
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+For Linux:
+
+In terminal, run:
+sudo apt-get install imagemagick
+
+Once you have installed Image Magick, run bundle install in the repo before starting the server.
 
 Database - heroku postgresql
 Type 

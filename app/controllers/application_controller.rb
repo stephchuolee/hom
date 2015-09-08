@@ -20,7 +20,6 @@ class ApplicationController < ActionController::Base
   end
 
   def search
-    @current_user = current_user
     @listings = Listing.all
 
     if !params[:city].empty?
