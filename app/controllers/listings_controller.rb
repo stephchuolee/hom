@@ -15,6 +15,7 @@ class ListingsController < ApplicationController
   # GET /listings/new
   def new
     @listing = Listing.new
+    @listing_image = @listing.listing_images.build
   end
 
   # GET /listings/1/edit
@@ -28,6 +29,10 @@ class ListingsController < ApplicationController
 
     respond_to do |format|
       if @listing.save
+        params[:listing_image]['image'].each do |a|
+          @listing_image = @listing.listing_images.create!(:image => a)
+        end
+
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
       else
@@ -69,6 +74,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:user_id, :square_footage, :bedroom, :bathroom, :price, :address, :furnished, :pets, :smoking, :floor_number, :parking_space, :storage_space, :balcony, :available_date, :minimum_lease, :image, :title, :rental_type, :description)
+      params.require(:listing).permit(:user_id, :square_footage, :bedroom, :bathroom, :price, :address, :furnished, :pets, :smoking, :floor_number, :parking_space, :storage_space, :balcony, :available_date, :minimum_lease, :title, :rental_type, :description, listing_images_attributes: [:image])
     end
 end

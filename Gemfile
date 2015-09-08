@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem for postgresql
 gem 'pg'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -34,6 +34,10 @@ gem 'pg'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# ImageUploader gem
+gem 'carrierwave'
+
+# using React.js gem for rails skeleton - no third party libraries will be used
 gem 'react-rails', '~> 1.0'
 
 group :development, :test do

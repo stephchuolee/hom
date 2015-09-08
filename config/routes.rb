@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :listing_images
  root :to => "sessions#index"
 
   # custom routing /dashboard, will use jsx to render actual page
