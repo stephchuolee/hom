@@ -1,74 +1,77 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :xml, :json
+  
+  before_action :find_resource
 
-  # GET /bookings
-  # GET /bookings.json
   def index
-    @bookings = Booking.all
+    @bookings = Booking.where("resource_id = ? AND end_time >= ?", @resource.id, Time.now).order(:start_time)
+    respond_with @bookings
   end
 
-  # GET /bookings/1
-  # GET /bookings/1.json
-  def show
-  end
-
-  # GET /bookings/new
   def new
-    @booking = Booking.new
+    @booking = Booking.new(resource_id: @resource.id)
   end
 
-  # GET /bookings/1/edit
-  def edit
-  end
-
-  # POST /bookings
-  # POST /bookings.json
   def create
-    @booking = Booking.new(booking_params)
-
-    respond_to do |format|
-      if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
-        format.json { render :show, status: :created, location: @booking }
-      else
-        format.html { render :new }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
-      end
+    @booking =  Booking.new(params[:booking].permit(:resource_id, :start_time, :length))
+    @booking.resource = @resource
+    if @booking.save
+      redirect_to resource_bookings_path(@resource, method: :get)
+    else
+      render 'new'
     end
   end
 
-  # PATCH/PUT /bookings/1
-  # PATCH/PUT /bookings/1.json
-  def update
-    respond_to do |format|
-      if @booking.update(booking_params)
-        format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
-        format.json { render :show, status: :ok, location: @booking }
-      else
-        format.html { render :edit }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
-      end
-    end
+  def show
+    @booking = Booking.find(params[:id])
   end
 
-  # DELETE /bookings/1
-  # DELETE /bookings/1.json
   def destroy
-    @booking.destroy
-    respond_to do |format|
-      format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
-      format.json { head :no_content }
+    @booking = Booking.find(params[:id]).destroy
+    if @booking.destroy
+      flash[:notice] = "Booking: #{@booking.start_time.strftime('%e %b %Y %H:%M%p')} to #{@booking.end_time.strftime('%e %b %Y %H:%M%p')} deleted"
+      redirect_to resource_bookings_path(@resource)
+    else
+      render 'index'
+    end
+  end
+
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    # @booking.resource = @resource
+
+    if @booking.update(params[:booking].permit(:resource_id, :start_time, :length))
+      flash[:notice] = 'Your booking was updated succesfully'
+
+      if request.xhr?
+        render json: {status: :success}.to_json
+      else
+        redirect_to resource_bookings_path(@resource)
+      end
+    else
+      render 'edit'
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_booking
-      @booking = Booking.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def booking_params
-      params.require(:booking).permit(:listing_id, :renter_id)
+  def save booking
+    if @booking.save
+        flash[:notice] = 'booking added'
+        redirect_to resource_booking_path(@resource, @booking)
+      else
+        render 'new'
+      end
+  end
+
+  def find_resource
+    if params[:resource_id]
+      @resource = Resource.find_by_id(params[:resource_id])
     end
+  end
+
 end

@@ -19,7 +19,7 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder', '~> 1.2'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -38,6 +38,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave'
 gem 'mini_magick'
 
+# Use bookable scheduler for viewing bookings
+gem 'bookable', '~> 0.0.52'
+gem 'responders', '~>2.0'
 # using React.js gem for rails skeleton - no third party libraries will be used
 gem 'react-rails', '~> 1.0'
 

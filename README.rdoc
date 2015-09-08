@@ -5,6 +5,10 @@
 * System dependencies
 
 * Configuration
+
+run bundle install
+rake db:setup
+
 ***Must install imagemagick in order to run Image Upload feature
 For OSX:
 

@@ -1,29 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Bookings</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Listing</th>
-      <th>Renter</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @bookings.each do |booking| %>
-      <tr>
-        <td><%= booking.listing %></td>
-        <td><%= booking.renter_id %></td>
-        <td><%= link_to 'Show', booking %></td>
-        <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-        <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+<h3> Bookings for <%= @resource.name %></h3>
+<table class="bookings_table">
+  <tr>
+    <th>Start</th>
+    <th>End</th>
+  </tr>
+  
+  <% @bookings.each do |booking| %>
+  <tr>
+    <td>
+      <%= booking.start_time.strftime('%e %b %Y %H:%M%p') %>
+    </td>
+    <td>
+      <%= (booking.calculate_end_time + 60).strftime('%e %b %Y %H:%M%p') %>
+    </td>
+    <td><%= link_to "Delete", resource_booking_path(@resource, booking), data: { confirm: 'Are you sure?' }, method: :delete %>
+    </td>
+    <td><%= link_to "Edit", edit_resource_booking_path(@resource, booking) %>
+    </td>
+  </tr>
+  <% end %>
 </table>
-
-<br>
-
-<%= link_to 'New Booking', new_booking_path %>

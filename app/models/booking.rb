@@ -1,3 +1,5 @@
+require_relative './concerns/bookable'
+
 class Booking < ActiveRecord::Base
-  belongs_to :listing
+  include Bookable
 end

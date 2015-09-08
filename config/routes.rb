@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :resources do
+	  resources :bookings
+	end
   get "listings/search"
 
   resources :listing_images

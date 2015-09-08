@@ -11,13 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908000940) do
+ActiveRecord::Schema.define(version: 20150908200619) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer  "listing_id"
     t.integer  "renter_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "resource_id"
+    t.datetime "start_time"
+    t.integer  "length"
+    t.datetime "end_time"
   end
 
   add_index "bookings", ["listing_id"], name: "index_bookings_on_listing_id"
@@ -66,6 +70,10 @@ ActiveRecord::Schema.define(version: 20150908000940) do
   end
 
   add_index "listings", ["user_id"], name: "index_listings_on_user_id"
+
+  create_table "resources", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
