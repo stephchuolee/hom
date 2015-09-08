@@ -29,6 +29,6 @@ class ApplicationController < ActionController::Base
     render "listings/index"
   end
 
-  helper_method :current_user
+  helper_method :current_user, :search 
 
 end

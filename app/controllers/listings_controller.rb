@@ -67,6 +67,8 @@ class ListingsController < ApplicationController
       format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
       format.json { head :no_content }
     end
+
+    render "listings/index"
   end
 
   private

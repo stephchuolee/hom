@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  
   get "listings/search"
+  get "listings/filter"
 
   resources :listing_images
   root :to => "sessions#index"

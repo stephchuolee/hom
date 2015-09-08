@@ -56,7 +56,6 @@
         <td><%= listing.description %></td>
         <td><%= link_to 'Show', listing %></td>
         <td>
-        <% puts @current_user.name %>
         <% if @current_user.id == listing.user_id %>
           <%= link_to 'Edit', edit_user_listing_path(listing.user_id, listing.id) %></td>
           <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
