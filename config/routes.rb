@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  get "listings/search"
 
   resources :listing_images
- root :to => "sessions#index"
+  root :to => "sessions#index"
 
   # custom routing /dashboard, will use jsx to render actual page
 #  get "/dashboard"
