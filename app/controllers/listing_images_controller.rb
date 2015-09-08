@@ -42,7 +42,7 @@ class ListingImagesController < ApplicationController
   def update
     respond_to do |format|
       if @listing_image.update(listing_image_params)
-        format.html { redirect_to @listing_image, notice: 'Listing image was successfully updated.' }
+        format.html { redirect_to @listing_image.listing, notice: 'Listing image was successfully updated.' }
         format.json { render :show, status: :ok, location: @listing_image }
       else
         format.html { render :edit }

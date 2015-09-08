@@ -11,13 +11,14 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @listing_images = @listing.listing_images.all
     @current_user = current_user
   end
 
   # GET /listings/new
   def new
     @listing = Listing.new
-    @listing_image = @listing.listing_images.build
+    @listing_images = @listing.listing_images.build
   end
 
   # GET /listings/1/edit
@@ -31,7 +32,7 @@ class ListingsController < ApplicationController
 
     respond_to do |format|
       if @listing.save
-        params[:listing_image]['image'].each do |a|
+        params[:listing_images]['image'].each do |a|
           @listing_image = @listing.listing_images.create!(:image => a)
         end
 

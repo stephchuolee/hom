@@ -77,7 +77,10 @@
 
 <p>
   <strong>Image:</strong>
-  <%= image_tag(@listing.image) %>
+  <% @listing.listing_images.each do |array| %>
+    <%= image_tag(array.image) %>
+    <%= link_to "Edit Imaage", edit_listing_image_path(array) %>
+  <% end %>
 </p>
 
 <p>

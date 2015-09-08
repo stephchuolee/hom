@@ -36,6 +36,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # ImageUploader gem
 gem 'carrierwave'
+gem 'mini_magick'
 
 # using React.js gem for rails skeleton - no third party libraries will be used
 gem 'react-rails', '~> 1.0'
