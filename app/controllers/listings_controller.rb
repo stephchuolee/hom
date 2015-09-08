@@ -5,13 +5,11 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     @listings = Listing.all
-    @current_user = current_user
   end
 
   # GET /listings/1
   # GET /listings/1.json
   def show
-    @current_user = current_user
   end
 
   # GET /listings/new
@@ -31,7 +29,7 @@ class ListingsController < ApplicationController
 
     respond_to do |format|
       if @listing.save
-        params[:listing_image]['image'].each do |a|
+        (params[:listing_image]['image']).each do |a|
           @listing_image = @listing.listing_images.create!(:image => a)
         end
 
