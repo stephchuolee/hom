@@ -76,6 +76,10 @@
     <%= f.file_field :image, multiple: true, name: "listing_images[image][]"  %>
   </div>
   <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image, multiple: true, name: "listing_images[image][]" %>
+  </div>
+  <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
