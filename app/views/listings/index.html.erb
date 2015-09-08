@@ -51,8 +51,11 @@
         <td><%= listing.rental_type %></td>
         <td><%= listing.description %></td>
         <td><%= link_to 'Show', listing %></td>
-        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+        <% if @current_user.id == listing.user_id %>
+          <%= link_to 'Edit', edit_user_listing_path(listing.user_id, listing.id) %></td>
+          <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -60,4 +63,4 @@
 
 <br>
 
-<%= link_to 'New Listing', new_user_listing_path %>
+<%= link_to 'New Listing', new_user_listing_path(@current_user.id) %>

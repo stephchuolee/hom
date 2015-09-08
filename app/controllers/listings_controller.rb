@@ -5,11 +5,13 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     @listings = Listing.all
+    @current_user = current_user
   end
 
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @current_user = current_user
   end
 
   # GET /listings/new
