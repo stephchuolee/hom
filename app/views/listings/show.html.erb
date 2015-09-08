@@ -1,5 +1,11 @@
-<p id="notice"><%= notice %></p>
 
+<div id="listing_head">id="listing_head" <br>// listing pictures/title/price/link_to profile/link_to contact/fav(true/false) will go here.</div>
+<div id="scheduler">id="scheduler" <br>// booking scheduler will go here.</div>
+
+
+
+<p id="notice"><%= notice %></p>
+<div id="listing_details">
 <p>
   <strong>User:</strong>
   <%= @listing.user %>
@@ -94,6 +100,33 @@
   <strong>Description:</strong>
   <%= @listing.description %>
 </p>
+</div>
+<div id="map" data-listing-id="<%=@listing.id%>"></div>
+<style>
+  #map {
+    height: 500px;
+    width: 50%;
+    float: right;
+  }
+  #scheduler {
+    width: 50%;
+    float: right;
+    height: 500px;
+    background-color: red;
+    color: #ffffff;
+  }
+  #listing_head {
+    width: 50%;
+    height: 500px;
+    background-color: blue;
+    color: #ffffff;
+    float: left;
+  }
+  #listing_details {
+    width: 50%;
+    float: left;
+  }
+</style>
 
 <% if @current_user.id == @listing.user_id %>
   <%= link_to 'Edit', edit_user_listing_path(@listing.user_id, @listing) %> |
