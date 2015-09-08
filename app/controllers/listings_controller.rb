@@ -29,7 +29,9 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
-
+    # var coor = # return from google api
+    # @listing.lat = coor[1];
+    # @listing.lon = coor[2];
     respond_to do |format|
       if @listing.save
         params[:listing_images]['image'].each do |a|

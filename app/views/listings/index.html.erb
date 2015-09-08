@@ -1,6 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Listings</h1>
+<div id="filtered_search">
+  <%= form_tag "/listings/filter", method: "get" do %>
+  <%= label_tag(:min_price, "Min") %>
+  <%= text_field_tag(:min_price) %>
+  <%= label_tag(:max_price, "Max") %>
+  <%= text_field_tag(:max_price) %>
+
+  <%= label_tag(:pets, "Pets Allowed") %>
+  <%= check_box_tag(:pets_btn) %>
+  
+  <%= submit_tag(:filter_submit, "Filter Search") %>
+  <% end %> 
+</div>
 
 <table>
   <thead>
@@ -38,7 +51,7 @@
         <td><%= listing.price %></td>
         <td><%= listing.address %></td>
         <td><%= listing.furnished %></td>
-        <td><%= listing.pets %></td>
+        <td class="pets"><%= listing.pets %></td>
         <td><%= listing.smoking %></td>
         <td><%= listing.floor_number %></td>
         <td><%= listing.parking_space %></td>
