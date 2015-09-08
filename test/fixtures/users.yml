@@ -3,17 +3,17 @@
 one:
   name: MyString
   email: MyString
-  password: MyString
+  password_digest: MyString
   location: MyString
-  image: MyString
   blurb: MyText
   owner: false
+  image: MyString
 
 two:
   name: MyString
   email: MyString
-  password: MyString
+  password_digest: MyString
   location: MyString
-  image: MyString
   blurb: MyText
   owner: false
+  image: MyString

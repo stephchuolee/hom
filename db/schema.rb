@@ -70,13 +70,13 @@ ActiveRecord::Schema.define(version: 20150908000940) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "password"
+    t.string   "password_digest"
     t.string   "location"
-    t.string   "image"
     t.text     "blurb"
     t.boolean  "owner"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "image"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
