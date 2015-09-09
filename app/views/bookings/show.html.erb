@@ -2,13 +2,24 @@
 
 <p>
   <strong>Listing:</strong>
-  <%= @booking.listing_id %>
+  <%= @booking.listing.title %>
 </p>
-
+<p>
+  <strong>Date:</strong>
+  <%= @booking.date %>
+</p>
+<p>
+  <strong>Start Time</strong>
+  <%= @booking.start_time.to_formatted_s(:time) %>
+</p>
+<p>
+  <strong>End Time</strong>
+  <%= @booking.end_time.to_formatted_s(:time) %>
+</p>
 <p>
   <strong>Renter:</strong>
   <%= @booking.renter_id %>
 </p>
 
-<%= link_to 'Edit', edit_user_booking_path(@booking) %> |
+<%= link_to 'Edit', edit_user_booking_path(id: @booking.id) %> |
 <%= link_to 'Back', user_bookings_path %>

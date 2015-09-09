@@ -10,7 +10,7 @@ User.create(name: "Judy Cha", email: "mjjcha@gmail.com", password: "1111", locat
 
 User.create(name: "Ryan Song", email: "yiryans@gmail.com", password: "1111", location: "Burnaby, Bc", image: "", blurb: "Ryan rocks!", owner: true)
 
-User.create(name: "Sumit Sekhri", email: "sumitsekhri@gmail.com", password: "1111", location: "", image: "Surrey, BC", blurb: "Ya lighthouse", owner: false)
+User.create(name: "Sumit Sekhri", email: "sumitsekhri@gmail.com", password: "1111", location: "Surry, BC", image: "", blurb: "Ya lighthouse", owner: false)
 
 User.create(name: "Stephanie Chuo-Lee", email: "schuolee@gmail.com", password: "1111", location: "Vancouver, BC", image: "", blurb: "Coolbeans", owner: true)
 
