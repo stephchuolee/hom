@@ -9,10 +9,13 @@
   <%= text_field_tag(:max_price) %>
   <%= label_tag(:number_of_bedrooms, "Number of Bedrooms") %>
   <%= text_field_tag(:number_of_bedrooms) %>
-
+  <%= label_tag(:rental_type, "Rental Type") %>
+  <%= select_tag(:rental_type, options_for_select([["Select One", nil], ["Full Lease"], ["Sublet"], ["Room"]])) %>
   <%= label_tag(:pets, "Pets Allowed") %>
-  <%= check_box_tag(:pets_btn) %>
-  
+  <%= check_box_tag(:pets) %>
+  <%= label_tag(:parking, "Parking") %>
+  <%= check_box_tag(:parking) %>
+
   <%= submit_tag("Filter Search") %>
   <% if @city %> 
     <%= hidden_field_tag(:city, @city) %> 

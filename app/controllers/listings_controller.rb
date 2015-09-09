@@ -52,10 +52,10 @@ class ListingsController < ApplicationController
   def results
     @listings = Listing.all
     
-    if !params[:city].nil?
+    # if !params[:city].nil?
       @city = params[:city]
       @listings = @listings.city(@city)
-    end
+    # end
     
     if !params[:min_price].empty?
       @listings = @listings.min_price(params[:min_price])
@@ -69,7 +69,19 @@ class ListingsController < ApplicationController
       @listings = @listings.number_of_bedrooms(params[:number_of_bedrooms])
     end 
 
-    
+    if !params[:pets].nil?
+      # @listings = @listings.pets true 
+      @listings = @listings.pets(!params[:pets].nil?)
+    end 
+
+    if !params[:rental_type].nil?
+      @listings = @listings.rental_type(params[:rental_type])
+    end 
+
+    if !params[:parking].nil?
+      @listings = @listings.parking(!params[:pets].nil?)
+    end 
+
 
     render json: @listings
   end 

@@ -6,6 +6,10 @@ class Listing < ActiveRecord::Base
   scope :min_price, -> (min_price) {where('price >= ?', min_price)}
   scope :max_price, -> (max_price) {where('price <= ?', max_price)}
   scope :number_of_bedrooms, -> (number_of_bedrooms) {where('bedroom == ?', number_of_bedrooms)}
+  scope :rental_type, -> (rental_type) {where('rental_type = ?', rental_type)}
+  scope :pets, -> (pets) {where('pets = ?', pets)}
+  scope :parking, -> (parking) {where('parking = ?', parking)}
+  
 
 end
 
