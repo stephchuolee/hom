@@ -8,21 +8,32 @@
 </head>
 <body>
 <nav>
-  <ul>
-    <li>
-      <span>
-        <%= form_tag "/listings/search", method: "get" do %>
-        <%= label_tag(:city, "Search for a city:") %>
-        <%= text_field_tag(:city) %>
-        <%= submit_tag("Search") %>
-        <% end %>
-      </span>
-    </li>
-  </ul>
+  <div class="container">
+    <div class="logo"><p>Logo</p></div>
+    <ul>
+      <li id="search">
+
+          <%= form_tag "/listings/search", method: "get" do %>
+          <%= label_tag(:city) %>
+          <%= text_field_tag(:city) %>
+          <%= submit_tag("Search") %>
+          <% end %>
+
+      </li>
+      <li>Nav Link 1</li>
+      <li>Nav Link 2</li>
+    </ul>
+  </div>
 </nav>
-
-
-<%= yield %>
+<!-- <div class="sub-nav">
+  <ul>
+    <li>Placeholder 1</li>
+    <li>Placeholder 2</li>
+  </ul>
+</div> -->
+<div class="container">
+  <%= yield %>
+</div>
 
 </body>
 </html>

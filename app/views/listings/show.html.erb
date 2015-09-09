@@ -1,101 +1,133 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @listing.user %>
-</p>
+<div class="row">
+  <div class="col l6 s12">
+    <%= link_to 'Back', listings_path %> -->
+    <div class="listing">
+      <p>
+        <strong>Price:</strong>
+        <%= @listing.price %>
+      </p>
+      <p>
+        <strong>Title:</strong>
+        <%= @listing.title %>
+      </p>
+    </div>
+  </div>
 
-<p>
-  <strong>Square footage:</strong>
-  <%= @listing.square_footage %>
-</p>
+  <div class="col l6 s12">
+    <div class="calendar">
 
-<p>
-  <strong>Bedroom:</strong>
-  <%= @listing.bedroom %>
-</p>
+    </div>
+  </div>
 
-<p>
-  <strong>Bathroom:</strong>
-  <%= @listing.bathroom %>
-</p>
+</div>
 
-<p>
-  <strong>Price:</strong>
-  <%= @listing.price %>
-</p>
+<div class="row">
+  <div class="col l6 s12">
+    <div class="information">
+      <li>
+        <strong>User:</strong>
+        <%= @listing.user.name %>
+      </li>
 
-<p>
-  <strong>Address:</strong>
-  <%= @listing.address %>
-</p>
+      <li>
+        <strong>Square footage:</strong>
+        <%= @listing.square_footage %>
+      </li>
 
-<p>
-  <strong>Furnished:</strong>
-  <%= @listing.furnished %>
-</p>
+      <li>
+        <strong>Bedroom:</strong>
+        <%= @listing.bedroom %>
+      </li>
 
-<p>
-  <strong>Pets:</strong>
-  <%= @listing.pets %>
-</p>
+      <li>
+        <strong>Bathroom:</strong>
+        <%= @listing.bathroom %>
+      </li>
 
-<p>
-  <strong>Smoking:</strong>
-  <%= @listing.smoking %>
-</p>
+      <li>
+        <strong>Address:</strong>
+        <%= @listing.address %>
+      </li>
 
-<p>
-  <strong>Floor number:</strong>
-  <%= @listing.floor_number %>
-</p>
+      <li>
+        <strong>Furnished:</strong>
+        <%= @listing.furnished %>
+      </li>
 
-<p>
-  <strong>Parking space:</strong>
-  <%= @listing.parking_space %>
-</p>
+      <li>
+        <strong>Pets:</strong>
+        <%= @listing.pets %>
+      </li>
 
-<p>
-  <strong>Storage space:</strong>
-  <%= @listing.storage_space %>
-</p>
+      <li>
+        <strong>Smoking:</strong>
+        <%= @listing.smoking %>
+      </li>
 
-<p>
-  <strong>Balcony:</strong>
-  <%= @listing.balcony %>
-</p>
+      <li>
+        <strong>Floor number:</strong>
+        <%= @listing.floor_number %>
+      </li>
 
-<p>
-  <strong>Available date:</strong>
-  <%= @listing.available_date %>
-</p>
+      <li>
+        <strong>Parking space:</strong>
+        <%= @listing.parking_space %>
+      </li>
 
-<p>
-  <strong>Minimum lease:</strong>
-  <%= @listing.minimum_lease %>
-</p>
+      <li>
+        <strong>Storage space:</strong>
+        <%= @listing.storage_space %>
+      </li>
 
-<p>
-  <strong>Image:</strong>
-  <%= @listing.image %>
-</p>
+      <li>
+        <strong>Balcony:</strong>
+        <%= @listing.balcony %>
+      </li>
 
-<p>
-  <strong>Title:</strong>
-  <%= @listing.title %>
-</p>
+      <li>
+        <strong>Available date:</strong>
+        <%= @listing.available_date %>
+      </li>
 
-<p>
-  <strong>Rental type:</strong>
-  <%= @listing.rental_type %>
-</p>
+      <li>
+        <strong>Minimum lease:</strong>
+        <%= @listing.minimum_lease %>
+      </li>
 
-<p>
-  <strong>Description:</strong>
-  <%= @listing.description %>
-</p>
+      <li>
+        <strong>Image:</strong>
+        <%= @listing.image %>
+      </li>
 
-<% if @current_user.id == @listing.user_id %>
+      <li>
+        <strong>Rental type:</strong>
+        <%= @listing.rental_type %>
+      </li>
+
+      <li>
+        <strong>Description:</strong>
+        <%= @listing.description %>
+      </li>
+    </div>
+  </div>
+
+  <div class="col l6 s12">
+    <div class="map">
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <div class="neighbourhood">
+
+    </div>
+  </div>
+</div>
+
+<!-- <% if @current_user.id == @listing.user_id %>
   <%= link_to 'Edit', edit_user_listing_path(@listing.user_id, @listing) %> |
 <% end %>
-<%= link_to 'Back', listings_path %>
