@@ -57,18 +57,19 @@ class ListingsController < ApplicationController
       @listings = @listings.city(@city)
     end
     
-    if !params[:min_price].nil?
+    if !params[:min_price].empty?
       @listings = @listings.min_price(params[:min_price])
     end
 
-    if !params[:max_price].nil?
+    if !params[:max_price].empty?
       @listings = @listings.max_price(params[:max_price])
     end 
 
-    if !params[:number_of_bedrooms].nil?
+    if !params[:number_of_bedrooms].empty?
       @listings = @listings.number_of_bedrooms(params[:number_of_bedrooms])
     end 
 
+    
 
     render json: @listings
   end 
