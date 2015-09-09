@@ -17,3 +17,7 @@
 // lon 
 // lat
 
+  // <%= select(:rental_type, "rental_type", Listing.all.collect {|l| [ l.rental_type ] }, {:prompt => 'Select Rental Type'})%>
+
+
+

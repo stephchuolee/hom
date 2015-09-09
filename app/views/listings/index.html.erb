@@ -10,7 +10,8 @@
   <%= label_tag(:number_of_bedrooms, "Number of Bedrooms") %>
   <%= text_field_tag(:number_of_bedrooms) %>
   <%= label_tag(:rental_type, "Rental Type") %>
-  <%= select_tag(:rental_type, options_for_select([["Select One", nil], ["Full Lease"], ["Sublet"], ["Room"]])) %>
+  <%= select_tag(:rental_type, options_for_select([["Full Lease"], ["Sublet"], ["Room"]]), {:prompt => 'Select Rental Type'}) %>
+
   <%= label_tag(:pets, "Pets Allowed") %>
   <%= check_box_tag(:pets) %>
   <%= label_tag(:parking, "Parking") %>
@@ -22,7 +23,7 @@
   <%= label_tag(:storage, "Storage") %>
   <%= check_box_tag(:storage) %>
 
-  <%= submit_tag("Filter Search") %>
+  <%= submit_tag("Apply Filters") %>
   <% if @city %> 
     <%= hidden_field_tag(:city, @city) %> 
   <% end %> 

@@ -74,9 +74,11 @@ class ListingsController < ApplicationController
       @listings = @listings.pets(!params[:pets].nil?)
     end 
 
-    if !params[:rental_type].nil?
+
+    if !params[:rental_type].empty?
       @listings = @listings.rental_type(params[:rental_type])
     end 
+
 
     if !params[:parking].nil?
       @listings = @listings.parking(!params[:parking].nil?)
