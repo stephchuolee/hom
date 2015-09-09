@@ -1,17 +1,19 @@
 
+var map;
+
 function getAddresses(id){
   if (!id){
     id = "";
   }
 
   $.ajax({
-    url: '/listings/'+id, // 
+    url: '/listings/'+id,   
     dataType: 'json',
     success: function(data){
 
       var addresses= extractAddresses(data);
       var geocoder = new google.maps.Geocoder();
-      var map = new google.maps.Map(document.getElementById('map'), {
+      map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14,
       }); 
       geocodeAddress(geocoder, map, addresses);
@@ -27,8 +29,7 @@ function extractAddresses(data) {
     }
   } else {
     addresses.push(data.address);
-  }
-  
+  } 
   return addresses;
 }
 
@@ -42,12 +43,11 @@ function geocodeAddress(geocoder, resultsMap, addresses) {
   // var address = document.getElementById('address').value;
   for (var i =0; i< addresses.length; i++) {
     geocoder.geocode({'address': addresses[i]}, function(results, status) {
+      var coord = results[0].geometry.location;
       if (status === google.maps.GeocoderStatus.OK) {
-        resultsMap.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-          map: resultsMap,
-          position: results[0].geometry.location
-        });
+        resultsMap.setCenter(coord);
+        map = resultsMap;
+        addMarker(coord );   
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
@@ -55,5 +55,30 @@ function geocodeAddress(geocoder, resultsMap, addresses) {
   }
 }
 
+function addMarker(coord){
+  var marker = new google.maps.Marker({
+    map: map,
+    position: coord
+  });
+}
 
+$(function(){
+  $('.listingDiv').on('click', function(){
+    var id = $(this).data('listing-id');
+    getAddresses(id);
+  })
+});
 
+  // function initMap() {
+  //   var mapDiv = document.getElementById('map');
+  //   var map = new google.maps.Map(mapDiv, {
+  //     zoom: 8,
+  //     center: new google.maps.LatLng(-34.397, 150.644)
+  //   });
+
+  //   // We add a DOM event here to show an alert if the DIV containing the
+  //   // map is clicked.
+  //   google.maps.event.addDomListener(mapDiv, 'click', function() {
+  //     window.alert('Map was clicked!');
+  //   });
+  // }

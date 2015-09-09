@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Listings</h1>
@@ -30,7 +31,8 @@
 
   <tbody>
     <% @listings.each do |listing| %>
-      <tr>
+      
+      <tr data-listing-id="<%=listing.id%>" class="listingDiv">
         <td><%= listing.user %></td>
         <td><%= listing.square_footage %></td>
         <td><%= listing.bedroom %></td>
@@ -49,6 +51,7 @@
         <td>
         <% listing.listing_images.each do |array| %>
           <%= image_tag(array.image) %>
+
         <% end %>
         </td>
         <td><%= listing.title %></td>
@@ -56,16 +59,15 @@
         <td><%= listing.description %></td>
         <td><%= link_to 'Show', listing %></td>
         <td>
-
+  
         <% if @current_user && @current_user.id == listing.user_id %>
           <%= link_to 'Edit', edit_user_listing_path(listing.user_id, listing.id) %></td>
           <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
-      <script>
-  
-      </script>
+    
     <% end %>
+      
   </tbody>
 </table>
 <div id="map"></div>
