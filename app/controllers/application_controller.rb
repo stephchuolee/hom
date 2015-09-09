@@ -13,7 +13,21 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
-  
+
+  def index
+    @listings = Listing.all
+    @current_user = current_user
+  end
+
+  def search
+    @listings = Listing.all
+
+    if !params[:city].empty?
+      @listings = @listings.city(params[:city])
+    end
+    render "listings/index"
+  end
+
   helper_method :current_user
-  
+
 end

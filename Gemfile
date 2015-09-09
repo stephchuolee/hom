@@ -34,6 +34,11 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# ImageUploader gem
+gem 'carrierwave'
+gem 'mini_magick'
+
+# using React.js gem for rails skeleton - no third party libraries will be used
 gem 'react-rails', '~> 1.0'
 
 group :development, :test do
