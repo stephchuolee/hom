@@ -23,11 +23,18 @@ class ApplicationController < ActionController::Base
     @listings = Listing.all
 
     if !params[:city].empty?
+      @city = params[:city]
       @listings = @listings.city(params[:city])
     end
     render "listings/index"
   end
 
-  helper_method :current_user
+  def searched_city 
+    @city 
+  end 
+
+  
+
+  helper_method :current_user, :search, :searched_city
 
 end
