@@ -3,6 +3,9 @@ class Listing < ActiveRecord::Base
   has_many :listing_images
   accepts_nested_attributes_for :listing_images
   scope :city, -> (city) {where('address LIKE ?', "%#{city}%")}
+  scope :min_price, -> (min_price) {where('price >= ?', min_price)}
+  scope :max_price, -> (max_price) {where('price <= ?', max_price)}
+  scope :number_of_bedrooms, -> (number_of_bedrooms) {where('bedroom == ?', number_of_bedrooms)}
 
 end
 

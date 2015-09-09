@@ -34,9 +34,11 @@ class ListingsController < ApplicationController
     # @listing.lon = coor[2];
     respond_to do |format|
       if @listing.save
-        params[:listing_images]['image'].each do |a|
-          @listing_image = @listing.listing_images.create!(:image => a)
-        end
+        if @listing.image 
+          params[:listing_images]['image'].each do |a|
+            @listing_image = @listing.listing_images.create!(:image => a)
+          end
+        end 
 
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
@@ -46,6 +48,30 @@ class ListingsController < ApplicationController
       end
     end
   end
+
+  def results
+    @listings = Listing.all
+    
+    if !params[:city].nil?
+      @city = params[:city]
+      @listings = @listings.city(@city)
+    end
+    
+    if !params[:min_price].nil?
+      @listings = @listings.min_price(params[:min_price])
+    end
+
+    if !params[:max_price].nil?
+      @listings = @listings.max_price(params[:max_price])
+    end 
+
+    if !params[:number_of_bedrooms].nil?
+      @listings = @listings.number_of_bedrooms(params[:number_of_bedrooms])
+    end 
+
+
+    render json: @listings
+  end 
 
   # PATCH/PUT /listings/1
   # PATCH/PUT /listings/1.json

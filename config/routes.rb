@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   get "listings/search"
+  get "listings/results"
 
 
   resources :listing_images

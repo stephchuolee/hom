@@ -2,16 +2,21 @@
 
 <h1>Listing Listings</h1>
 <div id="filtered_search">
-  <%= form_tag "/listings/filter", method: "get" do %>
+  <%= form_tag "/listings/search", :id => "filter_form", method: "get" do %>
   <%= label_tag(:min_price, "Min") %>
   <%= text_field_tag(:min_price) %>
   <%= label_tag(:max_price, "Max") %>
   <%= text_field_tag(:max_price) %>
+  <%= label_tag(:number_of_bedrooms, "Min Number of Bedrooms") %>
+  <%= text_field_tag(:number_of_bedrooms) %>
 
   <%= label_tag(:pets, "Pets Allowed") %>
   <%= check_box_tag(:pets_btn) %>
   
-  <%= submit_tag(:filter_submit, "Filter Search") %>
+  <%= submit_tag("Filter Search") %>
+  <% if @city %> 
+    <%= hidden_field_tag(:city, @city) %> 
+  <% end %> 
   <% end %> 
 </div>
 
@@ -41,10 +46,10 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody id="listing_results">
     <% @listings.each do |listing| %>
       <tr>
-        <td><%= listing.user %></td>
+        <td><%= listing.user_id %></td>
         <td><%= listing.square_footage %></td>
         <td><%= listing.bedroom %></td>
         <td><%= listing.bathroom %></td>
