@@ -79,7 +79,19 @@ class ListingsController < ApplicationController
     end 
 
     if !params[:parking].nil?
-      @listings = @listings.parking(!params[:pets].nil?)
+      @listings = @listings.parking(!params[:parking].nil?)
+    end 
+
+    if !params[:smoking].nil?
+      @listings = listings.smoking(!params[:smoking].nil?)
+    end 
+
+    if !params[:furnished].nil?
+      @listings = @listings.furnished(!params[:furnished].nil?)
+    end 
+
+    if !params[:storage].nil?
+      @listings = @listings.storage(!params[:storage].nil?)
     end 
 
 

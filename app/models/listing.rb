@@ -9,6 +9,10 @@ class Listing < ActiveRecord::Base
   scope :rental_type, -> (rental_type) {where('rental_type = ?', rental_type)}
   scope :pets, -> (pets) {where('pets = ?', pets)}
   scope :parking, -> (parking) {where('parking = ?', parking)}
+  scope :smoking, -> (smoking) {where('smoking = ?', smoking)}
+  scope :furnished, -> (furnished) {where('furnished = ?', furnished)}
+  scope :storage, -> (storage) {where('storage = ?', storage)}
+
   
 
 end
