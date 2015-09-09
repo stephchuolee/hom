@@ -1,6 +1,6 @@
 
 var map;
-
+var marker = [];
 function getAddresses(id){
   if (!id){
     id = "";
@@ -39,7 +39,7 @@ function initMap() {
   getAddresses(id);
 }
 
-function geocodeAddress(geocoder, resultsMap, addresses) {
+function geocodeAddress(geocoder, resultsMap, addresses ) {
   // var address = document.getElementById('address').value;
   for (var i =0; i< addresses.length; i++) {
     geocoder.geocode({'address': addresses[i]}, function(results, status) {
@@ -47,7 +47,7 @@ function geocodeAddress(geocoder, resultsMap, addresses) {
       if (status === google.maps.GeocoderStatus.OK) {
         resultsMap.setCenter(coord);
         map = resultsMap;
-        addMarker(coord );   
+        addMarker(coord);   
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
@@ -56,18 +56,35 @@ function geocodeAddress(geocoder, resultsMap, addresses) {
 }
 
 function addMarker(coord){
-  var marker = new google.maps.Marker({
+  var marker_new = new google.maps.Marker({
     map: map,
     position: coord
   });
+  marker.push(marker_new);
 }
+
+function recenterMap(id){
+  $.ajax({
+    url: '/listings/'+id,   
+    dataType: 'json',
+    success: function(data){
+      var address= extractAddresses(data);
+      var geocoder = new google.maps.Geocoder(); 
+      geocodeAddress(geocoder, map, address);
+    }
+  });
+}
+
 
 $(function(){
   $('.listingDiv').on('click', function(){
     var id = $(this).data('listing-id');
-    getAddresses(id);
+    recenterMap(id);
+    // getAddresses(id);
   })
 });
+
+
 
   // function initMap() {
   //   var mapDiv = document.getElementById('map');
