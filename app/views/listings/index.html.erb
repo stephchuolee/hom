@@ -46,22 +46,37 @@
         <td><%= listing.balcony %></td>
         <td><%= listing.available_date %></td>
         <td><%= listing.minimum_lease %></td>
-        <td><%= listing.image %></td>
+        <td>
+        <% listing.listing_images.each do |array| %>
+          <%= image_tag(array.image) %>
+        <% end %>
+        </td>
         <td><%= listing.title %></td>
         <td><%= listing.rental_type %></td>
         <td><%= listing.description %></td>
         <td><%= link_to 'Show', listing %></td>
         <td>
-        <% puts @current_user.name %>
-        <% if @current_user.id == listing.user_id %>
+
+        <% if @current_user && @current_user.id == listing.user_id %>
           <%= link_to 'Edit', edit_user_listing_path(listing.user_id, listing.id) %></td>
           <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
+      <script>
+  
+      </script>
     <% end %>
   </tbody>
 </table>
+<div id="map"></div>
+<style>
+#map {
+  height: 500px;
+  width: 500px;
+}
+</style>
 
 <br>
-
-<%= link_to 'New Listing', new_user_listing_path(@current_user.id) %>
+<% if @current_user %> 
+  <%= link_to 'New Listing', new_user_listing_path(@current_user.id) %>
+<% end %> 

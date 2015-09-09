@@ -1,5 +1,5 @@
-<p id="notice"><%= notice %></p>
 
+<<<<<<< HEAD
 <div class="row">
   <div class="col l6 s12">
     <%= link_to 'Back', listings_path %> -->
@@ -115,7 +115,32 @@
 
   <div class="col l6 s12">
     <div class="map">
-
+      <div id="map" data-listing-id="<%=@listing.id%>"></div>
+      <style>
+        #map {
+          height: 500px;
+          width: 50%;
+          float: right;
+        }
+        #scheduler {
+          width: 50%;
+          float: right;
+          height: 500px;
+          background-color: red;
+          color: #ffffff;
+        }
+        #listing_head {
+          width: 50%;
+          height: 500px;
+          background-color: blue;
+          color: #ffffff;
+          float: left;
+        }
+        #listing_details {
+          width: 50%;
+          float: left;
+        }
+      </style>
     </div>
   </div>
 </div>
@@ -127,7 +152,3 @@
     </div>
   </div>
 </div>
-
-<!-- <% if @current_user.id == @listing.user_id %>
-  <%= link_to 'Edit', edit_user_listing_path(@listing.user_id, @listing) %> |
-<% end %>

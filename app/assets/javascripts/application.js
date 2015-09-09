@@ -18,3 +18,16 @@
 //= require components
 //= require_tree .
 
+// to be rendered on listings/id page 
+
+$(function getWalkScore(address, lat, long) {
+
+  $.ajax({
+    url: '',
+    dataType: '',
+    success: 
+  });
+
+
+});
+
