@@ -20,14 +20,18 @@
 
 // to be rendered on listings/id page 
 
-$(function getWalkScore(address, lat, long) {
+// $(function getWalkScore(address, lat, long) {
 
-  $.ajax({
-    url: '',
-    dataType: '',
-    success: 
-  });
+//   $.ajax({
+//     url: '',
+//     dataType: '',
+//     success: 
+//   });
 
 
-});
+
+// });
+
+
+// });
 

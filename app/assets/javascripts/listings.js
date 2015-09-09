@@ -1,6 +1,8 @@
 
+
 var map;
 var marker = [];
+
 function getAddresses(id){
   if (!id){
     id = "";
