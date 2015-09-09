@@ -12,16 +12,16 @@
   <% end %>
   
   <div>
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+  </div>
+  <div>
     <%= f.label :start_time %>
-    <%= f.datetime_field :start_time %>
+    <%= f.time_field :start_time %>
   </div>
   <div>
     <%= f.label :end_time %>
-    <%= f.datetime_field :end_time%>
-  </div>
-  <div>
-    <%= f.label :length %>
-    <%= f.number_field :length %>
+    <%= f.time_field :end_time %>
   </div>
   <div class="field">
     <%= f.label :listing_id %><br>

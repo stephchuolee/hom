@@ -13,12 +13,9 @@ Rails.application.routes.draw do
 
   resources :users do
   # bookings should be available under /users/id/bookings
-    resources :bookings, only: [:show, :index]
+    resources :bookings
   # all listings should belong to a user
-    resources :listings do
-  # bookings belong to listings
-      resources :bookings, only: [:new, :destroy]
-    end
+    resources :listings 
   # users can have favourites
     resources :favourites, only: [:new, :create, :destroy, :index, :show]
   end

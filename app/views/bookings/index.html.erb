@@ -18,10 +18,9 @@
         <td><%= booking.renter_id %></td>
         <td><%= booking.start_time %></td>
         <td><%= booking.end_time %></td>
-        <td><%= booking.length %></td>
-        <td><%= link_to 'Show', user_booking_path(booking) %></td>
-        <td><%= link_to 'Edit', edit_user_booking_path(booking) %></td>
-        <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= booking.date %></td>
+        <td><%= link_to 'Show', user_bookings_path(booking.id) %></td>
+        <td><%= link_to 'Edit', edit_user_booking_path(id: booking.id) %></td>
       </tr>
     <% end %>
   </tbody>
