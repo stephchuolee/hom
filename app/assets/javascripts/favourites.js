@@ -1,14 +1,17 @@
 $(function(){
 
   $('.favourite_btn').on('click', function(){
-    var user_id = $("#user_id").val();
-    var listing_id = $(this).find('.fave_listing_id').val();
+    var user_id = $("#fave_user_id").val();
+    console.log(user_id)
+    var listing_id = $(this).find('#fave_listing_id').val();
     var that = $(this);
     
     if ($(that).hasClass('favourited')){ 
         unfavourite(user_id, listing_id, that)
     } else {
+        console.log(user_id, listing_id)
         favourite(user_id, listing_id, that);
+
     }
     console.log('favourite clicked')
   });

@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+        <%= @current_user.id %>
 <h1>Listing Listings</h1>
 <div id="filtered_search">
   <%= form_tag "/listings/search", :id => "filter_form", method: "get" do %>
@@ -59,25 +59,11 @@
         <td><%= listing.rental_type %></td>
         <td><%= listing.description %></td>
 
+        <td> 
         <% if @current_user %> 
-          <% if Favourite.where(:listing_id => listing.id, :user_id => @current_user.id).exists? %> 
-            <td> 
-              <%= content_tag :button, :class => "favourited", :class => "favourite_btn" do %> 
-                Favourite
-                <%= hidden_field_tag(:user_id, @current_user.id, :class => "fave_user_id") %>
-                <%= hidden_field_tag(:listing_id, listing.id, :class => "fave_listing_id") %>
-              <% end %> 
-            </td>
-          <% else %>
-            <td>  
-              <%= content_tag :button, :class => "unfavourite", :class => "favourite_btn" do %> 
-                Favourite
-                <%= hidden_field_tag(:user_id, @current_user.id, :class => "fave_user_id") %>
-                <%= hidden_field_tag(:listing_id, listing.id, :class => "fave_listing_id") %>
-              <% end %> 
-            </td>
-          <% end %> 
+          <%= set_favourite_class(@current_user.id, listing.id) %>
         <% end %> 
+        </td>
 
         <td><%= link_to 'Show', listing %></td>
 

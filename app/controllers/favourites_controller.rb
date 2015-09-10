@@ -26,6 +26,7 @@ class FavouritesController < ApplicationController
   # POST /favourites.json
   def create
     # byebug
+
     @favourite = Favourite.create(user_id: params[:user_id], listing_id: params[:listing_id])
 
     render nothing: true
