@@ -6,12 +6,23 @@ class BookingsController < ApplicationController
   def index
     @bookings = Booking.all
     @current_user = current_user
+    if @current_user
+      @bookings = Booking.find_by(user_id: @current_user.id)
+    else
+      redirect_to user_path
+    end
   end
 
   # GET /bookings/1
   # GET /bookings/1.json
   def show
-    @booking = Booking.find(params[:id])
+    @current_user = current_user
+    @user = User.find(params[:id])
+    if @current_user.id == @user.id
+      @booking = Booking.find(params[:user_id])
+    else
+      redirect_to user_path 
+    end
   end
 
   # GET /bookings/new

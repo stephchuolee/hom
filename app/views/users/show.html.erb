@@ -43,5 +43,7 @@
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %> |
-<%= link_to 'Bookings', user_bookings_path(@user)%>
+<%= link_to 'Back', users_path %> 
+<% if @current_user.id == @user.id %>
+| <%= link_to 'Bookings', user_bookings_path(@user)%>
+<% end %>
