@@ -37,9 +37,19 @@ a:visited {
 }
 
 input[type="text"] {
-  color: black;
+  color: #fff;
+  background-color: #01CEC8;
+  border: none;
+  height: 30px;
+  width: 300px;
+  /*margin: 7px 0 0 0;*/
+}
+
+input[type="submit"] {
+  height: 30px;
 }
 nav {
+  margin: 0 0 60px 0;
   height: 45px;
   background-color: #00B6B1;
 }
@@ -51,11 +61,12 @@ nav ul {
 nav ul li {
   display: inline;
   float: left;
-  margin: 0 40px 0 0;
+  margin: 14px 0 0 0;
   color: #FCFDEF;
 }
 
 nav ul li#search {
+  margin: 6px 0 0 0;
   width: 300px;
 }
 
@@ -76,6 +87,22 @@ nav ul li#search {
 
 li {
   list-style-type: none;
+}
+
+::-webkit-input-placeholder {
+   color: #fff;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #fff;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #fff;
+}
+
+:-ms-input-placeholder {
+   color: #fff;
 }
 
 /* Content
@@ -110,6 +137,10 @@ li {
 
 .information {
 
+}
+
+.information strong {
+  color: #00B6B1;
 }
 
 .location {
