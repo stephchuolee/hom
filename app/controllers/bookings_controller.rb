@@ -1,10 +1,11 @@
 class BookingsController < ApplicationController
-#before_action :set_booking, only: [:show, :edit, :update, :destroy]
+# before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   # GET /bookings
   # GET /bookings.json
   def index
     @bookings = Booking.all
+    @current_user = current_user
   end
 
   # GET /bookings/1
@@ -16,6 +17,8 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
+    @current_user = current_user
+    @booking.user_id = @current_user.id
   end
 
   # GET /bookings/1/edit
@@ -26,11 +29,11 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
-
+    @current_user = current_user
     respond_to do |format|
       if @booking.save
-        @booking.user_id = session[:user_id]
-        format.html { redirect_to [:user, id: @booking.id], notice: 'Booking was successfully created.' }
+         @booking.user = @current_user
+        format.html { redirect_to [:user, id: @current_user.id], notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
         format.html { render :new }

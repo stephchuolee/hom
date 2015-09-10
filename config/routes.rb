@@ -9,22 +9,16 @@ Rails.application.routes.draw do
 
   resource :session
 
-  resources :sessions
-
   resources :users do
-  # bookings should be available under /users/id/bookings
     resources :bookings
-  # all listings should belong to a user
     resources :listings 
-  # users can have favourites
     resources :favourites, only: [:new, :create, :destroy, :index, :show]
   end
-  # users should be able to view listings even without a user_id
+  
   resources :listings, only: [:show, :index] do
-
     resources :users, only: [:show]
-
   end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
