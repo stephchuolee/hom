@@ -16,12 +16,12 @@
       <li id="search">
 
           <%= form_tag "/listings/search", method: "get" do %>
-          <%= text_field_tag(:city, :placeholder => 'Search') %>
+          <%= text_field_tag :city, nil, placeholder: 'Find your home...' %>
+          <!-- <%= text_field_tag "search", 'Enter search term...' %> -->
           <%= submit_tag("Search") %>
           <% end %>
       </li>
-      <li>Nav Link 1</li>
-      <li>Nav Link 2</li>
+      <li>Login</li>
     </ul>
   </div>
 </nav>
