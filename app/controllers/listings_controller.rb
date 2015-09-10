@@ -13,12 +13,15 @@ class ListingsController < ApplicationController
   def show
     @listing_images = @listing.listing_images.all
     @current_user = current_user
+    @listings = Listing.where(:user_id => @current_user.id)
   end
 
   # GET /listings/new
   def new
     @listing = Listing.new
     @listing_images = @listing.listing_images.build
+    @current_user = current_user
+    @listing.user_id = @current_user.id
   end
 
   # GET /listings/1/edit
@@ -29,12 +32,16 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
-
+    # var coor = # return from google api
+    # @listing.lat = coor[1];
+    # @listing.lon = coor[2];
     respond_to do |format|
       if @listing.save
-        params[:listing_images]['image'].each do |a|
-          @listing_image = @listing.listing_images.create!(:image => a)
-        end
+        if @listing.image 
+          params[:listing_images]['image'].each do |a|
+            @listing_image = @listing.listing_images.create!(:image => a)
+          end
+        end 
 
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
@@ -44,6 +51,57 @@ class ListingsController < ApplicationController
       end
     end
   end
+
+  def results
+    @listings = Listing.all
+    
+    # if !params[:city].nil?
+      @city = params[:city]
+      @listings = @listings.city(@city)
+    # end
+    
+    if !params[:min_price].empty?
+      @listings = @listings.min_price(params[:min_price])
+    end
+
+    if !params[:max_price].empty?
+      @listings = @listings.max_price(params[:max_price])
+    end 
+
+    if !params[:number_of_bedrooms].empty?
+      @listings = @listings.number_of_bedrooms(params[:number_of_bedrooms])
+    end 
+
+    if !params[:pets].nil?
+      # @listings = @listings.pets true 
+      @listings = @listings.pets(!params[:pets].nil?)
+    end 
+
+
+    if !params[:rental_type].empty?
+      @listings = @listings.rental_type(params[:rental_type])
+    end 
+
+
+    if !params[:parking].nil?
+      @listings = @listings.parking(!params[:parking].nil?)
+    end 
+
+    if !params[:smoking].nil?
+      @listings = listings.smoking(!params[:smoking].nil?)
+    end 
+
+    if !params[:furnished].nil?
+      @listings = @listings.furnished(!params[:furnished].nil?)
+    end 
+
+    if !params[:storage].nil?
+      @listings = @listings.storage(!params[:storage].nil?)
+    end 
+
+
+    render json: @listings
+  end 
 
   # PATCH/PUT /listings/1
   # PATCH/PUT /listings/1.json
@@ -67,6 +125,8 @@ class ListingsController < ApplicationController
       format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
       format.json { head :no_content }
     end
+
+    render "listings/index"
   end
 
   private

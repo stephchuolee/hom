@@ -4,12 +4,12 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
-    @bookings = Booking.all
     @current_user = current_user
-    if @current_user
-      @bookings = Booking.find_by(user_id: @current_user.id)
+    @bookings = Booking.where(:user_id => @current_user.id)
+    if @current_user.id == @bookings.find_by(params[:user_id]).user_id 
+      render 'index'
     else
-      redirect_to user_path
+      redirect_to user_path(@current_user.id)
     end
   end
 
@@ -18,8 +18,9 @@ class BookingsController < ApplicationController
   def show
     @current_user = current_user
     @user = User.find(params[:id])
+    @booking = Booking.find_by(params[user_id: @current_user.id])
     if @current_user.id == @user.id
-      @booking = Booking.find(params[:user_id])
+      @booking
     else
       redirect_to user_path 
     end
@@ -43,7 +44,7 @@ class BookingsController < ApplicationController
     @current_user = current_user
     respond_to do |format|
       if @booking.save
-         @booking.user = @current_user
+         @booking.user_id = @current_user.id
         format.html { redirect_to [:user, id: @current_user.id], notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
@@ -80,7 +81,7 @@ class BookingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_booking
-      @booking = Booking.find(params[:id])
+      @booking = Booking.find_by(params[user_id: current_user.id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
