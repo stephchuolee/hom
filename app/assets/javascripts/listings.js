@@ -2,56 +2,52 @@
 
 var map;
 var markers = [];
+var infoWindow;
+var service;
 
-function getAddresses(id){
-  if (!id){
-    id = "";
-  }
-  $.ajax({
-    url: '/listings/'+id,   
-    dataType: 'json',
-    success: function(data){
-      var addresses= extractAddresses(data);
-      var geocoder = new google.maps.Geocoder();
-      
-      geocodeAddress(geocoder, map, addresses);
-    }
-  });
-}
-
-function extractAddresses(data) {
-  var addresses = [];
-  if( data.length){
-    for(var i=0; i< data.length; i++) {
-      addresses.push(data[i].address);
-    }
-  } else {
-    addresses.push(data.address);
-  } 
-  return addresses;
-}
 
 function initMap() {
   var id = $('#map').data('listing-id');
+  infoWindow = new google.maps.InfoWindow();
   map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14,
       }); 
   getAddresses(id);
+  importFoursquare();
 }
 
-function geocodeAddress(geocoder, resultsMap, addresses ) {
+
+function getAddresses(id){
+  var address = extractAddresses();
+  var geocoder = new google.maps.Geocoder();
+  geocodeAddress(geocoder, address);
+} 
+  
+function extractAddresses(){
+  var addresses = [];
+  var add = $('.address');
+  for (var i =0; i < add.length; i++){
+      addresses.push($($('.address')[i]).html());
+  }
+  return addresses;
+}
+
+function geocodeAddress(geocoder, addresses ) {
+  var coords= [];
   for (var i =0; i< addresses.length; i++) {
     geocoder.geocode({'address': addresses[i]}, function(results, status) {
       var coord = results[0].geometry.location;
+      coords.push(coord);
       if (status === google.maps.GeocoderStatus.OK) {
-        resultsMap.setCenter(coord);
-        map = resultsMap;
+        map.setCenter(coord);
+        // map = resultsMap;
         addMarker(coord);   
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
   }
+  return coords;
 }
 
 function addMarker(coord){
@@ -60,18 +56,6 @@ function addMarker(coord){
     position: coord
   });
   markers.push(marker_new);
-}
-
-function recenterMap(id){
-  $.ajax({
-    url: '/listings/'+id,   
-    dataType: 'json',
-    success: function(data){
-      var address= extractAddresses(data);
-      var geocoder = new google.maps.Geocoder(); 
-      geocodeAddress(geocoder, map, address);
-    }
-  });
 }
 
 function setMapOnAll(map) {
@@ -85,14 +69,31 @@ function deleteMarkers() {
   markers = [];
 }
 
+function importFoursquare(){
+  
+  var address = $('li').find('.address').html();
+  var geocoder = new google.maps.Geocoder(); 
+  geocoder.geocode({'address': address}, function(results, status) {
+    var coord = results[0].geometry.location;
+    // this ajax request requires authentication info from foursquare such as client_id and client_secret
+    // $.ajax({
+    //   url: 'https://api.foursquare.com/v2/venues/explore?ll='+ coord["G"].toFixed(3) +","+coord["K"].toFixed(3)
+    //   + "&client_id=?????????&client_secret=????????&v=20150910",
+    //   dataType: 'json',
+    //   success: function(data){
+    //     console.log(data);
+    //   }
+    // });
+  });    
+}
 
 $(function(){
-  // displayMap();
-  
-  // initMap();
+
   $('.listingDiv').on('click', function(){
     var id = $(this).data('listing-id');
-    recenterMap(id);
+    var address = [$(this).find('.address').html()];
+    var geocoder = new google.maps.Geocoder();
+    geocodeAddress(geocoder, address);
   })
 
   $('#filter_form').on('submit', function(event){
@@ -104,19 +105,14 @@ $(function(){
       url: '/listings/results?' + input, 
       dataType: "json", 
       success: function(data, status){
-        /*console.log(typeof (data));
-        data = JSON.parse(JSON.stringify(data));*/
-        // console.log(data);
-        // data.forEach(function (result) {
-        //   console.log('user: ' + result.user_id);
-        //   console.log('price: ' + result.price);
-        // });
-        
         deleteMarkers();
-        var addresses= extractAddresses(data);
-        var geocoder = new google.maps.Geocoder();
-        geocodeAddress(geocoder, map, addresses);
+        var add = [];
+        for (var i =0; i < data.length; i++){
+          add.push(data[i].address);
+        }
 
+        var geocoder = new google.maps.Geocoder();
+        geocodeAddress(geocoder, address);
 
         $('#listing_results').html("");
         if (data){
@@ -149,19 +145,5 @@ $(function(){
     })
 
     return false;
-    });
+  });
 });
-
-  // function initMap() {
-  //   var mapDiv = document.getElementById('map');
-  //   var map = new google.maps.Map(mapDiv, {
-  //     zoom: 8,
-  //     center: new google.maps.LatLng(-34.397, 150.644)
-  //   });
-
-  //   // We add a DOM event here to show an alert if the DIV containing the
-  //   // map is clicked.
-  //   google.maps.event.addDomListener(mapDiv, 'click', function() {
-  //     window.alert('Map was clicked!');
-  //   });
-  // }
