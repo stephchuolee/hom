@@ -1,9 +1,10 @@
-
-<<<<<<< HEAD
 <div class="row">
-  <div class="col l6 s12">
-    <%= link_to 'Back', listings_path %> -->
+  <div class="col s12 l6">
+
+    <button class="back"><%= link_to 'Back to listings', listings_path %></button>
+
     <div class="listing">
+      <%= image_tag("home1.jpg", :alt => "home listing images") %>
       <p>
         <strong>Price:</strong>
         <%= @listing.price %>
@@ -15,9 +16,9 @@
     </div>
   </div>
 
-  <div class="col l6 s12">
+  <div class="col s12 l6">
     <div class="calendar">
-
+      Insert Schedule
     </div>
   </div>
 
@@ -97,11 +98,6 @@
       </li>
 
       <li>
-        <strong>Image:</strong>
-        <%= @listing.image %>
-      </li>
-
-      <li>
         <strong>Rental type:</strong>
         <%= @listing.rental_type %>
       </li>
@@ -114,39 +110,14 @@
   </div>
 
   <div class="col l6 s12">
-    <div class="map">
+    <div class="location">
       <div id="map" data-listing-id="<%=@listing.id%>"></div>
-      <style>
-        #map {
-          height: 500px;
-          width: 50%;
-          float: right;
-        }
-        #scheduler {
-          width: 50%;
-          float: right;
-          height: 500px;
-          background-color: red;
-          color: #ffffff;
-        }
-        #listing_head {
-          width: 50%;
-          height: 500px;
-          background-color: blue;
-          color: #ffffff;
-          float: left;
-        }
-        #listing_details {
-          width: 50%;
-          float: left;
-        }
-      </style>
     </div>
   </div>
 </div>
 
 <div class="row">
-  <div class="col s12">
+  <div class="col s12 l8">
     <div class="neighbourhood">
 
     </div>
