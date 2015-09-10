@@ -35,5 +35,15 @@
   <%= @user.owner %>
 </p>
 
+<p>
+  <strong>Rental Properties Owned:</strong><br>
+  <% @user.listings.each do |listing| %>
+  <a><%= link_to "#{listing.title}", user_listing_path(id: listing.id, user_id: @user.id) %><br>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', users_path %> 
+<% if @current_user.id == @user.id %>
+| <%= link_to 'Bookings', user_bookings_path(@user)%>
+<% end %>

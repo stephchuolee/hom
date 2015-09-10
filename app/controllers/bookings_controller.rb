@@ -5,16 +5,31 @@ class BookingsController < ApplicationController
   # GET /bookings.json
   def index
     @bookings = Booking.all
+    @current_user = current_user
+    if @current_user
+      @bookings = Booking.find_by(user_id: @current_user.id)
+    else
+      redirect_to user_path
+    end
   end
 
   # GET /bookings/1
   # GET /bookings/1.json
   def show
+    @current_user = current_user
+    @user = User.find(params[:id])
+    if @current_user.id == @user.id
+      @booking = Booking.find(params[:user_id])
+    else
+      redirect_to user_path 
+    end
   end
 
   # GET /bookings/new
   def new
     @booking = Booking.new
+    @current_user = current_user
+    @booking.user_id = @current_user.id
   end
 
   # GET /bookings/1/edit
@@ -25,10 +40,11 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
-
+    @current_user = current_user
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
+         @booking.user = @current_user
+        format.html { redirect_to [:user, id: @current_user.id], notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
         format.html { render :new }
@@ -56,7 +72,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     respond_to do |format|
-      format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
+      format.html { redirect_to user_bookings_url, notice: 'Booking was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +85,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:listing_id, :renter_id)
+      params.require(:booking).permit(:listing_id, :renter_id, :date, :start_time, :end_time, :user_id)
     end
 end
