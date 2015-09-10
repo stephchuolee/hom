@@ -7,17 +7,13 @@ function getAddresses(id){
   if (!id){
     id = "";
   }
-
   $.ajax({
     url: '/listings/'+id,   
     dataType: 'json',
     success: function(data){
-
       var addresses= extractAddresses(data);
       var geocoder = new google.maps.Geocoder();
-      map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14,
-      }); 
+      
       geocodeAddress(geocoder, map, addresses);
     }
   });
@@ -37,12 +33,13 @@ function extractAddresses(data) {
 
 function initMap() {
   var id = $('#map').data('listing-id');
-  // var id = document.getElementById('map').getAttribute("data-listing-id");
+  map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+      }); 
   getAddresses(id);
 }
 
 function geocodeAddress(geocoder, resultsMap, addresses ) {
-  // var address = document.getElementById('address').value;
   for (var i =0; i< addresses.length; i++) {
     geocoder.geocode({'address': addresses[i]}, function(results, status) {
       var coord = results[0].geometry.location;
@@ -90,10 +87,12 @@ function deleteMarkers() {
 
 
 $(function(){
+  // displayMap();
+  
+  // initMap();
   $('.listingDiv').on('click', function(){
     var id = $(this).data('listing-id');
     recenterMap(id);
-    // getAddresses(id);
   })
 
   $('#filter_form').on('submit', function(event){
@@ -113,16 +112,12 @@ $(function(){
         //   console.log('price: ' + result.price);
         // });
         
-        // clear all markers
-        // put markers with new "data"
-        // recenter with (first/last) element
-        
         deleteMarkers();
         var addresses= extractAddresses(data);
         var geocoder = new google.maps.Geocoder();
         geocodeAddress(geocoder, map, addresses);
 
-        
+
         $('#listing_results').html("");
         if (data){
           data.forEach(function(result){
