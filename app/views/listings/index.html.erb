@@ -34,24 +34,11 @@
   <thead>
     <tr>
       <th>User</th>
-      <th>Square footage</th>
-      <th>Bedroom</th>
-      <th>Bathroom</th>
       <th>Price</th>
       <th>Address</th>
-      <th>Furnished</th>
-      <th>Pets</th>
-      <th>Smoking</th>
-      <th>Floor number</th>
-      <th>Parking space</th>
-      <th>Storage space</th>
-      <th>Balcony</th>
       <th>Available date</th>
-      <th>Minimum lease</th>
       <th>Image</th>
       <th>Title</th>
-      <th>Rental type</th>
-      <th>Description</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -59,21 +46,10 @@
   <tbody id="listing_results">
     <% @listings.each do |listing| %>
       <tr>
-        <td><%= listing.user_id %></td>
-        <td><%= listing.square_footage %></td>
-        <td><%= listing.bedroom %></td>
-        <td><%= listing.bathroom %></td>
+        <td><%= listing.user.name %></td>
         <td><%= listing.price %></td>
         <td><%= listing.address %></td>
-        <td><%= listing.furnished %></td>
-        <td class="pets"><%= listing.pets %></td>
-        <td><%= listing.smoking %></td>
-        <td><%= listing.floor_number %></td>
-        <td><%= listing.parking_space %></td>
-        <td><%= listing.storage_space %></td>
-        <td><%= listing.balcony %></td>
         <td><%= listing.available_date %></td>
-        <td><%= listing.minimum_lease %></td>
         <td>
         <% listing.listing_images.each do |array| %>
           <%= image_tag(array.image) %>
