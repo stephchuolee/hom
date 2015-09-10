@@ -4,22 +4,42 @@ $(function(){
     var user_id = $("#user_id").val();
     var listing_id = $(this).find('.fave_listing_id').val();
     var that = $(this);
-
-    // #(this).addClass('favourited')
-
-    $.ajax({
-      url: '/users/' + user_id + '/favourites',
-      type: "POST",
-      data: {user_id: user_id, listing_id: listing_id },
-      success: function(){ 
-        that.addClass('favourited')
-        console.log(that)
-      }
-    });
-
+    
+    if ($(that).hasClass('favourited')){ 
+        unfavourite(user_id, listing_id, that)
+    } else {
+        favourite(user_id, listing_id, that);
+    }
+    console.log('favourite clicked')
   });
+   
+    function favourite(user_id, listing_id, that){ 
+      // console.log(that)
+      $.ajax({
+        url: '/users/' + user_id + '/favourites',
+        type: "POST",
+        data: {user_id: user_id, listing_id: listing_id },
+        success: function(){ 
+          that.addClass('favourited')
+          that.removeClass('favourite_btn')
+          console.log('favourited')
+        }
+      });
+    }
+    
+    function unfavourite(user_id, listing_id, that){
+    
+      $.ajax({
+        url: '/users/' + user_id + '/favourites?listing_id=' + listing_id,
+        type: "DELETE",
+        success: function(){
+          that.addClass('favourite_btn');
+          that.removeClass('favourited');
+            console.log('unfavourited')
+        }
+      });    
 
-  // $('.favourited')
+    }
 
 });
 

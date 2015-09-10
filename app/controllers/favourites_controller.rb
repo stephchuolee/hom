@@ -1,6 +1,6 @@
 class FavouritesController < ApplicationController
-  before_action :set_favourite, only: [:show, :edit, :update, :destroy]
-  # validates :user_id, uniqueness: {scope: :listing_id}
+  before_action :set_favourite, only: [:show, :edit, :update]
+  protect_from_forgery :except => [:delete]
 
   # GET /favourites
   # GET /favourites.json
@@ -58,11 +58,15 @@ class FavouritesController < ApplicationController
   # DELETE /favourites/1
   # DELETE /favourites/1.json
   def destroy
-    @favourite.destroy
-    respond_to do |format|
-      format.html { redirect_to favourites_url, notice: 'Favourite was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    @user_id = params[:user_id]
+    @listing_id = params[:listing_id]
+    Favourite.destroy_all(:user_id => @user_id, :listing_id => @listing_id)
+    render nothing: true
+
+    # respond_to do |format|
+    #   format.html { redirect_to favourites_url, notice: 'Favourite was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

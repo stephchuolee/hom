@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   get "listings/search"
   get "listings/results"
+  delete "/users/:user_id/favourites", to: "favourites#destroy"
 
 
   resources :listing_images
