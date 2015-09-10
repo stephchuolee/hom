@@ -20,13 +20,6 @@ $(function(){
       url: '/listings/results?' + input, 
       dataType: "json", 
       success: function(data, status){
-        /*console.log(typeof (data));
-        data = JSON.parse(JSON.stringify(data));*/
-        // console.log(data);
-        // data.forEach(function (result) {
-        //   console.log('user: ' + result.user_id);
-        //   console.log('price: ' + result.price);
-        // });
 
         $('#listing_results').html("");
         if (data){
