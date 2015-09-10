@@ -11,16 +11,14 @@
 <body>
 <nav>
   <div class="container">
-    <div class="logo"><p>Logo</p></div>
+    <div class="logo"><a href="/"><%= image_tag("logo.svg", :alt => "Hom Logo") %></a></div>
     <ul>
       <li id="search">
 
           <%= form_tag "/listings/search", method: "get" do %>
-          <%= label_tag(:city) %>
-          <%= text_field_tag(:city) %>
+          <%= text_field_tag(:city, :placeholder => 'Search') %>
           <%= submit_tag("Search") %>
           <% end %>
-
       </li>
       <li>Nav Link 1</li>
       <li>Nav Link 2</li>
