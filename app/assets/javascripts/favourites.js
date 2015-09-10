@@ -2,18 +2,16 @@ $(function(){
 
   $('.favourite_btn').on('click', function(){
     var user_id = $("#fave_user_id").val();
-    console.log(user_id)
     var listing_id = $(this).find('#fave_listing_id').val();
     var that = $(this);
     
     if ($(that).hasClass('favourited')){ 
         unfavourite(user_id, listing_id, that)
     } else {
-        console.log(user_id, listing_id)
         favourite(user_id, listing_id, that);
 
     }
-    console.log('favourite clicked')
+    // console.log('favourite clicked')
   });
  
   function favourite(user_id, listing_id, that){ 
@@ -24,7 +22,7 @@ $(function(){
       success: function(){ 
         that.addClass('favourited')
         that.removeClass('unfavourite')
-        console.log('favourited')
+        // console.log('favourited')
       }
     });
   }
@@ -37,7 +35,7 @@ $(function(){
       success: function(){
         that.addClass('unfavourite');
         that.removeClass('favourited');
-          console.log('unfavourited')
+          // console.log('unfavourited')
       }
     });    
 

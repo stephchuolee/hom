@@ -25,21 +25,8 @@ class FavouritesController < ApplicationController
   # POST /favourites
   # POST /favourites.json
   def create
-    # byebug
-
     @favourite = Favourite.create(user_id: params[:user_id], listing_id: params[:listing_id])
-
     render nothing: true
-    # respond_to do |format|
-    #   if @favourite.save
-    #     format.html { redirect_to @favourite, notice: 'Favourite was successfully created.' }
-    #     format.json { render :show, status: :created, location: @favourite }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @favourite.errors, status: :unprocessable_entity }
-    #   end
-    # end
-
   end
 
   # PATCH/PUT /favourites/1
@@ -63,11 +50,6 @@ class FavouritesController < ApplicationController
     @listing_id = params[:listing_id]
     Favourite.destroy_all(:user_id => @user_id, :listing_id => @listing_id)
     render nothing: true
-
-    # respond_to do |format|
-    #   format.html { redirect_to favourites_url, notice: 'Favourite was successfully destroyed.' }
-    #   format.json { head :no_content }
-    # end
   end
 
   private
