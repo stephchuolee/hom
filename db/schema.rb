@@ -11,16 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908000940) do
+ActiveRecord::Schema.define(version: 20150909203118) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer  "listing_id"
     t.integer  "renter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date     "date"
+    t.time     "end_time"
+    t.time     "start_time"
+    t.integer  "user_id"
   end
 
   add_index "bookings", ["listing_id"], name: "index_bookings_on_listing_id"
+  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id"
 
   create_table "favourites", force: :cascade do |t|
     t.integer  "user_id"

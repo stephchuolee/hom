@@ -16,6 +16,7 @@
 //     var city = $('#city').val();
 //     var input = $(this).serialize();
     
+<<<<<<< HEAD
 //     $.ajax({
 //       url: '/listings/results?' + input, 
 //       dataType: "json", 
@@ -58,6 +59,12 @@
 //             var td = $("<td>").text(result.rental_type).appendTo(tr);
 //             var td = $("<td>").text(result.description).appendTo(tr);
 //             tr.appendTo('#listing_results')
+// =======
+//     $.ajax({
+//       url: '/listings/results?' + input, 
+//       dataType: "json", 
+//       success: function(data, status){
+// >>>>>>> fa2cca15b6a45d15c06b1aa7cade9e2f55391a8d
 
 //           });
 //         }

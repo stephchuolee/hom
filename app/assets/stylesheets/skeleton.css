@@ -45,8 +45,6 @@
   float: left;
   box-sizing: border-box; }
 
-/* For devices smaller than 568px */
-@media (max-width: 568px) {
   .container {
     width: 95%;
     padding: 0; }
@@ -89,7 +87,7 @@
 }
 
 /* For devices larger than 569px and smaller than 736px */
-@media (min-width: 569px) and (max-width: 736px) {
+@media only screen and (min-width: 601px) {
   .container {
     width: 85%;
     padding: 0; }
@@ -132,7 +130,7 @@
 }
 
 /* For devices larger than 737px */
-@media (min-width: 737px) {
+@media only screen and (min-width: 993px) {
   .container {
     width: 95%; }
   .col {
@@ -157,8 +155,8 @@
   .col.50                  { width: 50%; }
 
   /* Offsets */
-  .offset-m1               { margin-left: 8.33333333334%; }
-  .offset-m2               { margin-left: 16.6666666667%; }
+  .offset-l1               { margin-left: 8.33333333334%; }
+  .offset-l2               { margin-left: 16.6666666667%; }
   .offset-l3               { margin-left: 25%;            }
   .offset-l4               { margin-left: 30.6666666667%; }
   .offset-l5               { margin-left: 41.6666666667%; }
@@ -204,7 +202,7 @@ h5 { font-size: 1.8rem; line-height: 1.5;  letter-spacing: -.05rem; }
 h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
 
 /* Larger than phablet */
-@media (min-width: 550px) {
+@media (min-width: 500px) {
   h1 { font-size: 5.0rem; }
   h2 { font-size: 4.2rem; }
   h3 { font-size: 3.6rem; }
@@ -235,7 +233,7 @@ input[type="button"] {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
-  color: #555;
+  color: #fff;
   text-align: center;
   font-size: 11px;
   font-weight: 600;
@@ -244,7 +242,7 @@ input[type="button"] {
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  background-color: transparent;
+  background-color: #00B6B1;
   border-radius: 4px;
   border: 1px solid #bbb;
   cursor: pointer;

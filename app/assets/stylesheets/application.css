@@ -32,8 +32,24 @@
 
  /* Base Styles
  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+a:visited {
+  color: #00B6B1;
+}
 
+input[type="text"] {
+  color: #fff;
+  background-color: #01CEC8;
+  border: none;
+  height: 30px;
+  width: 300px;
+  /*margin: 7px 0 0 0;*/
+}
+
+input[type="submit"] {
+  height: 30px;
+}
 nav {
+  margin: 0 0 60px 0;
   height: 45px;
   background-color: #00B6B1;
 }
@@ -45,11 +61,12 @@ nav ul {
 nav ul li {
   display: inline;
   float: left;
-  margin: 0 40px 0 0;
+  margin: 14px 0 0 0;
   color: #FCFDEF;
 }
 
 nav ul li#search {
+  margin: 6px 0 0 0;
   width: 300px;
 }
 
@@ -68,18 +85,40 @@ nav ul li#search {
   float: left;
 }
 
+li {
+  list-style-type: none;
+}
+
+::-webkit-input-placeholder {
+   color: #fff;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #fff;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #fff;
+}
+
+:-ms-input-placeholder {
+   color: #fff;
+}
+
 /* Content
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .logo {
   float: left;
+  padding: 8px 0 0 0;
 }
 
 .listing {
   height: 300px;
-  max-width: 400px;
+
   background-color: #FCFDEF;
   border: 2px solid #FFE77E;
+  overflow: hidden;
 }
 
 .listing img {
@@ -90,21 +129,44 @@ nav ul li#search {
 
 }
 
+.favourited {
+  background-color: #EF5350;
+}
+
 .calendar {
-  background-color: red;
+  background-color: #FFE77E;
   height: 100px;
-  width: 100px;
+  width: 100%;
 }
 
 .information {
 
 }
 
-.map {
-  
+.information strong {
+  color: #00B6B1;
+}
+
+.location {
+
+}
+
+#map {
+  height: 500px;
+  width: 100%;
 }
 
 .neighbourhood {
   height: 300px;
-  background-color: brown;
+  background-color: #00B6B1;
+}
+
+button.back {
+  width: 100%;
+}
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+button a {
+  color: #fff;
 }

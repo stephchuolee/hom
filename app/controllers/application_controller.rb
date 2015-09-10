@@ -29,9 +29,7 @@ class ApplicationController < ActionController::Base
     render "listings/index"
   end
 
-  def searched_city 
-    @city 
-  end 
+
 
   
 
