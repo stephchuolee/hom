@@ -129,6 +129,10 @@ li {
 
 }
 
+.favourited {
+  background-color: #EF5350;
+}
+
 .calendar {
   background-color: #FFE77E;
   height: 100px;

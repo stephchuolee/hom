@@ -46,7 +46,7 @@
   <tbody id="listing_results">
     <% @listings.each do |listing| %>
       <tr>
-        <td><%= listing.user.name %></td>
+        <td><%= listing.user_id %></td>
         <td><%= listing.price %></td>
         <td><%= listing.address %></td>
         <td><%= listing.available_date %></td>
@@ -58,15 +58,27 @@
         <td><%= listing.title %></td>
         <td><%= listing.rental_type %></td>
         <td><%= listing.description %></td>
-        <td>
-          
-          <%= content_tag :button, :class => "favourite_btn" do %> 
-            Favourite
-            <%= hidden_field_tag(:user_id, @current_user.id, :class => "fave_user_id") %>
-            <%= hidden_field_tag(:listing_id, listing.id, :class => "fave_listing_id") %>
-          <% end %>
-            
-        </td>
+
+        <% if @current_user %> 
+          <% if Favourite.where(:listing_id => listing.id, :user_id => @current_user.id).exists? %> 
+            <td> 
+              <%= content_tag :button, :class => "favourited", :class => "favourite_btn" do %> 
+                Favourite
+                <%= hidden_field_tag(:user_id, @current_user.id, :class => "fave_user_id") %>
+                <%= hidden_field_tag(:listing_id, listing.id, :class => "fave_listing_id") %>
+              <% end %> 
+            </td>
+          <% else %>
+            <td>  
+              <%= content_tag :button, :class => "unfavourite", :class => "favourite_btn" do %> 
+                Favourite
+                <%= hidden_field_tag(:user_id, @current_user.id, :class => "fave_user_id") %>
+                <%= hidden_field_tag(:listing_id, listing.id, :class => "fave_listing_id") %>
+              <% end %> 
+            </td>
+          <% end %> 
+        <% end %> 
+
         <td><%= link_to 'Show', listing %></td>
 
         <% if @current_user && @current_user.id == listing.user_id %>
