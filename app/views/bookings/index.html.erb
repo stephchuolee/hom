@@ -15,9 +15,9 @@
   </thead>
 
   <tbody>
+    <%= @current_user.id %>
     <% @bookings.each do |booking| %>
       <tr>
-        <%= @current_user.id %>
         <td><%= booking.listing.title %></td>
         <td><%= booking.renter_id %></td>
         <td><%= booking.start_time.to_formatted_s(:time) %></td>
