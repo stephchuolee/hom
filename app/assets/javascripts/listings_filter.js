@@ -12,23 +12,14 @@ $(function(){
     var td = $("<td>").text(result.listing.rental_type).appendTo(tr);
     var td = $("<td>").text(result.listing.description).appendTo(tr);
     var class_name = result.favourites ? "favourited" : "unfavourite"
+    var id = result.listing.id
+    console.log(id)
     $("<td><button class='favourite_btn " + class_name + "'></button></td>").appendTo(tr);
+    $("<td><a href='/listings/" + id + "'>Show</a></td>").appendTo(tr);
     tr.appendTo('#listing_results');
-    // console.log(rental)
 
     history.pushState({id: 'something'}, '', 'search?utf8=✓&city=' + city + '&commit=Search' + '&min_price=' + min_price + '&max_price=' + max_price + ' &number_of_bedrooms=' + number_of_bedrooms + '&rental_type=' + rental_type + '&pets=' + pets + '&parking=' + parking + '&smoking=' + smoking + '&furnished=' + furnished + '&storage=' + storage)
   }
-
-  // $('#pets_btn').on('click', function(){
-  //   console.log('checked');
-  //   if ($('#pets_btn').is(':checked')){
-  //     $('.pets:contains(false)').parent('tr').hide();
-  //   } else  {
-  //     $('.pets:contains(false)').parent('tr').show();
-
-  //   }
-  // });
-
 
   $('#filter_form').on('submit', function(event){
     event.preventDefault;
@@ -48,7 +39,6 @@ $(function(){
       url: '/listings/results?' + input, 
       dataType: "json", 
       success: function(data, status){
-        console.log(data)
         $('#listing_results').html("");
         if (data){
           data.forEach(function(result){
