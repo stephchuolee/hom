@@ -38,7 +38,7 @@
 <p>
   <strong>Rental Properties Owned:</strong><br>
   <% @user.listings.each do |listing| %>
-  <a><%= link_to "#{listing.title}", user_listing_path(id: listing.id, user_id: @user.id) %><br>
+  <a><%= link_to "#{listing.title}", listing_path(id: listing.id, user_id: @user.id) %><br>
   <% end %>
 </p>
 

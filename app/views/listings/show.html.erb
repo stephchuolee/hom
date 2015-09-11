@@ -1,16 +1,16 @@
 <div class="row">
   <div class="col s12 l6">
     <button class="back"><%= link_to 'Back to listings', listings_path %></button>
-
+    <% @listings.each do |listing| %>
     <div class="listing">
       <%= image_tag("home1.jpg", :alt => "home listing images") %>
       <p>
         <strong>Price:</strong>
-        <%= @listing.price %>
+        <%= listing.price %>
       </p>
       <p>
         <strong>Title:</strong>
-        <%= @listing.title %>
+        <%= listing.title %>
       </p>
     </div>
   </div>
@@ -28,101 +28,106 @@
     <div class="information">
       <li>
         <strong>User:</strong>
-        <%= @listing.user_id %>
+        <%= listing.user.name %>
       </li>
 
       <li>
         <strong>Square footage:</strong>
-        <%= @listing.square_footage %>
+        <%= listing.square_footage %>
       </li>
 
       <li>
         <strong>Bedroom:</strong>
-        <%= @listing.bedroom %>
+        <%= listing.bedroom %>
       </li>
 
       <li>
         <strong>Bathroom:</strong>
-        <%= @listing.bathroom %>
+        <%= listing.bathroom %>
       </li>
 
       <li>
         <strong>Address:</strong>
-        <span class="address"><%= @listing.address %></span>
+        <span class="address"><%= listing.address %></span>
       </li>
 
       <li>
         <strong>Furnished:</strong>
-        <%= @listing.furnished %>
+        <%= listing.furnished %>
       </li>
 
       <li>
         <strong>Pets:</strong>
-        <%= @listing.pets %>
+        <%= listing.pets %>
       </li>
 
       <li>
         <strong>Smoking:</strong>
-        <%= @listing.smoking %>
+        <%= listing.smoking %>
       </li>
 
       <li>
         <strong>Floor number:</strong>
-        <%= @listing.floor_number %>
+        <%= listing.floor_number %>
       </li>
 
       <li>
         <strong>Parking space:</strong>
-        <%= @listing.parking_space %>
+        <%= listing.parking_space %>
       </li>
 
       <li>
         <strong>Storage space:</strong>
-        <%= @listing.storage_space %>
+        <%= listing.storage_space %>
       </li>
 
       <li>
         <strong>Balcony:</strong>
-        <%= @listing.balcony %>
+        <%= listing.balcony %>
       </li>
 
       <li>
         <strong>Available date:</strong>
-        <%= @listing.available_date %>
+        <%= listing.available_date %>
       </li>
 
       <li>
         <strong>Minimum lease:</strong>
-        <%= @listing.minimum_lease %>
+        <%= listing.minimum_lease %>
+      </li>
+
+      <li>
+        <strong>Image:</strong>
+        <%= listing.image %>
       </li>
 
       <li>
         <strong>Rental type:</strong>
-        <%= @listing.rental_type %>
+        <%= listing.rental_type %>
       </li>
 
       <li>
         <strong>Description:</strong>
-        <%= @listing.description %>
+        <%= listing.description %>
       </li>
       <li>  
         <strong>Book a Viewing Time:</strong><br>
-        <% @listing.bookings.each do |booking| %>
+        <% listing.bookings.each do |booking| %>
         <a href = "#">
         <%= booking.date.to_formatted_s(:short) %>
         <%= booking.start_time.to_formatted_s(:time) %>
         <%= booking.end_time.to_formatted_s(:time) %>
         </a><br>
-        <% end %>
       </li>
-
     </div>
+  <% end %>
   </div>
 
   <div class="col l6 s12">
     <div class="location">
       <div id="map" data-listing-id="<%=@listing.id%>"></div>
     </div>
+    <% end %>
   </div>
 </div>
 
