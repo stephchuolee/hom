@@ -48,6 +48,30 @@ input[type="text"] {
 input[type="submit"] {
   height: 30px;
 }
+
+
+li {
+  list-style-type: none;
+}
+
+::-webkit-input-placeholder {
+   color: #fff;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #fff;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #fff;
+}
+
+:-ms-input-placeholder {
+   color: #fff;
+}
+
+/* Navigation
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 nav {
   margin: 0 0 60px 0;
   height: 45px;
@@ -57,6 +81,7 @@ nav {
 
 nav a, nav a:hover, nav a:visited {
   color: #ffffff;
+  text-decoration: none;
 }
 
 nav ul {
@@ -92,26 +117,6 @@ nav ul li#search {
   color: #3C3C3C;
   display: inline;
   float: left;
-}
-
-li {
-  list-style-type: none;
-}
-
-::-webkit-input-placeholder {
-   color: #fff;
-}
-
-:-moz-placeholder { /* Firefox 18- */
-   color: #fff;
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-   color: #fff;
-}
-
-:-ms-input-placeholder {
-   color: #fff;
 }
 
 /* Content
@@ -191,6 +196,7 @@ li {
 button.back {
   width: 100%;
 }
+
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
@@ -199,3 +205,34 @@ button a, button a:visited {
 }
 
 button
+
+/* Media Queries
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@media and screen (max-width: 600px;) {
+
+  .navbar-nav {
+       margin: 0;
+       }
+
+   .navbar-collapse {
+      max-height: 0;
+   }
+   
+  .menu-open .overlay-shadow {
+    background: rgba(17, 10, 10, 0.8) none repeat scroll 0 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    opacity: 1;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: all 0.3s ease-out 0s;
+    -webkit-transition: all 0.3s ease-out 0s;
+    -moz-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    width: 100%;
+    z-index: 50;
+  }
+}

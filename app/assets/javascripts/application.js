@@ -18,14 +18,14 @@
 //= require components
 //= require_tree .
 
-// to be rendered on listings/id page 
+// to be rendered on listings/id page
 
 // $(function getWalkScore(address, lat, long) {
 
 //   $.ajax({
 //     url: '',
 //     dataType: '',
-//     success: 
+//     success:
 //   });
 
 
@@ -35,3 +35,13 @@
 
 // });
 
+$(document).ready(function(){
+  if ($(window).width() < 600) {
+    $('nav').on('shown.bs.collapse', function(){
+      $('body').addClass('nav-open');
+    });
+    $('nav').on('hidden.bs.collapse', function() {
+      $('body').removeClass('nav-open')
+    });
+  }
+})
