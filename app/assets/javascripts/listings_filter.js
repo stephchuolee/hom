@@ -16,7 +16,7 @@
 //     var city = $('#city').val();
 //     var input = $(this).serialize();
     
-<<<<<<< HEAD
+// <<<<<<< HEAD
 //     $.ajax({
 //       url: '/listings/results?' + input, 
 //       dataType: "json", 

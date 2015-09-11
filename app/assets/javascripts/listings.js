@@ -12,12 +12,14 @@ function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14,
       }); 
-  getAddresses(id);
-  importFoursquare();
+  getAddresses();
+  if (document.location.pathname.match(/(\d)+$/)) {
+    importFoursquare();    
+  }
 }
 
 
-function getAddresses(id){
+function getAddresses(){
   var address = extractAddresses();
   var geocoder = new google.maps.Geocoder();
   geocodeAddress(geocoder, address);
@@ -70,20 +72,29 @@ function deleteMarkers() {
 }
 
 function importFoursquare(){
-  
+  var client_id = "ACY5FCHS13VT51FDX4FRG5YN25CY30534NV34ADSC1DX2WTE";
+  var client_secret = "4HQLZ1DKORVCBURYHPIBYANQPXR55F2PWMZUCXNKPD3FQDQ4";
   var address = $('li').find('.address').html();
   var geocoder = new google.maps.Geocoder(); 
   geocoder.geocode({'address': address}, function(results, status) {
     var coord = results[0].geometry.location;
+    // var d = new Date();
+    
+
     // this ajax request requires authentication info from foursquare such as client_id and client_secret
-    // $.ajax({
-    //   url: 'https://api.foursquare.com/v2/venues/explore?ll='+ coord["G"].toFixed(3) +","+coord["K"].toFixed(3)
-    //   + "&client_id=?????????&client_secret=????????&v=20150910",
-    //   dataType: 'json',
-    //   success: function(data){
-    //     console.log(data);
-    //   }
-    // });
+    $.ajax({
+      url: 'https://api.foursquare.com/v2/venues/explore?'
+          +'ll='+ coord["G"].toFixed(3) +","+coord["K"].toFixed(3)
+          +"&client_id=" + client_id
+          +"&client_secret=" + client_secret
+          +"&v=20150810",
+          // +"v=" + d.getFullYear()+d.getMonth()+d.getDate(),
+    //   + &client_secret=????????&v=20150910",
+      dataType: 'json',
+      success: function(data){
+        console.log(data);
+      }
+    });
   });    
 }
 
