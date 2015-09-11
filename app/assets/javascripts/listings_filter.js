@@ -13,12 +13,11 @@ $(function(){
     var td = $("<td>").text(result.listing.description).appendTo(tr);
     var class_name = result.favourites ? "favourited" : "unfavourite"
     var id = result.listing.id
-    console.log(id)
+
     $("<td><button class='favourite_btn " + class_name + "'></button></td>").appendTo(tr);
     $("<td><a href='/listings/" + id + "'>Show</a></td>").appendTo(tr);
     tr.appendTo('#listing_results');
 
-    history.pushState({id: 'something'}, '', 'search?utf8=✓&city=' + city + '&commit=Search' + '&min_price=' + min_price + '&max_price=' + max_price + ' &number_of_bedrooms=' + number_of_bedrooms + '&rental_type=' + rental_type + '&pets=' + pets + '&parking=' + parking + '&smoking=' + smoking + '&furnished=' + furnished + '&storage=' + storage)
   }
 
   $('#filter_form').on('submit', function(event){
@@ -34,6 +33,8 @@ $(function(){
     var smoking = $('#smoking').val();
     var furnished = $('#furnished').val();
     var storage = $('#storage').val();
+    console.log(rental_type)
+    console.log(parking)
 
     $.ajax({
       url: '/listings/results?' + input, 
@@ -50,5 +51,13 @@ $(function(){
 
     return false;
     });
+
+    // var currentState = history.state;
+
+    // var state = {id: 'search_results_page'}
+    // var url = "'&min_price=' + min_price + '&max_price=' + max_price + ' &number_of_bedrooms=' + number_of_bedrooms + '&rental_type=' + rental_type + '&pets=' + pets + '&parking=' + parking + '&smoking=' + smoking + '&furnished=' + furnished + '&storage=' + storage"
+
+    // search?utf8=✓&min_price=&max_price=&number_of_bedrooms=&rental_type=Sublet&more_filters=&commit=Apply+Filters
+    // history.pushState(state, '', url)
 
 });

@@ -6,13 +6,20 @@ class ListingsController < ApplicationController
   def index
     @listings = Listing.all
     @current_user = current_user
+    respond_to do |format|
+      format.html
+    end 
   end
+
 
   # GET /listings/1
   # GET /listings/1.json
   def show
     @listing_images = @listing.listing_images.all
     @current_user = current_user
+    respond_to do |format|
+      format.html 
+    end 
   end
 
   # GET /listings/new
