@@ -37,10 +37,10 @@
 
 $(document).ready(function(){
   if ($(window).width() < 600) {
-    $('nav').on('shown.bs.collapse', function(){
+    $('#navbar').on('shown.bs.collapse', function(){
       $('body').addClass('nav-open');
     });
-    $('nav').on('hidden.bs.collapse', function() {
+    $('#navbar').on('hidden.bs.collapse', function() {
       $('body').removeClass('nav-open')
     });
   }
