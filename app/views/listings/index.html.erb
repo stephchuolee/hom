@@ -1,33 +1,36 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Listings</h1>
-<div id="filtered_search">
+<div class="sub-nav">
+<ul>
   <%= form_tag "/listings/search", :id => "filter_form", method: "get" do %>
-  <%= label_tag(:min_price, "Min") %>
-  <%= text_field_tag(:min_price) %>
-  <%= label_tag(:max_price, "Max") %>
-  <%= text_field_tag(:max_price) %>
-  <%= label_tag(:number_of_bedrooms, "Number of Bedrooms") %>
-  <%= text_field_tag(:number_of_bedrooms) %>
-  <%= label_tag(:rental_type, "Rental Type") %>
-  <%= select_tag(:rental_type, options_for_select([["Full Lease"], ["Sublet"], ["Room"]]), {:prompt => 'Select Rental Type'}) %>
+  <li><%= label_tag(:min_price, "Min") %></li>
+  <li><%= text_field_tag(:min_price) %></li>
+  <li><%= label_tag(:max_price, "Max") %></li>
+  <li><%= text_field_tag(:max_price) %></li>
+  <li><%= label_tag(:number_of_bedrooms, "Number of Bedrooms") %></li>
+  <li><%= text_field_tag(:number_of_bedrooms) %></li>
+  <li><%= label_tag(:rental_type, "Rental Type") %></li>
+  <li><%= select_tag(:rental_type, options_for_select([["Full Lease"], ["Sublet"], ["Room"]]), {:prompt => 'Select Rental Type'}) %></li>
+  <li><ul><%= select_tag(:more_filters, options_for_select([[]]), {:prompt => 'More Filters'}) %></ul></li>
 
-  <%= label_tag(:pets, "Pets Allowed") %>
-  <%= check_box_tag(:pets) %>
-  <%= label_tag(:parking, "Parking") %>
-  <%= check_box_tag(:parking) %>
-  <%= label_tag(:smoking, "Smoking") %>
-  <%= check_box_tag(:smoking) %>
-  <%= label_tag(:furnished, "Furnished") %>
-  <%= check_box_tag(:furnished) %>
-  <%= label_tag(:storage, "Storage") %>
-  <%= check_box_tag(:storage) %>
+  <li><%= label_tag(:pets) %></li> 
+  <li><%= check_box_tag(:pets) %></li>
+  <li><%= label_tag(:parking, "Parking") %></li>
+  <li><%= check_box_tag(:parking) %></li>
+  <li><%= label_tag(:smoking, "Smoking") %></li>
+  <li><%= check_box_tag(:smoking) %></li>
+  <li><%= label_tag(:furnished, "Furnished") %></li>
+  <li><%= check_box_tag(:furnished) %></li>
+  <li><%= label_tag(:storage, "Storage") %></li>
+  <li><%= check_box_tag(:storage) %></li>
 
-  <%= submit_tag("Apply Filters") %>
+  <li><%= submit_tag("Apply Filters") %></li>
   <% if @city %> 
     <%= hidden_field_tag(:city, @city) %> 
   <% end %> 
   <% end %> 
+</ul>
 </div>
 
 <table>
@@ -39,6 +42,8 @@
       <th>Available date</th>
       <th>Image</th>
       <th>Title</th>
+      <th>Rental Type</th>
+      <th>Description</th>
       <th colspan="3"></th>
     </tr>
   </thead>

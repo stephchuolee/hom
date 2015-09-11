@@ -1,6 +1,6 @@
 $(function(){
 
-  $('.favourite_btn').on('click', function(){
+  $('body').on('click', '.favourite_btn', function(){
     var user_id = $("#fave_user_id").val();
     var listing_id = $(this).find('#fave_listing_id').val();
     var that = $(this);
@@ -40,6 +40,8 @@ $(function(){
     });    
 
   }
+
+  
 
 });
 

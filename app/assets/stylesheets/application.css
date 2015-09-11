@@ -85,6 +85,10 @@ nav ul li#search {
   float: left;
 }
 
+.sub-nav input[type="text"] {
+  width: 100px;
+}
+
 li {
   list-style-type: none;
 }

@@ -33,6 +33,6 @@ class ApplicationController < ActionController::Base
 
   
 
-  helper_method :current_user, :search, :searched_city
+  helper_method :current_user, :search
 
 end

@@ -2,6 +2,8 @@ class Listing < ActiveRecord::Base
   belongs_to :user
   has_many :listing_images
   has_many :bookings
+  has_many :favourites 
+  
   accepts_nested_attributes_for :listing_images
   scope :city, -> (city) {where('address LIKE ?', "%#{city}%")}
   scope :min_price, -> (min_price) {where('price >= ?', min_price)}
