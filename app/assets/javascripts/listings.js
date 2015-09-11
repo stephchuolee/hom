@@ -29,7 +29,9 @@ function extractAddresses(){
   var addresses = [];
   var add = $('.address');
   for (var i =0; i < add.length; i++){
+    if($($('.address')[i]).html() != ""){
       addresses.push($($('.address')[i]).html());
+    }
   }
   return addresses;
 }
@@ -37,7 +39,9 @@ function extractAddresses(){
 function geocodeAddress(geocoder, addresses ) {
   var coords= [];
   for (var i =0; i< addresses.length; i++) {
+    
     geocoder.geocode({'address': addresses[i]}, function(results, status) {
+      
       var coord = results[0].geometry.location;
       coords.push(coord);
       if (status === google.maps.GeocoderStatus.OK) {
@@ -140,7 +144,7 @@ $(function(){
         }
 
         var geocoder = new google.maps.Geocoder();
-        geocodeAddress(geocoder, address);
+        geocodeAddress(geocoder, add);
 
         $('#listing_results').html("");
         if (data){
