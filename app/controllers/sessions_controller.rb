@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
   def index
     @current_user = current_user
-    @user_first_name = @current_user.name.split(" ")[0]
+    if @current_user
+      @user_first_name = @current_user.name.split(" ")[0]
+    end
   end
 
   def new

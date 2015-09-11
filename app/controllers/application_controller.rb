@@ -15,6 +15,9 @@ class ApplicationController < ActionController::Base
   def index
     @listings = Listing.all
     @current_user = current_user
+    if @current_user
+      @user_first_name = @current_user.name.split(" ")[0]
+    end
   end
 
   def search

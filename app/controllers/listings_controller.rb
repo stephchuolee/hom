@@ -13,7 +13,7 @@ class ListingsController < ApplicationController
   def show
     @listing_images = @listing.listing_images.all
     @current_user = current_user
-    @listing = Listing.where({user_id: @current_user.id, id: Listing.find(params[:id])})
+    @listings = Listing.where({user_id: @current_user.id, id: Listing.find(params[:id])})
   end
 
   # GET /listings/new
@@ -126,7 +126,7 @@ class ListingsController < ApplicationController
       format.json { head :no_content }
     end
 
-    redirect "listings/index"
+    redirect_to "listings/index"
   end
 
   private

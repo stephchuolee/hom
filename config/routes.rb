@@ -13,13 +13,10 @@ Rails.application.routes.draw do
   
   resources :bookings, only: [:index, :show]
   
-  resources :listings, only: [:show, :index] do
-    resources :users, only: [:show]
-  end
+  resources :listings 
   
   resources :users do
     resources :bookings, only: [:new, :create, :edit, :destroy]
-    resources :listings 
     resources :favourites, only: [:new, :create, :destroy, :index, :show]
   end
   
