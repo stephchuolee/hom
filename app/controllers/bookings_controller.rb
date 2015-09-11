@@ -5,8 +5,10 @@ class BookingsController < ApplicationController
   # GET /bookings.json
   def index
     @current_user = current_user
-    @bookings = Booking.where(:user_id => @current_user.id)
-    if @current_user.id == @bookings.find_by(params[:user_id]).user_id 
+    @bookings = Booking.where(user_id: @current_user.id)
+    if @bookings
+      redirect_to new_user_booking_path(user_id: @current_user.id)
+    elsif @current_user.id == @bookings.find_by(params[:user_id]).user_id
       render 'index'
     else
       redirect_to user_path(@current_user.id)
@@ -18,11 +20,11 @@ class BookingsController < ApplicationController
   def show
     @current_user = current_user
     @user = User.find(params[:id])
-    @booking = Booking.find_by(params[user_id: @current_user.id])
+    @booking = Booking.where(user_id: @current_user.id)
     if @current_user.id == @user.id
       @booking
     else
-      redirect_to user_path 
+      redirect_to user_path
     end
   end
 
@@ -42,9 +44,11 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @current_user = current_user
+    @listing = Listing.where(user_id: @current_user.id)
     respond_to do |format|
+     @booking.user_id = @current_user.id
+     @booking.listing_id = params[:listing_id]
       if @booking.save
-         @booking.user_id = @current_user.id
         format.html { redirect_to [:user, id: @current_user.id], notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else

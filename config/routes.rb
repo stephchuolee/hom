@@ -1,26 +1,29 @@
 Rails.application.routes.draw do
-  
-  get "listings/search"
-  get "listings/results"
-
-
-  resources :listing_images
+  # The main hompage of the app will be the index page of sessions. This
+  # will include login, logout, signup, etc
   root :to => "sessions#index"
-
+  
   # custom routing /dashboard, will use jsx to render actual page
   # get "/dashboard"
+  
+  resource :sessions
 
-  resource :session
-
-  resources :users do
-    resources :bookings
-    resources :listings 
-    resources :favourites, only: [:new, :create, :destroy, :index, :show]
-  end
+  get "listings/search"
+  get "listings/results"
+  
+  resources :bookings, only: [:index, :show]
   
   resources :listings, only: [:show, :index] do
     resources :users, only: [:show]
   end
+  
+  resources :users do
+    resources :bookings, only: [:new, :create, :edit, :destroy]
+    resources :listings 
+    resources :favourites, only: [:new, :create, :destroy, :index, :show]
+  end
+  
+  # resources :listing_images
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

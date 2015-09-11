@@ -4,8 +4,8 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
     @current_user = current_user
+    @listings = Listing.where(:user_id => @current_user.id)
   end
 
   # GET /listings/1

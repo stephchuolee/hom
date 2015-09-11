@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     else
       @user = User.find(params[:id])
     end
-#   @current_user = current_user
+    # @current_user = current_user
   end
 
   # GET /users/new

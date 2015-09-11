@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
   def index
+    @current_user = current_user
+    @user_first_name = @current_user.name.split(" ")[0]
   end
 
   def new
@@ -9,16 +11,15 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to listings_path, notice: "Welcome back, #{user.name}!"
+      redirect_to root_path, notice: "Welcome back, #{user.name}!"
     else
       flash.now[:alert] = "Log in failed!"
       render :new
     end
   end
 
-
   def destroy
     session[:user_id] = nil
-    redirect_to listings_path
+    redirect_to root_path
   end
 end
