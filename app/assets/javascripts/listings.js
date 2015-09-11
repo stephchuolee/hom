@@ -78,6 +78,7 @@ function importFoursquare(){
   var geocoder = new google.maps.Geocoder(); 
   geocoder.geocode({'address': address}, function(results, status) {
     var coord = results[0].geometry.location;
+  
     // var d = new Date();
     
 
@@ -92,7 +93,23 @@ function importFoursquare(){
     //   + &client_secret=????????&v=20150910",
       dataType: 'json',
       success: function(data){
-        console.log(data);
+        for (var i=0; i < 3 ; i++){
+          var nameDiv = $('.foursquare'+i).find(".name");
+          var addDiv = $('.foursquare'+i).find(".address");
+          var tipsDiv = $('.foursquare'+i).find(".tips");
+          var urlDiv = $('.foursquare'+i).find(".url");
+          var item = data.response.groups[0].items[i];
+
+          nameDiv.append(item.venue.name);
+          addDiv.append(item.venue.location.address);
+          for (var j=0; j < item.tips.length; j++){
+            var tip = document.createElement("div");
+            tip.innerHTML = item.tips[j].text;
+            $(tip).appendTo(tipsDiv);
+          }
+          urlDiv.append(item.venue.url);
+        }
+
       }
     });
   });    

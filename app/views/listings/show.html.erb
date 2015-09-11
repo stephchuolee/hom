@@ -129,7 +129,14 @@
 <div class="row">
   <div class="col s12">
     <div class="neighbourhood">
-
+      <% (0..3).each do |i| %>
+        <div class="foursquare<%=i%>">
+          <div class="name"></div>
+          <div class="address"></div>
+          <div class="tips"></div>
+          <div class="url"></div>
+        </div>
+      <%end%>
     </div>
   </div>
 </div>
