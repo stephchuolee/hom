@@ -29,6 +29,7 @@ $(function(){
   //   }
   // });
 
+
   $('#filter_form').on('submit', function(event){
     event.preventDefault;
     var city = $('#city').val();

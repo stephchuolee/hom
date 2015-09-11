@@ -3,7 +3,7 @@
 <h1>Listing Listings</h1>
 <div class="sub-nav">
 <ul>
-  <%= form_tag "/listings/search", :id => "filter_form", method: "get" do %>
+  <%= form_tag "/listings/search", id: "filter_form", method: "get" do %>
   <li><%= label_tag(:min_price, "Min") %></li>
   <li><%= text_field_tag(:min_price) %></li>
   <li><%= label_tag(:max_price, "Max") %></li>
@@ -63,10 +63,10 @@
         <td><%= listing.title %></td>
         <td><%= listing.rental_type %></td>
         <td><%= listing.description %></td>
-
+  
         <td> 
-        <% if @current_user %> 
-          <%= set_favourite_class(@current_user.id, listing.id) %>
+        <% if current_user %> 
+          <%= set_favourite_class(current_user.id, listing.id) %>
         <% end %> 
         </td>
 

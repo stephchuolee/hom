@@ -22,10 +22,11 @@ class ApplicationController < ActionController::Base
   def search
     @listings = Listing.all
 
-    if !params[:city].empty?
+    if !params[:city].nil?
       @city = params[:city]
       @listings = @listings.city(params[:city])
     end
+    
     render "listings/index"
   end
 

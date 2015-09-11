@@ -17,7 +17,6 @@
 
           <%= form_tag "/listings/search", id: "search", method: "get" do %>
           <%= text_field_tag :city, nil, placeholder: 'Find your home...' %>
-          <!-- <%= text_field_tag "search", 'Enter search term...' %> -->
           <%= submit_tag("Search") %>
           <% end %>
       </li>
