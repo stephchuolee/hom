@@ -45,30 +45,37 @@
 
   <tbody id="listing_results">
     <% @listings.each do |listing| %>
-      <tr>
-        <td><%= listing.user.name %></td>
+      <tr data-listing-id="<%=listing.id%>" class="listingDiv">
+        <td><%= listing.user_id %></td>
         <td><%= listing.price %></td>
-        <td><%= listing.address %></td>
+        <td class="address"><%= listing.address %></td>
         <td><%= listing.available_date %></td>
         <td>
         <% listing.listing_images.each do |array| %>
           <%= image_tag(array.image) %>
+
         <% end %>
         </td>
         <td><%= listing.title %></td>
+        <td><%= listing.rental_type %></td>
+        <td><%= listing.description %></td>
+
+        <td> 
+        <% if @current_user %> 
+          <%= set_favourite_class(@current_user.id, listing.id) %>
+        <% end %> 
+        </td>
+
         <td><%= link_to 'Show', listing %></td>
-        <td>
-
+        
         <% if @current_user && @current_user.id == listing.user_id %>
-
-          <%= link_to 'Edit', edit_user_listing_path(listing.user_id, listing.id) %></td>
+          <td><%= link_to 'Edit', edit_user_listing_path(listing.user_id, listing.id) %></td>
           <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
-      <script>
-  
-      </script>
+    
     <% end %>
+      
   </tbody>
 </table>
 <div id="map"></div>

@@ -1,5 +1,6 @@
 class FavouritesController < ApplicationController
-  before_action :set_favourite, only: [:show, :edit, :update, :destroy]
+  before_action :set_favourite, only: [:show, :edit, :update]
+  protect_from_forgery :except => [:delete]
 
   # GET /favourites
   # GET /favourites.json
@@ -24,17 +25,8 @@ class FavouritesController < ApplicationController
   # POST /favourites
   # POST /favourites.json
   def create
-    @favourite = Favourite.new(favourite_params)
-
-    respond_to do |format|
-      if @favourite.save
-        format.html { redirect_to @favourite, notice: 'Favourite was successfully created.' }
-        format.json { render :show, status: :created, location: @favourite }
-      else
-        format.html { render :new }
-        format.json { render json: @favourite.errors, status: :unprocessable_entity }
-      end
-    end
+    @favourite = Favourite.create(user_id: params[:user_id], listing_id: params[:listing_id])
+    render nothing: true
   end
 
   # PATCH/PUT /favourites/1
@@ -54,11 +46,10 @@ class FavouritesController < ApplicationController
   # DELETE /favourites/1
   # DELETE /favourites/1.json
   def destroy
-    @favourite.destroy
-    respond_to do |format|
-      format.html { redirect_to favourites_url, notice: 'Favourite was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    @user_id = params[:user_id]
+    @listing_id = params[:listing_id]
+    Favourite.destroy_all(:user_id => @user_id, :listing_id => @listing_id)
+    render nothing: true
   end
 
   private

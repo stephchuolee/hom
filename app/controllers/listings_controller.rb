@@ -39,7 +39,6 @@ class ListingsController < ApplicationController
             @listing_image = @listing.listing_images.create!(:image => a)
           end
         end 
-
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
       else
