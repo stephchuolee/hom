@@ -54,6 +54,11 @@ nav {
   background-color: #00B6B1;
 }
 
+
+nav a, nav a:hover, nav a:visited {
+  color: #ffffff;
+}
+
 nav ul {
   float: right;
 }
@@ -61,13 +66,17 @@ nav ul {
 nav ul li {
   display: inline;
   float: left;
-  margin: 14px 0 0 0;
+  margin: 14px 25px 0 0;
   color: #FCFDEF;
+}
+
+nav ul li:last-child {
+  margin: 14px 0 0 0;
 }
 
 nav ul li#search {
   margin: 6px 0 0 0;
-  width: 300px;
+  width: 450px;
 }
 
 .sub-nav {
@@ -115,14 +124,36 @@ li {
 
 .listing {
   height: 300px;
-
+  position: relative;
   background-color: #FCFDEF;
   border: 2px solid #FFE77E;
   overflow: hidden;
 }
 
 .listing img {
+  z-index: 1;
+}
 
+.listing .information {
+  background-color: #FCFDEF;
+  opacity: 0.9;
+  position: absolute;
+  z-index: 99999;
+  bottom: 0;
+  padding: 10px;
+}
+
+.listing p.title {
+  font-size: 1.9em;
+  line-height: 1em;
+  text-transform: uppercase;
+  color: #00B6B1;
+}
+
+.listing p.user, .listing p.price {
+  font-size: 1.2em;
+  font-style: italic;
+  color: #9A9797;
 }
 
 #fave {
@@ -163,6 +194,8 @@ button.back {
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-button a {
+button a, button a:visited {
   color: #fff;
 }
+
+button
