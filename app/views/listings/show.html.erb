@@ -117,6 +117,7 @@
         <%= booking.start_time.to_formatted_s(:time) %>
         <%= booking.end_time.to_formatted_s(:time) %>
         </a><br>
+        <% end %>
       </li>
     </div>
   </div>
@@ -125,7 +126,6 @@
     <div class="location">
       <div id="map" data-listing-id="<%=@listing.id%>"></div>
     </div>
-    <% end %>
   </div>
 </div>
 
