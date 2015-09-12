@@ -33,7 +33,7 @@
  /* Base Styles
  –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a:visited {
-  color: #00B6B1;
+  color: #FFFFFF;
 }
 
 input[type="text"] {
@@ -52,22 +52,28 @@ nav {
   margin: 0 0 60px 0;
   height: 45px;
   background-color: #00B6B1;
+  top: 0px;
 }
 
 nav ul {
-  float: right;
 }
 
 nav ul li {
   display: inline;
-  float: left;
-  margin: 14px 0 0 0;
+  float: right;
   color: #FCFDEF;
+  padding: 5px;
 }
 
 nav ul li#search {
   margin: 6px 0 0 0;
   width: 300px;
+  float: left;
+  display: flex;
+}
+
+nav u li#search form {
+  display: flex;
 }
 
 .sub-nav {

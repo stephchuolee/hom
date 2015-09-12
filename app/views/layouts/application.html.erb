@@ -20,13 +20,12 @@
           <%= submit_tag("Search") %>
           <% end %>
       </li>
-      <li>Login</li>
-      <li><a href='/bookings'>Bookings</a></li>
-      <li><a href="/listings">Listings</a></li>
+      <li><%= link_to "Bookings", bookings_path %></li>
+      <li><%= link_to "Listings", listings_path %></li>
       <% if @current_user %>
-        <%= link_to "Logout", sessions_path("current"), method: :delete %>
+        <li><%= link_to "Logout", sessions_path("current"), method: :delete %></li>
       <% else %>
-        <%= link_to "Login", new_sessions_path %>
+        <li><%= link_to "Login", new_sessions_path %></li>
       <% end %>
 
       <% if @current_user %>
