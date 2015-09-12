@@ -4,11 +4,14 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
     @current_user = current_user
+
     respond_to do |format|
       format.html
     end 
+
+    @listings = Listing.where(:user_id => @current_user.id)
+
   end
 
 
@@ -17,15 +20,21 @@ class ListingsController < ApplicationController
   def show
     @listing_images = @listing.listing_images.all
     @current_user = current_user
+
     respond_to do |format|
       format.html 
     end 
+
+    @listings = Listing.find(params[:id])
+
   end
 
   # GET /listings/new
   def new
     @listing = Listing.new
     @listing_images = @listing.listing_images.build
+    @current_user = current_user
+    @listing.user_id = @current_user.id
   end
 
   # GET /listings/1/edit
@@ -46,7 +55,6 @@ class ListingsController < ApplicationController
             @listing_image = @listing.listing_images.create!(:image => a)
           end
         end 
-
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
       else
@@ -134,7 +142,7 @@ class ListingsController < ApplicationController
       format.json { head :no_content }
     end
 
-    render "listings/index"
+    redirect_to "listings/index"
   end
 
   private

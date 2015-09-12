@@ -1,97 +1,100 @@
+<div id="listings-page">
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Listings</h1>
+<h1>Listings</h1>
+
 <div class="sub-nav">
-<ul>
-  <%= form_tag "/listings/search", id: "filter_form", method: "get" do %>
-  <li><%= label_tag(:min_price, "Min") %></li>
-  <li><%= text_field_tag(:min_price) %></li>
-  <li><%= label_tag(:max_price, "Max") %></li>
-  <li><%= text_field_tag(:max_price) %></li>
-  <li><%= label_tag(:number_of_bedrooms, "Number of Bedrooms") %></li>
-  <li><%= text_field_tag(:number_of_bedrooms) %></li>
-  <li><%= label_tag(:rental_type, "Rental Type") %></li>
-  <li><%= select_tag(:rental_type, options_for_select([["Full Lease"], ["Sublet"], ["Room"]]), {:prompt => 'Select Rental Type'}) %></li>
-  <li><ul><%= select_tag(:more_filters, options_for_select([["Pets"],["Parking"]]), {:prompt => 'More Filters'}) %></ul></li>
-
-  <li><%= label_tag(:pets) %></li> 
-  <li><%= check_box_tag(:pets) %></li>
-  <li><%= label_tag(:parking, "Parking") %></li>
-  <li><%= check_box_tag(:parking) %></li>
-  <li><%= label_tag(:smoking, "Smoking") %></li>
-  <li><%= check_box_tag(:smoking) %></li>
-  <li><%= label_tag(:furnished, "Furnished") %></li>
-  <li><%= check_box_tag(:furnished) %></li>
-  <li><%= label_tag(:storage, "Storage") %></li>
-  <li><%= check_box_tag(:storage) %></li>
-
-  <li><%= submit_tag("Apply Filters") %></li>
-  <% if @city %> 
-    <%= hidden_field_tag(:city, @city) %> 
-  <% end %> 
-  <% end %> 
-</ul>
+  <ul>
+    <%= form_tag "/listings/search", id: "filter_form", method: "get" do %>
+      <li><%= label_tag(:min_price, "Price Range") %></li>
+      <li><%= text_field_tag(:min_price, nil, placeholder: "Min") %></li>
+      <li><%= text_field_tag(:max_price, nil, placeholder: "Max") %></li>
+  </ul>
 </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Price</th>
-      <th>Address</th>
-      <th>Available date</th>
-      <th>Image</th>
-      <th>Title</th>
-      <th>Rental Type</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="sub-nav">
+  <ul>
+      <li><%= label_tag(:number_of_bedrooms, "Number of Bedrooms") %></li>
+      <li><%= text_field_tag(:number_of_bedrooms) %></li>
+      <li><%= label_tag(:rental_type, "Rental Type") %></li>
+  </ul>
+</div>
+<div class="sub-nav">
+  <ul>
+      <li><%= select_tag(:rental_type, options_for_select([["Full Lease"], ["Sublet"], ["Room"]]), {:prompt => 'Select Rental Type'}) %></li>
+  </ul>
+</div>
 
-  <tbody id="listing_results">
-    <% @listings.each do |listing| %>
-      <tr>
-        <td><%= listing.user_id %></td>
-        <td><%= listing.price %></td>
-        <td><%= listing.address %></td>
-        <td><%= listing.available_date %></td>
-        <td>
-        <% listing.listing_images.each do |array| %>
-          <%= image_tag(array.image) %>
+<div class="sub-nav">
+  <ul id="more-filters">
+      <li><%= label_tag(:pets) %></li> 
+      <li><%= check_box_tag(:pets) %></li>
+      <li><%= label_tag(:parking, "Parking") %></li>
+      <li><%= check_box_tag(:parking) %></li>
+      <li><%= label_tag(:smoking, "Smoking") %></li>
+      <li><%= check_box_tag(:smoking) %></li>
+      <li><%= label_tag(:furnished, "Furnished") %></li>
+      <li><%= check_box_tag(:furnished) %></li>
+      <li><%= label_tag(:storage, "Storage") %></li>
+      <li><%= check_box_tag(:storage) %></li>
+
+      <li><%= submit_tag "Apply Filters", :class => "submit" %></li>
+      <% if @city %> 
+        <%= hidden_field_tag(:city, @city) %> 
+      <% end %> 
+    <% end %> 
+  </ul>
+</div>
+
+<div class="row">
+  <div class="col l6 s12 listings">
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Address</th>
+          <th>Image</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody id="listing_results">
+        <% @listings.each do |listing| %>
+          <tr data-listing-id="<%=listing.id%>" class="listingDiv">
+            <td><%= listing.title %></td>
+            <td><%= listing.price %></td>
+            <td class="address"><%= listing.address %></td>
+            <td>
+            <% listing.listing_images.each do |array| %>
+              <%= image_tag(array.image) %>
+
+            <% end %>
+            </td>
+
+            <td> 
+            <% if current_user %> 
+              <%= set_favourite_class(current_user.id, listing.id) %>
+            <% end %> 
+            </td>
+            <td><%= link_to 'Show', listing %></td>
+            
+            <td><%= link_to 'Edit', edit_listing_path(listing.id) %></td>
+              <td><%= link_to 'Destroy', listing_path(id: listing.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        
         <% end %>
-        </td>
-        <td><%= listing.title %></td>
-        <td><%= listing.rental_type %></td>
-        <td><%= listing.description %></td>
-  
-        <td> 
-        <% if current_user %> 
-          <%= set_favourite_class(current_user.id, listing.id) %>
-        <% end %> 
-        </td>
+      </tbody>
+    </table>
+  </div>
 
-        <td><%= link_to 'Show', listing %></td>
-
-        <% if @current_user && @current_user.id == listing.user_id %>
-          <td><%= link_to 'Edit', edit_user_listing_path(listing.user_id, listing.id) %></td>
-          <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-      <script>
-  
-      </script>
-    <% end %>
-  </tbody>
-</table>
-<div id="map"></div>
-<style>
-#map {
-  height: 500px;
-  width: 500px;
-}
-</style>
+  <div class="col l6 s12">
+    <div id="map" class="fixed"></div>
+  </div>
+</div>
 
 <br>
 <% if @current_user %> 
-  <%= link_to 'New Listing', new_user_listing_path(@current_user.id) %>
+  <%= link_to 'New Listing', new_listing_path(@current_user.id) %>
 <% end %> 
+</div>

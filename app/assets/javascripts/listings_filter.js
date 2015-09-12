@@ -49,8 +49,6 @@ $(function(){
       }
     })
 
-    return false;
-    });
 
     // var currentState = history.state;
 
@@ -60,4 +58,7 @@ $(function(){
     // search?utf8=✓&min_price=&max_price=&number_of_bedrooms=&rental_type=Sublet&more_filters=&commit=Apply+Filters
     // history.pushState(state, '', url)
 
+  });
+
 });
+

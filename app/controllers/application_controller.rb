@@ -4,10 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def restricted_access
-    if !current_user
-      flash[:alert] = "You must be logged in"
-      redirect_to new_session_path
-    end
+    redirect_to new_session_path, alert: 'you must be logged in'\
+      unless current_user
   end
 
   def current_user
@@ -17,6 +15,9 @@ class ApplicationController < ActionController::Base
   def index
     @listings = Listing.all
     @current_user = current_user
+    if @current_user
+      @user_first_name = @current_user.name.split(" ")[0]
+    end
   end
 
   def search
@@ -30,9 +31,6 @@ class ApplicationController < ActionController::Base
     render "listings/index"
   end
 
-
-
-  
 
   helper_method :current_user, :search
 

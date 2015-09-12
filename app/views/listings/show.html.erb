@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col s12 l6">
     <button class="back"><%= link_to 'Back to listings', listings_path %></button>
-
     <div class="listing">
       <%= image_tag("home1.jpg", :alt => "home listing images") %>
       <p>
@@ -28,7 +27,7 @@
     <div class="information">
       <li>
         <strong>User:</strong>
-        <%= @listing.user_id %>
+        <%= @listing.user.name %>
       </li>
 
       <li>
@@ -48,7 +47,7 @@
 
       <li>
         <strong>Address:</strong>
-        <%= @listing.address %>
+        <span class="address"><%= @listing.address %></span>
       </li>
 
       <li>
@@ -97,6 +96,11 @@
       </li>
 
       <li>
+        <strong>Image:</strong>
+        <%= @listing.image %>
+      </li>
+
+      <li>
         <strong>Rental type:</strong>
         <%= @listing.rental_type %>
       </li>
@@ -113,9 +117,7 @@
         <%= booking.start_time.to_formatted_s(:time) %>
         <%= booking.end_time.to_formatted_s(:time) %>
         </a><br>
-        <% end %>
       </li>
-
     </div>
   </div>
 
@@ -123,13 +125,21 @@
     <div class="location">
       <div id="map" data-listing-id="<%=@listing.id%>"></div>
     </div>
+    <% end %>
   </div>
 </div>
 
 <div class="row">
   <div class="col s12">
     <div class="neighbourhood">
-
+      <% (0..3).each do |i| %>
+        <div class="foursquare<%=i%>">
+          <div class="name"></div>
+          <div class="address"></div>
+          <div class="tips"></div>
+          <div class="url"></div>
+        </div>
+      <%end%>
     </div>
   </div>
 </div>
