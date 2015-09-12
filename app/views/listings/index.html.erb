@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Listings</h1>
+<h1>My Listings</h1>
 <div id="filtered_search">
   <%= form_tag "/listings/search", :id => "filter_form", method: "get" do %>
   <%= label_tag(:min_price, "Min") %>
@@ -33,12 +33,10 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
+      <th>Title</th>
       <th>Price</th>
       <th>Address</th>
-      <th>Available date</th>
       <th>Image</th>
-      <th>Title</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -46,36 +44,28 @@
   <tbody id="listing_results">
     <% @listings.each do |listing| %>
       <tr data-listing-id="<%=listing.id%>" class="listingDiv">
-        <td><%= listing.user_id %></td>
+        <td><%= listing.title %></td>
         <td><%= listing.price %></td>
         <td class="address"><%= listing.address %></td>
-        <td><%= listing.available_date %></td>
         <td>
         <% listing.listing_images.each do |array| %>
           <%= image_tag(array.image) %>
 
         <% end %>
         </td>
-        <td><%= listing.title %></td>
-        <td><%= listing.rental_type %></td>
-        <td><%= listing.description %></td>
 
         <td> 
         <% if @current_user %> 
           <%= set_favourite_class(@current_user.id, listing.id) %>
         <% end %> 
         </td>
-
         <td><%= link_to 'Show', listing %></td>
         
-        <% if @current_user && @current_user.id == listing.user_id %>
-          <td><%= link_to 'Edit', edit_user_listing_path(listing.user_id, listing.id) %></td>
-          <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+          <%= link_to 'Edit', edit_listing_path(listing.user_id, listing.id) %></td>
+          <td><%= link_to 'Destroy', listing_path(id: listing.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     
     <% end %>
-      
   </tbody>
 </table>
 <div id="map"></div>
@@ -88,5 +78,5 @@
 
 <br>
 <% if @current_user %> 
-  <%= link_to 'New Listing', new_user_listing_path(@current_user.id) %>
+  <%= link_to 'New Listing', new_listing_path(@current_user.id) %>
 <% end %> 

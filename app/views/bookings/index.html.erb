@@ -15,20 +15,21 @@
   </thead>
 
   <tbody>
-    <%= @current_user.id %>
       <tr>
-        <td><%= @bookings.listing.title %></td>
-        <td><%= @bookings.renter_id %></td>
-        <td><%= @bookings.start_time.to_formatted_s(:time) %></td>
-        <td><%= @bookings.end_time.to_formatted_s(:time) %></td>
-        <td><%= @bookings.date.to_formatted_s(:short) %></td>
-        <td><%= link_to 'Show', user_booking_path(id: @bookings.id) %></td>
-        <td><%= link_to 'Edit', edit_user_booking_path(id: @bookings.id) %></td>
-        <td><%= link_to 'Destroy', user_booking_path(id: @bookings.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% @bookings.each do |booking| %>
+        <td><%= booking.listing.title %></td>
+        <td><%= booking.renter_id %></td>
+        <td><%= booking.start_time.to_formatted_s(:time) %></td>
+        <td><%= booking.end_time.to_formatted_s(:time) %></td>
+        <td><%= booking.date.to_formatted_s(:short) %></td>
+        <td><%= link_to 'Show', user_booking_path(user_id: booking.user_id, id: booking.id) %></td>
+        <td><%= link_to 'Edit', edit_user_booking_path(user_id: booking.user_id, id: booking.id) %></td>
+        <td><%= link_to 'Destroy', user_booking_path(user_id: booking.user_id, id: booking.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+    <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Booking', new_user_booking_path %>
+<%= link_to 'New Booking', new_user_booking_path(user_id: @current_user.id) %>
