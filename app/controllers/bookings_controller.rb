@@ -6,10 +6,10 @@ class BookingsController < ApplicationController
   def index
     @current_user = current_user
     @bookings = Booking.where(user_id: @current_user.id)
-    if @bookings
+    if @bookings.empty?
       redirect_to new_user_booking_path(user_id: @current_user.id)
     elsif @current_user.id == @bookings.find_by(params[:user_id]).user_id
-      render 'index'
+      render 'bookings/index'
     else
       redirect_to user_path(@current_user.id)
     end
@@ -77,7 +77,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     respond_to do |format|
-      format.html { redirect_to user_bookings_url, notice: 'Booking was successfully destroyed.' }
+      format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
