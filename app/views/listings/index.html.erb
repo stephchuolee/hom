@@ -62,8 +62,7 @@
         <td><%= link_to 'Show', listing %></td>
         
           <%= link_to 'Edit', edit_listing_path(listing.user_id, listing.id) %></td>
-          <td><%= link_to 'Destroy', listing_path(user_id: @current_user.id, id: listing.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+          <td><%= link_to 'Destroy', listing_path(id: listing.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     
     <% end %>
