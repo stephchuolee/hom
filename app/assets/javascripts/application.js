@@ -36,12 +36,17 @@
 // });
 
 $(document).ready(function(){
-  if ($(window).width() < 600) {
-    $('#navbar').on('shown.bs.collapse', function(){
-      $('body').addClass('nav-open');
+    $('.navbar-toggle').on('click', function(){
+      alert('Yo!')
+      // if ($('body').hasClass('nav-open')) {
+      //   $('body').removeClass('nav-open');
+      // } else {
+      //   $('body').addClass('nav-open');
+      // }
+      if ($('.mobile-nav')).hasClass('hide')
+        $('.mobile-nav').removeClass('hide');
+      } else {
+        $('.mobile-nav').addClass('hide');
+      }
     });
-    $('#navbar').on('hidden.bs.collapse', function() {
-      $('body').removeClass('nav-open')
-    });
-  }
-})
+});
