@@ -42,7 +42,7 @@ $(document).ready(function(){
       // } else {
       //   $('body').addClass('nav-open');
       // }
-      if ($('.mobile-nav')).hasClass('hide')
+      if ($('.mobile-nav').hasClass('hide')){
         $('.mobile-nav').removeClass('hide');
       } else {
         $('.mobile-nav').addClass('hide');

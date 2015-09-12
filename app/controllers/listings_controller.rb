@@ -21,6 +21,7 @@ class ListingsController < ApplicationController
     @listing = Listing.new
     @listing_images = @listing.listing_images.build
     @current_user = current_user
+    @user_first_name
     @listing.user_id = @current_user.id
   end
 
@@ -53,7 +54,6 @@ class ListingsController < ApplicationController
 
   def results
     @listings = Listing.all
-    
     # if !params[:city].nil?
       @city = params[:city]
       @listings = @listings.city(@city)

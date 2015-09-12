@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  def first_name  
+    name.split(" ")[0]
+  end
+
 end
