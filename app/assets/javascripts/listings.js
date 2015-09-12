@@ -113,10 +113,10 @@ function importFoursquare(){
       dataType: 'json',
       success: function(data){
         for (var i=0; i < 3 ; i++){
-          var nameDiv = $('.foursquare'+i).find(".name");
-          var addDiv = $('.foursquare'+i).find(".address");
-          var tipsDiv = $('.foursquare'+i).find(".tips");
-          var urlDiv = $('.foursquare'+i).find(".url");
+          var nameDiv = $('.foursquare_'+i).find(".name");
+          var addDiv = $('.foursquare_'+i).find(".address");
+          var tipsDiv = $('.foursquare_'+i).find(".tips");
+          var urlDiv = $('.foursquare_'+i).find(".url");
           var item = data.response.groups[0].items[i];
 
           nameDiv.append(item.venue.name);

@@ -55,14 +55,17 @@
         </td>
 
         <td> 
-        <% if @current_user %> 
-          <%= set_favourite_class(@current_user.id, listing.id) %>
-        <% end %> 
+          <% if @current_user %> 
+            <%= set_favourite_class(@current_user.id, listing.id) %>
+          <% end %> 
         </td>
         <td><%= link_to 'Show', listing %></td>
         
-          <%= link_to 'Edit', edit_listing_path(listing.user_id, listing.id) %></td>
-          <td><%= link_to 'Destroy', listing_path(id: listing.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if @current_user == listing.user_id %>
+          <td>  <%= link_to 'Edit', edit_listing_path(listing.user_id, listing.id) %></td>
+          <td><%= link_to 'Destroy', listing_path(id: listing.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        <%end%>
       </tr>
     
     <% end %>

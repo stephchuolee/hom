@@ -125,7 +125,7 @@ class ListingsController < ApplicationController
       format.json { head :no_content }
     end
 
-    redirect_to "listings/index"
+    # redirect_to "listings/index"
   end
 
   private
