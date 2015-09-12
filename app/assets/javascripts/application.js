@@ -17,14 +17,14 @@
 //= require components
 //= require_tree .
 
-// to be rendered on listings/id page 
+// to be rendered on listings/id page
 
 // $(function getWalkScore(address, lat, long) {
 
 //   $.ajax({
 //     url: '',
 //     dataType: '',
-//     success: 
+//     success:
 //   });
 
 
@@ -34,3 +34,18 @@
 
 // });
 
+$(document).ready(function(){
+    $('.navbar-toggle').on('click', function(){
+      alert('Yo!')
+      // if ($('body').hasClass('nav-open')) {
+      //   $('body').removeClass('nav-open');
+      // } else {
+      //   $('body').addClass('nav-open');
+      // }
+      if ($('.mobile-nav')).hasClass('hide')
+        $('.mobile-nav').removeClass('hide');
+      } else {
+        $('.mobile-nav').addClass('hide');
+      }
+    });
+});
