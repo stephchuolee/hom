@@ -12,7 +12,7 @@
   <li><%= text_field_tag(:number_of_bedrooms) %></li>
   <li><%= label_tag(:rental_type, "Rental Type") %></li>
   <li><%= select_tag(:rental_type, options_for_select([["Full Lease"], ["Sublet"], ["Room"]]), {:prompt => 'Select Rental Type'}) %></li>
-  <li><ul><%= select_tag(:more_filters, options_for_select([[]]), {:prompt => 'More Filters'}) %></ul></li>
+  <li><ul><%= select_tag(:more_filters, options_for_select([["Pets"],["Parking"]]), {:prompt => 'More Filters'}) %></ul></li>
 
   <li><%= label_tag(:pets) %></li> 
   <li><%= check_box_tag(:pets) %></li>

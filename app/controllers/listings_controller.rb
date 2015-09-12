@@ -77,7 +77,6 @@ class ListingsController < ApplicationController
     end 
 
     if !params[:pets].nil?
-      # @listings = @listings.pets true 
       @listings = @listings.pets(!params[:pets].nil?)
     end 
 
@@ -109,7 +108,6 @@ class ListingsController < ApplicationController
         favourites: listing.favourites.where(user_id: current_user.id).first
       }
     end
-    # binding.pry
     render json: @listings
   end 
 
