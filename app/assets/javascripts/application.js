@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require react
 //= require react_ujs
 //= require components
@@ -36,16 +37,15 @@
 
 $(document).ready(function(){
     $('.navbar-toggle').on('click', function(){
-      alert('Yo!')
       // if ($('body').hasClass('nav-open')) {
       //   $('body').removeClass('nav-open');
       // } else {
       //   $('body').addClass('nav-open');
       // }
-      if ($('.mobile-nav').hasClass('hide')){
-        $('.mobile-nav').removeClass('hide');
+      if ($('.mobile-nav').hasClass('show')) {
+        $('.mobile-nav').removeClass('show');
       } else {
-        $('.mobile-nav').addClass('hide');
+        $('.mobile-nav').addClass('show');
       }
     });
 });
