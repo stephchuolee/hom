@@ -38,10 +38,7 @@ html, body {
 }
 
 .container {
-  /*min-height: 80%;*/
-  width: 100%;
   max-width: 1080px;
-  height: 85%;
 }
 
 a:visited {
@@ -439,10 +436,19 @@ li {
 
 }
 
+.row.listings-index {
+  
+  margin: 0px;
+  position: relative;
+  height: 600px;
+  overflow: hidden;
+}
+
 .col.map {
   height: 100%;
   position: relative;
   float: right;
+  overflow: hidden;
 }
 
 #map.fixed {
@@ -452,9 +458,10 @@ li {
 }
 
 .col.listings {
-  height: 100%;
   overflow: scroll;
   position: absolute;
+  height: 100%;
+  padding: 0 20px;
 }
 
 
@@ -467,18 +474,14 @@ button.back {
   width: 100%;
 }
 
-.row.listings-index {
-  padding: 0;
-  position: relative;
-  height: 100%;
-}
-
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 button a, button a:visited {
   color: #fff;
 }
+
+
 
 /* Media Queries
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
