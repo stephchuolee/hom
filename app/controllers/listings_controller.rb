@@ -5,13 +5,10 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     @current_user = current_user
-
+    @listings = Listing.where(:user_id => @current_user.id)
     respond_to do |format|
       format.html
-    end 
-
-    @listings = Listing.where(:user_id => @current_user.id)
-
+    end
   end
 
 
@@ -22,8 +19,8 @@ class ListingsController < ApplicationController
     @current_user = current_user
 
     respond_to do |format|
-      format.html 
-    end 
+      format.html
+    end
 
     @listings = Listing.find(params[:id])
 
@@ -51,11 +48,11 @@ class ListingsController < ApplicationController
     # @listing.lon = coor[2];
     respond_to do |format|
       if @listing.save
-        if @listing.image 
+        if @listing.image
           params[:listing_images]['image'].each do |a|
             @listing_image = @listing.listing_images.create!(:image => a)
           end
-        end 
+        end
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }
       else
@@ -67,49 +64,49 @@ class ListingsController < ApplicationController
 
   def results
     @listings = Listing.includes(:favourites)
-    
+
     # if !params[:city].nil?
       @city = params[:city]
       @listings = @listings.city(@city)
     # end
-    
+
     if !params[:min_price].empty?
       @listings = @listings.min_price(params[:min_price])
     end
 
     if !params[:max_price].empty?
       @listings = @listings.max_price(params[:max_price])
-    end 
+    end
 
     if !params[:number_of_bedrooms].empty?
       @listings = @listings.number_of_bedrooms(params[:number_of_bedrooms])
-    end 
+    end
 
     if !params[:pets].nil?
       @listings = @listings.pets(!params[:pets].nil?)
-    end 
+    end
 
 
     if !params[:rental_type].empty?
       @listings = @listings.rental_type(params[:rental_type])
-    end 
+    end
 
 
     if !params[:parking].nil?
       @listings = @listings.parking(!params[:parking].nil?)
-    end 
+    end
 
     if !params[:smoking].nil?
       @listings = listings.smoking(!params[:smoking].nil?)
-    end 
+    end
 
     if !params[:furnished].nil?
       @listings = @listings.furnished(!params[:furnished].nil?)
-    end 
+    end
 
     if !params[:storage].nil?
       @listings = @listings.storage(!params[:storage].nil?)
-    end 
+    end
 
     @listings = @listings.map do |listing|
       {
@@ -118,7 +115,7 @@ class ListingsController < ApplicationController
       }
     end
     render json: @listings
-  end 
+  end
 
   # PATCH/PUT /listings/1
   # PATCH/PUT /listings/1.json

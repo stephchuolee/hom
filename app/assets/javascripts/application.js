@@ -36,7 +36,7 @@
 // });
 
 $(document).ready(function(){
-    $('.navbar-toggle').on('click', function(){
+    $('body').on('click','.navbar-toggle', function(){
       // if ($('body').hasClass('nav-open')) {
       //   $('body').removeClass('nav-open');
       // } else {
@@ -44,8 +44,10 @@ $(document).ready(function(){
       // }
       if ($('.mobile-nav').hasClass('show')) {
         $('.mobile-nav').removeClass('show');
+        console.log('Nav Hidden')
       } else {
         $('.mobile-nav').addClass('show');
+        console.log('Show Nav')
       }
     });
 });
