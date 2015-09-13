@@ -22,22 +22,6 @@
         <span class="sr-only">Menu</span>
       </button>
     </div>
-
-<<<<<<< HEAD
-
-    <ul class="mobile-nav hide">
-      <% if current_user %>
-        <li> Hi, <%= current_user.first_name %>! </li>
-        <li><%= link_to "Bookings", bookings_path %></li>
-        <li><%= link_to "Listings", listings_path %></li> 
-        <li><%= link_to "Logout", sessions_path("current"), method: :delete %></li>
-      <% else %>
-        <li><%= link_to "Login", new_sessions_path %></li>
-      <% end %>
-    </ul>
-=======
->>>>>>> feature/mobilenav
-
     <!-- <div id="navbar" class="navbar-collapse collapse">
        <ul class="nav navbar-nav atitel-menu-links">
          <li class="active"><a href="#">Home</a></li>
@@ -46,7 +30,6 @@
        </ul>
     </div> -->
 
-<<<<<<< HEAD
     <ul class="desktop-nav">
       <li id="search">
         <%= form_tag "/listings/search", method: "get" do %>
@@ -57,46 +40,24 @@
       <% if current_user %>
         <li> Hi, <%= current_user.first_name %>! </li>
         <li><%= link_to "Bookings", bookings_path %></li>
-        <li><%= link_to "Listings", listings_path %></li> 
+        <li><%= link_to "Listings", listings_path %></li>
         <li><%= link_to "Logout", sessions_path("current"), method: :delete %></li>
       <% else %>
         <li><%= link_to "Login", new_sessions_path %></li>
       <% end %>
     </ul>
-=======
-    <div class="desktop-nav">
-      <ul>
-        <li id="search">
-         <%= form_tag "/listings/search", method: "get" do %>
-         <%= text_field_tag :city, nil, placeholder: 'Find your home...' %>
-         <!-- <%= text_field_tag "search", 'Enter search term...' %> -->
-         <%= submit_tag("Search") %>
-         <% end %>
-       </li>
-        <li>Login</li>
-        <li><a href='/bookings'>Bookings</a></li>
-        <li><a href="/listings">Listings</a></li>
-        <% if @current_user %>
-          <%= link_to "Logout", sessions_path("current"), method: :delete %>
-        <% else %>
-          <%= link_to "Login", new_sessions_path %>
-        <% end %>
-
-        <% if @current_user %>
-          <li> Hi, <%= @user_first_name %>! </li>
-        <% end %>
-      </ul>
-    </div>
->>>>>>> feature/mobilenav
   </div>
 </nav>
 <div class="mobile-nav">
   <ul>
-    <li>Login</li>
-    <li><a href='/bookings'>Bookings</a></li>
-    <li><a href="/listings">Listings</a></li>
-    <li><a href="/users">Users</a></li>
-  </ul>
+    <% if current_user %>
+      <li> Hi, <%= current_user.first_name %>! </li>
+      <li><%= link_to "Bookings", bookings_path %></li>
+      <li><%= link_to "Listings", listings_path %></li>
+      <li><%= link_to "Logout", sessions_path("current"), method: :delete %></li>
+    <% else %>
+      <li><%= link_to "Login", new_sessions_path %></li>
+    <% end %>  </ul>
 </div>
 <div class="container">
 <p id="notice"><%= notice %></p>
