@@ -70,7 +70,7 @@
                 <td class="address"><%= listing.address %></td>
                 <td>
                 <% listing.listing_images.each do |array| %>
-                  <%= image_tag(array.image) %>
+                  <%= image_tag(array.image.thumb) %>
                 <% end %>
                 </td>
 

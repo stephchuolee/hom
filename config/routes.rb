@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   delete "/users/:user_id/favourites", to: "favourites#destroy"
   
   # ActionMailer path that will send an email every time a booking time is clicked
-  scope "(:locale)" do
-    resources :listings, :path => "routes.listings", only: [:index, :show]
-  end
+  #scope "(:locale)" do
+  #  resources :listings, :path => "routes.listings", only: [:index, :show]
+  #end
 
   # The main hompage of the app will be the index page of sessions. This
   # will include login, logout, signup, etc
