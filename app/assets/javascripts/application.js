@@ -48,4 +48,5 @@ $(document).ready(function(){
         $('.mobile-nav').addClass('hide');
       }
     });
+
 });

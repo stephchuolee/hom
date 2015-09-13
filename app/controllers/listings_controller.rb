@@ -6,7 +6,6 @@ class ListingsController < ApplicationController
   def index
     @current_user = current_user
     @listings = Listing.where(user_id: @current_user.id)
-
     respond_to do |format|
       format.html
     end 
@@ -47,10 +46,8 @@ class ListingsController < ApplicationController
     # @listing.lon = coor[2];
     respond_to do |format|
       if @listing.save
-        if @listing.image 
           params[:listing_images]['image'].each do |a|
             @listing_image = @listing.listing_images.create!(:image => a)
-          end
         end 
         format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
         format.json { render :show, status: :created, location: @listing }

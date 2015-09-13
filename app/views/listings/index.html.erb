@@ -64,28 +64,28 @@
       <tbody id="listing_results">
         <% @listings.each do |listing| %>
           <tr data-listing-id="<%=listing.id%>" class="listingDiv">
-            <td><%= listing.title %></td>
-            <td><%= listing.price %></td>
-            <td class="address"><%= listing.address %></td>
-            <td>
-            <% listing.listing_images.each do |array| %>
-              <%= image_tag(array.image) %>
+              <div>
+                <td><%= link_to "#{listing.title}", listing_path(listing.id) %></td>
+                <td><%= listing.price %></td>
+                <td class="address"><%= listing.address %></td>
+                <td>
+                <% listing.listing_images.each do |array| %>
+                  <%= image_tag(array.image) %>
+                <% end %>
+                </td>
 
-            <% end %>
-            </td>
+                <td> 
+                <% if current_user %> 
+                  <%= set_favourite_class(current_user.id, listing.id) %>
+                <% end %> 
+                </td>
+                
+                <% if @current_user == listing.user_id %>
+                  <td>  <%= link_to 'Edit', edit_listing_path(listing.id) %></td>
+                  <td><%= link_to 'Destroy', listing_path(id: listing.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <%end%>
 
-            <td> 
-            <% if current_user %> 
-              <%= set_favourite_class(current_user.id, listing.id) %>
-            <% end %> 
-            </td>
-            <td><%= link_to 'Show', listing %></td>
-            
-            <% if @current_user == listing.user_id %>
-              <td>  <%= link_to 'Edit', edit_listing_path(listing.id) %></td>
-              <td><%= link_to 'Destroy', listing_path(id: listing.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-              </td>
-            <%end%>
+              </div>
           </tr>
         
         <% end %>

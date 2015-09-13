@@ -4,7 +4,6 @@ class ApplicationMailer < ActionMailer::Base
 
   def contact_email(user)
     @user = user
-    @url = 'http://www.google.com'
     mail(to: @user.email, subject: 'You have been contacted by Hom')
   end
 end

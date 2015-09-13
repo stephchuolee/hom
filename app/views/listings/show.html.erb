@@ -3,7 +3,9 @@
     <button class="back"><%= link_to 'Back to listings', listings_path %>
     </button>
     <div class="listing">
-      <%= image_tag("home1.jpg", :alt => "home listing images") %>
+    <% @listing.listing_images.each do |listing| %>
+      <%= image_tag(listing.image) %>
+    <% end %>
         <div class="information col s12" >
           <p class="title">
             <%= @listing.title %>
@@ -23,7 +25,7 @@
       <li>
         <strong>Book a Viewing Time:</strong><br>
         <% @listing.bookings.each do |booking| %>
-        <a href = "#">
+        <a href = "@user">
         <%= booking.date.to_formatted_s(:short) %>
         <%= booking.start_time.to_formatted_s(:time) %>
         <%= booking.end_time.to_formatted_s(:time) %>
