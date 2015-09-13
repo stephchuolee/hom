@@ -7,15 +7,17 @@ var service;
 
 
 function initMap() {
-  var id = $('#map').data('listing-id');
-  infoWindow = new google.maps.InfoWindow();
-  map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14,
-      }); 
-  getAddresses();
-  if (document.location.pathname.match(/(\d)+$/)) {
-    importFoursquare();   
-    // getWalkScore(); // walkscore requires API key which is not available at this point
+  if (document.getElementById('map') != null ){
+    var id = $('#map').data('listing-id');
+    infoWindow = new google.maps.InfoWindow();
+    map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+        }); 
+    getAddresses();
+    if (document.location.pathname.match(/(\d)+$/)) {
+      importFoursquare();   
+      // getWalkScore(); // walkscore requires API key which is not available at this
+    }
   }
 }
 
