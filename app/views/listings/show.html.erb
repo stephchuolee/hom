@@ -20,7 +20,16 @@
 
   <div class="col s12 l6">
     <div class="calendar">
-      Insert Schedule
+      <li>
+        <strong>Book a Viewing Time:</strong><br>
+        <% @listing.bookings.each do |booking| %>
+        <a href = "#">
+        <%= booking.date.to_formatted_s(:short) %>
+        <%= booking.start_time.to_formatted_s(:time) %>
+        <%= booking.end_time.to_formatted_s(:time) %>
+        </a><br>
+        <% end %>
+      </li>
     </div>
   </div>
 
@@ -109,16 +118,6 @@
         <%= @listing.description %>
       </li>
 
-      <li>
-        <strong>Book a Viewing Time:</strong><br>
-        <% @listing.bookings.each do |booking| %>
-        <a href = "#">
-        <%= booking.date.to_formatted_s(:short) %>
-        <%= booking.start_time.to_formatted_s(:time) %>
-        <%= booking.end_time.to_formatted_s(:time) %>
-        </a><br>
-        <% end %>
-      </li>
     </div>
   </div>
 

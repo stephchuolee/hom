@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   
   resource :sessions
   
-  resources :bookings, only: [:index, :show, :destroy]
+  resources :bookings, only: [:index, :destroy]
   
   resources :listings 
   resources :listing_images
