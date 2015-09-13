@@ -38,10 +38,7 @@ html, body {
 }
 
 .container {
-  /*min-height: 80%;*/
-  width: 100%;
-  max-width: 1080px;
-  height: 85%;
+  height: 91%;
 }
 
 a:visited {
@@ -85,7 +82,7 @@ li {
 /* Navigation
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 nav {
-  margin: 0 0 60px 0;
+  margin: 0 0 10px 0;
   height: 45px;
   background-color: #00B6B1;
 }
@@ -306,12 +303,13 @@ body.nav-open .navbar-collapse {
 }
 
 .sub-nav {
-  /*height: 45px;*/
+  height: 45px;
   background-color: #9FE0DB;
+  /*position: fixed;*/
 }
 
 .sub-nav ul {
-  float: left;
+  /*float: left;*/
   margin-bottom: 0px;
 }
 
@@ -467,22 +465,29 @@ li {
 
 }
 
+.row.listings-index {
+  margin: 0px;
+  height: 100%;
+  position: relative;
+}
+
 .col.map {
   height: 100%;
   position: relative;
   float: right;
+  overflow: hidden;
 }
 
 #map.fixed {
   width: 100%;
   height: 100%;
-  position: absolute;
+  /*position: absolute;*/
 }
 
 .col.listings {
-  height: 100%;
   overflow: scroll;
-  position: absolute;
+  /*position: absolute;*/
+  height: 100%;
 }
 
 
@@ -495,12 +500,6 @@ button.back {
   width: 100%;
 }
 
-.row.listings-index {
-  padding: 0;
-  position: relative;
-  height: 100%;
-}
-
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
@@ -508,9 +507,23 @@ button a, button a:visited {
   color: #fff;
 }
 
+
+
 /* Media Queries
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 @media (max-width: 600px) {
 
+  .map {
+    display: none;
+  }
+
 }
+
+@media (min-width: 994px){
+  .container {
+    max-width: 1200px;
+  }
+}
+
+
