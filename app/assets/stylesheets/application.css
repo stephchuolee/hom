@@ -32,6 +32,18 @@
 
  /* Base Styles
  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+html, body {
+  height:100%;
+}
+
+.container {
+  /*min-height: 80%;*/
+  width: 100%;
+  max-width: 1080px;
+  height: 85%;
+}
+
 a:visited {
   color: #00B6B1;
 }
@@ -47,6 +59,7 @@ input[type="text"] {
 
 input[type="submit"] {
   height: 30px;
+  line-height: normal;
 }
 
 
@@ -261,18 +274,35 @@ body.nav-open .navbar-collapse {
 }
 
 .sub-nav {
-  height: 45px;
+  /*height: 45px;*/
   background-color: #9FE0DB;
 }
 
 .sub-nav ul {
   float: left;
+  margin-bottom: 0px;
 }
 
 .sub-nav ul li {
   color: #3C3C3C;
   display: inline;
   float: left;
+  padding-right: 10px;
+}
+
+.sub-nav input[type="text"] {
+  width: 70px;
+}
+
+
+.sub-nav label {
+  padding-top: 6px;
+  
+}
+
+
+li {
+  list-style-type: none;
 }
 
 .navbar-toggle {
@@ -281,6 +311,7 @@ body.nav-open .navbar-collapse {
     z-index: 500;
     position: relative;
     color: #fff;
+
 }
 .collapsing {
     -webkit-transition: none;
@@ -408,10 +439,24 @@ body.nav-open .navbar-collapse {
 
 }
 
-#map {
-  height: 500px;
-  width: 100%;
+.col.map {
+  height: 100%;
+  position: relative;
+  float: right;
 }
+
+#map.fixed {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.col.listings {
+  height: 100%;
+  overflow: scroll;
+  position: absolute;
+}
+
 
 .neighbourhood {
   height: 300px;
@@ -420,6 +465,12 @@ body.nav-open .navbar-collapse {
 
 button.back {
   width: 100%;
+}
+
+.row.listings-index {
+  padding: 0;
+  position: relative;
+  height: 100%;
 }
 
 /* Buttons
@@ -435,3 +486,4 @@ button a, button a:visited {
 @media (max-width: 600px) {
 
 }
+

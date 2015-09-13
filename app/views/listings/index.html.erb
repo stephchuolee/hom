@@ -1,83 +1,98 @@
 <p id="notice"><%= notice %></p>
 
-<h1>My Listings</h1>
-<div id="filtered_search">
-  <%= form_tag "/listings/search", :id => "filter_form", method: "get" do %>
-  <%= label_tag(:min_price, "Min") %>
-  <%= text_field_tag(:min_price) %>
-  <%= label_tag(:max_price, "Max") %>
-  <%= text_field_tag(:max_price) %>
-  <%= label_tag(:number_of_bedrooms, "Number of Bedrooms") %>
-  <%= text_field_tag(:number_of_bedrooms) %>
-  <%= label_tag(:rental_type, "Rental Type") %>
-  <%= select_tag(:rental_type, options_for_select([["Full Lease"], ["Sublet"], ["Room"]]), {:prompt => 'Select Rental Type'}) %>
+<div class="row listings-index">
+  <div class="col l7 s12 listings">
+    <div class="sub-nav">
+      <ul>
+        <%= form_tag "/listings/search", id: "filter_form", method: "get" do %>
+          <li><%= label_tag(:min_price, "Price Range") %></li>
+          <li><%= text_field_tag(:min_price, nil, placeholder: "Min") %></li>
+          <li><%= text_field_tag(:max_price, nil, placeholder: "Max") %></li>
+      </ul>
+    </div>
 
-  <%= label_tag(:pets, "Pets Allowed") %>
-  <%= check_box_tag(:pets) %>
-  <%= label_tag(:parking, "Parking") %>
-  <%= check_box_tag(:parking) %>
-  <%= label_tag(:smoking, "Smoking") %>
-  <%= check_box_tag(:smoking) %>
-  <%= label_tag(:furnished, "Furnished") %>
-  <%= check_box_tag(:furnished) %>
-  <%= label_tag(:storage, "Storage") %>
-  <%= check_box_tag(:storage) %>
+    <div class="sub-nav">
+      <ul>
+        <li><%= label_tag(:number_of_bedrooms, "Bedrooms") %></li>
+        <li><%= text_field_tag(:number_of_bedrooms) %></li>
+        <li><%= label_tag(:rental_type, "Rental Type") %></li>
+      </ul>
+    </div>
 
-  <%= submit_tag("Apply Filters") %>
-  <% if @city %> 
-    <%= hidden_field_tag(:city, @city) %> 
-  <% end %> 
-  <% end %> 
-</div>
+    <div class="sub-nav">
+      <ul>
+        <li><%= select_tag(:rental_type, options_for_select([["Full Lease"], ["Sublet"], ["Room"]]), {:prompt => 'Select Rental Type'}) %></li>
+      </ul>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Price</th>
-      <th>Address</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div class="sub-nav">
+      <ul id="more-filters">
+          <li><%= label_tag(:pets) %></li> 
+          <li><%= check_box_tag(:pets) %></li>
+          <li><%= label_tag(:parking, "Parking") %></li>
+          <li><%= check_box_tag(:parking) %></li>
+          <li><%= label_tag(:smoking, "Smoking") %></li>
+          <li><%= check_box_tag(:smoking) %></li>
+          <li><%= label_tag(:furnished, "Furnished") %></li>
+          <li><%= check_box_tag(:furnished) %></li>
+          <li><%= label_tag(:storage, "Storage") %></li>
+          <li><%= check_box_tag(:storage) %></li>
 
-  <tbody id="listing_results">
-    <% @listings.each do |listing| %>
-      <tr data-listing-id="<%=listing.id%>" class="listingDiv">
-        <td><%= listing.title %></td>
-        <td><%= listing.price %></td>
-        <td class="address"><%= listing.address %></td>
-        <td>
-        <% listing.listing_images.each do |array| %>
-          <%= image_tag(array.image) %>
-
-        <% end %>
-        </td>
-
-        <td> 
-          <% if @current_user %> 
-            <%= set_favourite_class(@current_user.id, listing.id) %>
+          <li><%= submit_tag "Apply Filters", :class => "submit" %></li>
+          <% if @city %> 
+            <%= hidden_field_tag(:city, @city) %> 
           <% end %> 
-        </td>
-        <td><%= link_to 'Show', listing %></td>
+        <% end %> 
+      </ul>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Address</th>
+          <th>Image</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody id="listing_results">
+        <% @listings.each do |listing| %>
+          <tr data-listing-id="<%=listing.id%>" class="listingDiv">
+            <td><%= listing.title %></td>
+            <td><%= listing.price %></td>
+            <td class="address"><%= listing.address %></td>
+            <td>
+            <% listing.listing_images.each do |array| %>
+              <%= image_tag(array.image) %>
+
+            <% end %>
+            </td>
+
+            <td> 
+            <% if current_user %> 
+              <%= set_favourite_class(current_user.id, listing.id) %>
+            <% end %> 
+            </td>
+            <td><%= link_to 'Show', listing %></td>
+            
+            <% if @current_user == listing.user_id %>
+              <td>  <%= link_to 'Edit', edit_listing_path(listing.id) %></td>
+              <td><%= link_to 'Destroy', listing_path(id: listing.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+              </td>
+            <%end%>
+          </tr>
         
-        <% if @current_user == listing.user_id %>
-          <td>  <%= link_to 'Edit', edit_listing_path(listing.user_id, listing.id) %></td>
-          <td><%= link_to 'Destroy', listing_path(id: listing.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-          </td>
-        <%end%>
-      </tr>
-    
-    <% end %>
-  </tbody>
-</table>
-<div id="map"></div>
-<style>
-#map {
-  height: 500px;
-  width: 500px;
-}
-</style>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col l5 s12 map">
+    <div id="map" class="fixed"></div>
+  </div>
+</div>
 
 <br>
 <% if @current_user %> 

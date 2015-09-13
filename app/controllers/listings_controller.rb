@@ -5,15 +5,28 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     @current_user = current_user
+
+    respond_to do |format|
+      format.html
+    end 
+
     @listings = Listing.where(:user_id => @current_user.id)
+
   end
+
 
   # GET /listings/1
   # GET /listings/1.json
   def show
     @listing_images = @listing.listing_images.all
     @current_user = current_user
+
+    respond_to do |format|
+      format.html 
+    end 
+
     @listings = Listing.find(params[:id])
+
   end
 
   # GET /listings/new
@@ -53,7 +66,8 @@ class ListingsController < ApplicationController
   end
 
   def results
-    @listings = Listing.all
+    @listings = Listing.includes(:favourites)
+    
     # if !params[:city].nil?
       @city = params[:city]
       @listings = @listings.city(@city)
@@ -72,7 +86,6 @@ class ListingsController < ApplicationController
     end 
 
     if !params[:pets].nil?
-      # @listings = @listings.pets true 
       @listings = @listings.pets(!params[:pets].nil?)
     end 
 
@@ -98,7 +111,12 @@ class ListingsController < ApplicationController
       @listings = @listings.storage(!params[:storage].nil?)
     end 
 
-
+    @listings = @listings.map do |listing|
+      {
+        listing: listing,
+        favourites: listing.favourites.where(user_id: current_user.id).first
+      }
+    end
     render json: @listings
   end 
 

@@ -1,77 +1,64 @@
-// $(function(){
+$(function(){
 
 
-//   // $('#pets_btn').on('click', function(){
-//   //   console.log('checked');
-//   //   if ($('#pets_btn').is(':checked')){
-//   //     $('.pets:contains(false)').parent('tr').hide();
-//   //   } else  {
-//   //     $('.pets:contains(false)').parent('tr').show();
+  function renderResults(result){
+    var tr = $("<tr>");
+    $("<td>").text(result.listing.user_id).appendTo(tr);
+    $("<td>").text(result.listing.price).appendTo(tr);
+    var td = $("<td>").text(result.listing.address).appendTo(tr);
+    var td = $("<td>").text(result.listing.available_date).appendTo(tr);
+    var td = $("<td>").text(result.listing.image).appendTo(tr);
+    var td = $("<td>").text(result.listing.title).appendTo(tr);
+    var td = $("<td>").text(result.listing.rental_type).appendTo(tr);
+    var td = $("<td>").text(result.listing.description).appendTo(tr);
+    var class_name = result.favourites ? "favourited" : "unfavourite"
+    var id = result.listing.id
 
-//   //   }
-//   // });
+    $("<td><button class='favourite_btn " + class_name + "'></button></td>").appendTo(tr);
+    $("<td><a href='/listings/" + id + "'>Show</a></td>").appendTo(tr);
+    tr.appendTo('#listing_results');
 
-//   $('#filter_form').on('submit', function(event){
-//     event.preventDefault;
-//     var city = $('#city').val();
-//     var input = $(this).serialize();
-    
-// <<<<<<< HEAD
-//     $.ajax({
-//       url: '/listings/results?' + input, 
-//       dataType: "json", 
-//       success: function(data, status){
-//         /*console.log(typeof (data));
-//         data = JSON.parse(JSON.stringify(data));*/
-//         // console.log(data);
-//         // data.forEach(function (result) {
-//         //   console.log('user: ' + result.user_id);
-//         //   console.log('price: ' + result.price);
-//         // });
-        
-//         // clear all markers
-//         // put markers with new "data"
-//         // recenter with (first/last) element
-        
-//         deleteMarkers();
-        
-//         $('#listing_results').html("");
-//         if (data){
-//           data.forEach(function(result){
-//             var tr = $("<tr>");
-//             var td = $("<td>").text(result.user_id).appendTo(tr);
-//             var td = $("<td>").text(result.square_footage).appendTo(tr);
-//             var td = $("<td>").text(result.bedroom).appendTo(tr);
-//             var td = $("<td>").text(result.bathroom).appendTo(tr);
-//             var td = $("<td>").text(result.price).appendTo(tr);
-//             var td = $("<td>").text(result.address).appendTo(tr);
-//             var td = $("<td>").text(result.furnished).appendTo(tr);
-//             var td = $("<td>").text(result.pets).appendTo(tr);
-//             var td = $("<td>").text(result.smoking).appendTo(tr);
-//             var td = $("<td>").text(result.floor_number).appendTo(tr);
-//             var td = $("<td>").text(result.parking_space).appendTo(tr);
-//             var td = $("<td>").text(result.storage_space).appendTo(tr);
-//             var td = $("<td>").text(result.balcony).appendTo(tr);
-//             var td = $("<td>").text(result.available_date).appendTo(tr);
-//             var td = $("<td>").text(result.minimum_lease).appendTo(tr);
-//             var td = $("<td>").text(result.image).appendTo(tr);
-//             var td = $("<td>").text(result.title).appendTo(tr);
-//             var td = $("<td>").text(result.rental_type).appendTo(tr);
-//             var td = $("<td>").text(result.description).appendTo(tr);
-//             tr.appendTo('#listing_results')
-// =======
-//     $.ajax({
-//       url: '/listings/results?' + input, 
-//       dataType: "json", 
-//       success: function(data, status){
-// >>>>>>> fa2cca15b6a45d15c06b1aa7cade9e2f55391a8d
+  }
 
-//           });
-//         }
-//       }
-//     })
+  $('#filter_form').on('submit', function(event){
+    event.preventDefault;
+    var city = $('#city').val();
+    var input = $(this).serialize();
+    var min_price = $('#min_price').val();
+    var max_price = $('#max_price').val();
+    var number_of_bedrooms = $('#number_of_bedrooms').val();
+    var rental_type = $('#rental_type').val();
+    var pets = $('#pets').val();
+    var parking = $('#parking').val();
+    var smoking = $('#smoking').val();
+    var furnished = $('#furnished').val();
+    var storage = $('#storage').val();
+    console.log(rental_type)
+    console.log(parking)
 
-//     return false;
-//     });
+    $.ajax({
+      url: '/listings/results?' + input, 
+      dataType: "json", 
+      success: function(data, status){
+        $('#listing_results').html("");
+        if (data){
+          data.forEach(function(result){
+            renderResults(result)
+          });
+        }
+      }
+    })
 
-// });
+
+    // var currentState = history.state;
+
+    // var state = {id: 'search_results_page'}
+    // var url = "'&min_price=' + min_price + '&max_price=' + max_price + ' &number_of_bedrooms=' + number_of_bedrooms + '&rental_type=' + rental_type + '&pets=' + pets + '&parking=' + parking + '&smoking=' + smoking + '&furnished=' + furnished + '&storage=' + storage"
+
+    // search?utf8=✓&min_price=&max_price=&number_of_bedrooms=&rental_type=Sublet&more_filters=&commit=Apply+Filters
+    // history.pushState(state, '', url)
+
+  });
+
+});
+
