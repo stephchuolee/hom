@@ -25,6 +25,7 @@
       </ul>
     </div>
 
+<<<<<<< HEAD
     <div class="sub-nav">
       <ul id="more-filters">
           <li><%= label_tag(:pets) %></li> 
@@ -37,6 +38,10 @@
           <li><%= check_box_tag(:furnished) %></li>
           <li><%= label_tag(:storage, "Storage") %></li>
           <li><%= check_box_tag(:storage) %></li>
+
+          <% if @current_user %> 
+            <button><%= link_to 'New Listing', new_listing_path(@current_user.id) %></button>
+          <% end %> 
 
           <li><%= submit_tag "Apply Filters", :class => "submit" %></li>
           <% if @city %> 
@@ -95,6 +100,3 @@
 </div>
 
 <br>
-<% if @current_user %> 
-  <%= link_to 'New Listing', new_listing_path(@current_user.id) %>
-<% end %> 

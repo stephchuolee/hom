@@ -413,6 +413,10 @@ li {
   color: #9A9797;
 }
 
+.bookings_form {
+  float:left;
+}
+
 #fave {
 
 }
