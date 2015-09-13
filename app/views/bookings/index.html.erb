@@ -22,9 +22,9 @@
         <td><%= booking.start_time.to_formatted_s(:time) %></td>
         <td><%= booking.end_time.to_formatted_s(:time) %></td>
         <td><%= booking.date.to_formatted_s(:short) %></td>
-        <td><%= link_to 'Show', user_booking_path(user_id: booking.user_id, id: booking.id) %></td>
+        <td><%= link_to 'Show', booking_path(user_id: booking.user_id, id: booking.id) %></td>
         <td><%= link_to 'Edit', edit_user_booking_path(user_id: booking.user_id, id: booking.id) %></td>
-        <td><%= link_to 'Destroy', user_booking_path(user_id: booking.user_id, id: booking.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', booking_path(id: booking.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

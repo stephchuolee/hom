@@ -30,6 +30,10 @@
   <% end %> 
 </div>
 
+<% if @current_user %> 
+  <button><%= link_to 'New Listing', new_listing_path(@current_user.id) %></button>
+<% end %> 
+
 <table>
   <thead>
     <tr>
@@ -80,6 +84,3 @@
 </style>
 
 <br>
-<% if @current_user %> 
-  <%= link_to 'New Listing', new_listing_path(@current_user.id) %>
-<% end %> 
