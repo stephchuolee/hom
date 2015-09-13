@@ -85,7 +85,7 @@ li {
 /* Navigation
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 nav {
-  margin: 0 0 60px 0;
+  margin: 0 0 10px 0;
   height: 45px;
   background-color: #00B6B1;
 }
@@ -129,7 +129,6 @@ nav ul li#search {
 }
 
 @media (max-width: 600px) {
-
   nav {
     margin: 0 0 0 0;
   }
@@ -451,7 +450,7 @@ li {
 
 .calendar {
   background-color: #FFE77E;
-  height: 100px;
+  height: 351px;
   width: 100%;
 }
 
@@ -471,6 +470,10 @@ li {
   height: 100%;
   position: relative;
   float: right;
+}
+
+#map {
+  height: 500px;
 }
 
 #map.fixed {
@@ -499,6 +502,7 @@ button.back {
   padding: 0;
   position: relative;
   height: 100%;
+  margin-bottom: 0px;
 }
 
 /* Buttons
