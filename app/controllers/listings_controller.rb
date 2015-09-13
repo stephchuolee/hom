@@ -5,13 +5,11 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     @current_user = current_user
+    @listings = Listing.where(:user_id => @current_user.id)
 
     respond_to do |format|
       format.html
     end 
-
-    @listings = Listing.where(:user_id => @current_user.id)
-
   end
 
 
@@ -20,13 +18,11 @@ class ListingsController < ApplicationController
   def show
     @listing_images = @listing.listing_images.all
     @current_user = current_user
+    @listings = Listing.find(params[:id])
 
     respond_to do |format|
       format.html 
     end 
-
-    @listings = Listing.find(params[:id])
-
   end
 
   # GET /listings/new
