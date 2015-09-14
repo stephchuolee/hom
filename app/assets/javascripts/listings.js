@@ -134,6 +134,10 @@ function importFoursquare(){
 }
 
 $(function(){
+  $('#booking_link').on('click', function() {
+        
+  });
+
 
   $('.listingDiv').on('click', function(){
     var id = $(this).data('listing-id');
