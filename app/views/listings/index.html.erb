@@ -4,36 +4,65 @@
   <div class="col l7 s12 listings">
     <div class="sub-nav">
       <%= form_tag "/listings/search", id: "filter_form", method: "get" do %>
-        <ul>
-          <div class="filters-section-intro">
-            <li><%= label_tag(:min_price, "Price Range") %></li>
+        
+        <div class="filters-section row">
+
+          <ul class="col l12 m12 s12">
+            <li><%= label_tag(:min_price, "Price") %></li>
             <li><%= text_field_tag(:min_price, nil, placeholder: "Min") %></li>
             <li><%= text_field_tag(:max_price, nil, placeholder: "Max") %></li>
-            <li><%= label_tag(:rental_type, "Rental Type") %></li>
-            <li><%= select_tag(:rental_type, options_for_select([["Full Lease"], ["Sublet"], ["Room"]]), {:prompt => 'Select Rental Type'}) %></li>
-          </div>
-          <div class="filters-section-secondary"> 
-            <li><%= label_tag(:number_of_bedrooms, "Bedrooms") %></li>
+          </ul>
+        </div>
+
+        <div class="filters-section row">
+           <ul class="col l6 m6 s12">
+           <div id="price">
+            <li><%= label_tag(:number_of_bedrooms, "Number of Bedrooms") %></li>
             <li><%= text_field_tag(:number_of_bedrooms) %></li>
-            <li><%= label_tag(:pets) %></li> 
+            </div>
+          </ul>
+
+          <ul class="col l6 m6 s12">
+            <li><%= label_tag(:rental_type, "Rental Type") %></li>
+            <li><%= select_tag(:rental_type, options_for_select([["Full Lease"], ["Sublet"], ["Room"]]), {:prompt => 'Select...'}) %></li>
+          </ul>
+        </div>
+
+        <div class="filters-section row"> 
+          <ul class="col l4 m4 s12">
             <li><%= check_box_tag(:pets) %></li>
-            <li><%= label_tag(:parking, "Parking") %></li>
+            <li><%= label_tag(:pets, "Pets Allowed") %></li> 
+          </ul>
+          <ul class="col l4 m4 s12 ">
             <li><%= check_box_tag(:parking) %></li>
-            <li><%= label_tag(:smoking, "Smoking") %></li>
+            <li><%= label_tag(:parking, "Parking Included") %></li>
+          </ul>
+          <ul class="col l4 m4 s12 ">
             <li><%= check_box_tag(:smoking) %></li>
-            <br/>
-            <li><%= label_tag(:furnished, "Furnished") %></li>
+            <li><%= label_tag(:smoking, "Smoking Allowed") %></li>
+          </ul>
+        </div>
+
+        <div class="filters-section row"> 
+          <ul class="col l4 m4 s12">
             <li><%= check_box_tag(:furnished) %></li>
-            <li><%= label_tag(:storage, "Storage") %></li>
+            <li><%= label_tag(:furnished, "Fully-Furnished") %></li>
+          </ul>
+          <ul class="col l4 m4 s12">
             <li><%= check_box_tag(:storage) %></li>
-          </div>
-          <div class="filters-submit"> 
+            <li><%= label_tag(:storage, "Storage Included") %></li>
+          </ul>
+        </div>
+
+        <div class="filters-section row"> 
+          <ul class="col s12">
             <li><%= submit_tag "Apply Filters", :class => "submit" %></li>
             <% if @city %> 
               <%= hidden_field_tag(:city, @city) %> 
             <% end %> 
-          </div>
-        </ul>
+          </ul>
+        </div>
+        
       <% end %> 
     </div>
 
@@ -84,6 +113,4 @@
   <div class="col l5 s12 map">
     <div id="map" class="fixed"></div>
     </div>
-</div>
-
-<br>
+  </div>
