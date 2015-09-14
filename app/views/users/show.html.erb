@@ -11,18 +11,13 @@
 </p>
 
 <p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<p>
   <strong>Location:</strong>
   <%= @user.location %>
 </p>
 
 <p>
   <strong>Image:</strong>
-  <%= @user.image %>
+  <%= image_tag(@user.image.profile) %>
 </p>
 
 <p>
