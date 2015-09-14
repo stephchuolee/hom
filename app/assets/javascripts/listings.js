@@ -126,7 +126,7 @@ function importFoursquare(){
             tip.innerHTML = item.tips[j].text;
             $(tip).appendTo(tipsDiv);
           }
-          ratingnumberDiv.append(item.venue.rating);
+          ratingnumberDiv.append(item.venue.rating.toFixed(1));
           ratingDiv.css("background-color", '#'+item.venue.ratingColor);
           if( item.venue.url){
             $('.foursquare_'+i).find('a').attr('href',item.venue.url).attr('target','_blank');
