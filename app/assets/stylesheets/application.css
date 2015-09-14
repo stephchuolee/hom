@@ -41,8 +41,12 @@ html, body {
   height: 91%;
 }
 
+a {
+  color: #fff;
+}
+
 a:visited {
-  color: #00B6B1;
+  color: #fff;
 }
 
 input[type="text"] {
@@ -77,6 +81,10 @@ li {
 
 :-ms-input-placeholder {
    color: #fff;
+}
+
+.center {
+  text-align: center;
 }
 
 /* Navigation
@@ -503,7 +511,6 @@ button.back {
   width: 100%;
 }
 
-<<<<<<< HEAD
 .row.listings-index {
   padding: 0;
   position: relative;
@@ -511,8 +518,43 @@ button.back {
   margin-bottom: 0px;
 }
 
-=======
->>>>>>> d41b0b6e9d7bf9c026980b334ca334f2eb353e8e
+.foursquare {
+  padding: 15px;
+}
+
+.foursquare .name {
+  background-color: #00B6B1;
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  padding: 7px;
+}
+
+.foursquare .address {
+  text-align: center;
+  padding: 7px 0 0 0;
+}
+
+.foursquare .tips {
+  font-style: italic;
+  color: #9A9797;
+  padding: 0 10px;
+}
+
+.foursquare .rating {
+  border: 2px solid #00B6B1;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.foursquare .ratingnumber {
+  padding: 9px;
+  color: #fff;
+}
+
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
@@ -538,5 +580,3 @@ button a, button a:visited {
     max-width: 1200px;
   }
 }
-
-
