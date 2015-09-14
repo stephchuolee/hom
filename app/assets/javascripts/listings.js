@@ -134,7 +134,12 @@ function importFoursquare(){
 }
 
 $(function(){
-
+  $('.listingDiv').on('hover', function(){
+    
+    // mouse enter
+  }, function(){
+    // mouse leave
+  })
   $('.listingDiv').on('click', function(){
     var id = $(this).data('listing-id');
     var address = [$(this).find('.address').html()];
