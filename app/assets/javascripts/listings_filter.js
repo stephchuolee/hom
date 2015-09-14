@@ -49,7 +49,6 @@ $(function(){
       }
     })
 
-
     // var currentState = history.state;
 
     // var state = {id: 'search_results_page'}
@@ -59,6 +58,9 @@ $(function(){
     // history.pushState(state, '', url)
 
   });
+
+
+
 
 });
 
