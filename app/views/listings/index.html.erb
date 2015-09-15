@@ -61,48 +61,44 @@
       <% end %> 
     </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Price</th>
-          <th>Address</th>
-          <th>Image</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody id="listing_results">
-        <% @listings.each do |listing| %>
-          <tr data-listing-id="<%=listing.id%>" class="listingDiv">
-              <div>
-                <td><%= link_to "#{listing.title}", listing_path(listing.id) %></td>
-                <td><%= listing.price %></td>
-                <td class="address"><%= listing.address %></td>
-                <td>
-                <% listing.listing_images.each do |array| %>
-                  <%= image_tag(array.image.thumb) %>
+    <div id="listing_results">
+      <% @listings.each do |listing| %>
+          <div class="listingDiv listing information col s6" data-listing-id="<%=listing.id%>">   
+              <% if listing.listing_images %> 
+                <% listing.listing_images.each do |listing| %>
+                  <%= image_tag(listing.image) %>
                 <% end %>
-                </td>
-
-                <td> 
+              <% end %>
+              <div class="information col s12" >
+                <h3 class="title">
+                  <a href="/listings/<%="#{listing.id}"%>"><%= listing.title %></a>
+                </h3>
+                <h5 class="address">
+                  <%= listing.address %>
+                </h5>
+                <h5 class="user">
+                  <a href="/users/<%="#{listing.user_id}"%>"><%= listing.user.name %></a>
+                </h5>
                 <% unless current_user.id == listing.user_id %> 
                   <%= set_favourite_class(listing.user_id, listing.id) %>
                 <% end %> 
-                </td>
-                
-                <% if @current_user == listing.user_id %>
-                  <td>  <%= link_to 'Edit', edit_listing_path(listing.id) %></td>
-                  <td><%= link_to 'Destroy', listing_path(id: listing.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                <%end%>
-
               </div>
+            </div>  
+      <% end %>
+    </div>
+      
 
-          </tr>
-        
-        <% end %>
-      </tbody>
-    </table>
+
+
+<!-- testing -->
+
+
+
+<!-- testing -->
+
+
+
+
   </div>
 
   <div class="col l5 s12 map">
