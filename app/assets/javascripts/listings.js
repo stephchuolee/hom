@@ -61,14 +61,14 @@ function addMarker(coord,i){
   });
   marker_new.metadata = {type: "point", id: i};
 
-  marker_new.addListener('mouseover', function(){  
+  marker_new.addListener('mouseover', function(){
     $("#listing_results .listingDiv:nth-child("+(this.metadata.id+1)+")").addClass("hovered");
   });
   marker_new.addListener('mouseout', function(){
     $("#listing_results .listingDiv:nth-child("+(this.metadata.id+1)+")").removeClass("hovered");
     // $("#listing_results").find("[data-listing-id='"+i+"']").removeClass("hovered");
   });
-  
+
   markers.push(marker_new);
 }
 
@@ -145,7 +145,7 @@ function importFoursquare(){
 $(function(){
 
   $('#booking_link').on('click', function() {
-        
+
   });
 
 
