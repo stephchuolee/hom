@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
   def index
     @current_user = current_user
     @listings = Listing.where(:user_id => @current_user.id)
+
     respond_to do |format|
       format.html
     end

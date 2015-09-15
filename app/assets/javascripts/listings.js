@@ -105,7 +105,7 @@ function deleteMarkers() {
 function importFoursquare(){
   var client_id = "ACY5FCHS13VT51FDX4FRG5YN25CY30534NV34ADSC1DX2WTE";
   var client_secret = "4HQLZ1DKORVCBURYHPIBYANQPXR55F2PWMZUCXNKPD3FQDQ4";
-  var address = $('li').find('.address').html();
+  var address = $('.information').find('.address').html();
   var geocoder = new google.maps.Geocoder();
   geocoder.geocode({'address': address}, function(results, status) {
     var coord = results[0].geometry.location;
@@ -131,7 +131,7 @@ function importFoursquare(){
             tip.innerHTML = item.tips[j].text;
             $(tip).appendTo(tipsDiv);
           }
-          ratingnumberDiv.append(item.venue.rating);
+          ratingnumberDiv.append(item.venue.rating.toFixed(1));
           ratingDiv.css("background-color", '#'+item.venue.ratingColor);
           if( item.venue.url){
             $('.foursquare_'+i).find('a').attr('href',item.venue.url).attr('target','_blank');

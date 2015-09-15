@@ -35,6 +35,7 @@
 // });
 
 $(document).ready(function(){
+
     $('body').on('click','.navbar-toggle', function(){
       // if ($('body').hasClass('nav-open')) {
       //   $('body').removeClass('nav-open');
