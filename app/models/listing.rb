@@ -17,7 +17,7 @@ class Listing < ActiveRecord::Base
   scope :furnished, -> (furnished) {where('furnished = ?', furnished)}
   scope :storage, -> (storage) {where('storage_space = ?', storage)}
 
-  validates :title, :address, :price, presence: true  
+  validates :title, :address, :price, :bedroom, :description, presence: true  
   
 
 end

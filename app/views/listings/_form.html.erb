@@ -1,7 +1,7 @@
 <%= form_for(@listing) do |f| %>
   <% if @listing.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+      <h4><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h4>
 
       <ul>
       <% @listing.errors.full_messages.each do |message| %>
@@ -93,6 +93,7 @@
       <%= f.file_field :image, multiple: true, name: "listing_images[image][]" %>
     </div>
     
+
   </div>
 
   <div class="col s12 l4 offset-l4 center">
