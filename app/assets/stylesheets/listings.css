@@ -27,3 +27,8 @@ label.optionalinfo {
     font-size: small;
     font-style: italic;
 }
+
+.text_area {
+  width: 300px;
+  height: 150px;
+}

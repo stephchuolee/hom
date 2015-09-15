@@ -28,7 +28,7 @@ function getAddresses(){
   var geocoder = new google.maps.Geocoder();
   for (var i =0; i<address.length; i++){
     geocodeAddress(geocoder,address[i],i);
-  }
+  } 
 }
 
 function extractAddresses(){
