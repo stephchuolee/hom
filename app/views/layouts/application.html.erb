@@ -31,6 +31,7 @@
     </div> -->
 
     <ul class="desktop-nav">
+      <li id="new-listing"><%= link_to "Create New Listing", new_listing_path %></li>
       <li id="search">
         <%= form_tag "/listings/search", method: "get" do %>
         <%= text_field_tag :city, nil, placeholder: 'Find your home...' %>

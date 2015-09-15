@@ -1,31 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<div>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %> 
+  <% if @current_user.id == @user.id %>
+  | <%= link_to 'Bookings', bookings_path(@user)%>
+  <% end %>
+</div>
+
 <div id="profile">
- <!-- <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Location</th>
-        <th>Image</th>
-        <th>Blurb</th>
-        <th>Rental Properties Owned</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= @user.name %></td>
-        <td><%= @user.email %></td>
-        <td><%= @user.location %></td>
-        <td><%= image_tag(@user.image.profile) %></td>
-        <td><%= @user.blurb %></td>
-        <% @user.listings.each do |listing| %>
-          <td><%= link_to "#{listing.title}", listing_path(id: listing.id, user_id: @user.id) %></td>
-          <% end %>
-      </tr>
-    </tbody>
-  </table> -->
- 
   <div id="profile_pic">
     <%= image_tag(@user.image.profile) %>
   </div>
@@ -59,10 +42,3 @@
   </p>
 </div>
 
-<div>
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Back', users_path %> 
-  <% if @current_user.id == @user.id %>
-  | <%= link_to 'Bookings', bookings_path(@user)%>
-  <% end %>
-</div>
