@@ -61,11 +61,6 @@ input[type="submit"] {
 
 select {
   height: 30px;
-/*  width: 270px;
-  margin: 0 auto;
-  padding: 10px 10px 10px 30px;
-  cursor: pointer;
-  outline: none;*/
 }
 
 input[type='checkbox'] {
@@ -315,23 +310,27 @@ body.nav-open .navbar-collapse {
   color: black;
 }
 
+
+/* Navigation - Search Filter Styling 
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 .sub-nav {
   background-color: #9FE0DB;
   margin: 0 10px 0 0 ;
   padding: 10px 5px;
 }
 
-/*.sub-nav ul {
-  float: left;
-  margin-bottom: 0px;
-}*/
+.sub-nav col {
+  margin-right: 10px;
+}
 
 .sub-nav input[type="text"] {
   width: 70px;
+  border-bottom: 1px solid #01CEC8;
 }
 
 .sub-nav label {
   padding: 6px 0 0 6px;
+  text-transform: uppercase;
 }
 
 .filters-section {
@@ -341,7 +340,7 @@ body.nav-open .navbar-collapse {
 }
 
 .filters-section ul {
-  padding-top: 10px;
+  padding: 10px 10px 10px 30px;
 }
 
 .filters-section ul li {
@@ -351,12 +350,22 @@ body.nav-open .navbar-collapse {
   padding-right: 10px;
 }
 
-/* testing */
+.filters-section input[type="text"] {
+  border-radius: 0px;
+  text-align: center;
+}
+
+.component {
+  background: #FFF;
+  border: 1px solid silver;
+  height: 135%; /*confirm*/
+}
+
+/* Dropdown styling */
 
 .wrapper-dropdown {
   /* Size and position */
   position: relative;
-  width: 270px;
   margin: 0 auto;
   padding: 10px 10px 10px 30px;
 
@@ -365,6 +374,10 @@ body.nav-open .navbar-collapse {
   border: 1px solid silver;
   cursor: pointer;
   outline: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #46565D;
 }
 
 .wrapper-dropdown:after {
@@ -401,19 +414,21 @@ body.nav-open .navbar-collapse {
 }
 
 .wrapper-dropdown .dropdown li {
-    position: relative; /* Enable absolute positioning for checkboxes */
+  position: relative; /* Enable absolute positioning for checkboxes */
+  display: block;
+  float: none;
 }
 
 .wrapper-dropdown .dropdown li label {
     display: block;
-    padding: 10px 10px 10px 30px; /* Same padding as the button */
+    padding: 10px 10px 10px 0px; /* Same padding as the button */
     border-bottom: 1px solid silver;
     transition: all 0.3s ease-out;
 }
 
 
 .wrapper-dropdown .dropdown li:last-of-type label {
-    border: none;
+  border: none;
 }
 
 .wrapper-dropdown .dropdown li input /* Checkboxes */ {
@@ -439,22 +454,73 @@ body.nav-open .navbar-collapse {
 /* Active state */
 
 .wrapper-dropdown.active:after {
-    border-width: 0 6px 6px 6px;
+  border-width: 0 6px 6px 6px;
 }
+
 
 .wrapper-dropdown.active .dropdown {
     opacity: 1;
     pointer-events: auto;
 }
 
-/* end of dropdown testing */
+/* Modified Fancy Select */
 
-#rental_type {
-  width: 270px;
-  border-radius: 0;
-  -webkit-appearance: none;
-  
+div.fancy-select div.trigger {
+  border-radius: 0px;
+  background: #FFF;
+  border: 1px solid silver;
+  border-top-color: none;
+  box-shadow: none;
+  height: 21px;
+  padding: 10px 10px 10px 30px;
 }
+
+div.fancy-select select:focus + div.trigger {
+  box-shadow: none;
+}
+
+div.fancy-select select:focus + div.trigger.open {
+  box-shadow: none;
+}
+
+div.fancy-select div.trigger.open {
+  background: #FFF;
+  border: 1px solid silver;
+  color: #7A8498;
+  box-shadow: none;
+}
+
+div.fancy-select div.trigger.open:after {
+  border-top-color: #7A8498;
+}
+
+div.fancy-select ul.options {
+  background: #FFF;
+  border-top: none;
+  border-radius: 0px;
+  width: 100%;
+  /*min-width:;*/
+}
+
+div.fancy-select ul.options.open {
+  top: 42px;
+  opacity: 1;
+}
+
+div.fancy-select ul.options li {
+  position: relative; 
+  display: block;
+  float: none;
+  border-bottom: 1px solid silver;
+  padding: 10px 10px 10px 0px;
+}
+
+div.fancy-select ul.options li:last-of-type {
+  border: none;
+}
+
+/* end of dropdown styling */
+
 
 li {
   list-style-type: none;

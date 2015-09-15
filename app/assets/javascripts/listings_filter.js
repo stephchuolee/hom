@@ -3,18 +3,20 @@ $(function(){
 
   function renderResults(result){
     var tr = $("<tr>");
-    $("<td>").text(result.listing.user_id).appendTo(tr);
+    // $("<td>").text(result.listing.user_id).appendTo(tr);
+    var td = $("<td>").text(result.listing.title).appendTo(tr);
     $("<td>").text(result.listing.price).appendTo(tr);
     var td = $("<td>").text(result.listing.address).appendTo(tr);
-    var td = $("<td>").text(result.listing.available_date).appendTo(tr);
+    // var td = $("<td>").text(result.listing.available_date).appendTo(tr);
     var td = $("<td>").text(result.listing.image).appendTo(tr);
-    var td = $("<td>").text(result.listing.title).appendTo(tr);
-    var td = $("<td>").text(result.listing.rental_type).appendTo(tr);
-    var td = $("<td>").text(result.listing.description).appendTo(tr);
+    
+    // var td = $("<td>").text(result.listing.rental_type).appendTo(tr);
+    // var td = $("<td>").text(result.listing.description).appendTo(tr);
     var class_name = result.favourites ? "favourited" : "unfavourite"
     var id = result.listing.id
 
     $("<td><button class='favourite_btn " + class_name + "'></button></td>").appendTo(tr);
+    // turn title into show link next: 
     $("<td><a href='/listings/" + id + "'>Show</a></td>").appendTo(tr);
     tr.appendTo('#listing_results');
 

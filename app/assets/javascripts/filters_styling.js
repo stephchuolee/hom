@@ -1,4 +1,10 @@
 $(function(){
+    
+    // var rt = $('#rental-type');
+    // rt.hide();
+    // rt.val('1')
+
+    $('.basic').fancySelect();
 
     // for checkbox dropdowns 
     function DropDown(el) {
@@ -63,7 +69,7 @@ $(function(){
             obj.dd2.on('click', function(event){
                 console.log('dd2 clicked')
             $(this).toggleClass('active');
-            event.stopPropagation();
+                event.stopPropagation();
             }); 
         }
     };
