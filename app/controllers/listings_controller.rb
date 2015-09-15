@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
   def index
     @current_user = current_user
     @listings = Listing.where(:user_id => @current_user.id)
+
     respond_to do |format|
       format.html
     end
@@ -111,6 +112,18 @@ class ListingsController < ApplicationController
       }
     end
     render json: @listings
+  end
+  
+  def sendrequest 
+    @listing = Listing.find(params[:id])
+    @user = @listing.user
+    @current_user = current_user  
+    respond_to do |format|
+      if @current_user
+        UserMailer.contact_email(@user).deliver
+        format.html { redirect_to @listing, notice: 'Request for viewing sent.' }
+      end
+    end
   end
 
   # PATCH/PUT /listings/1

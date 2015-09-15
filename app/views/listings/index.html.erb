@@ -62,8 +62,8 @@
                 </td>
 
                 <td> 
-                <% if current_user %> 
-                  <%= set_favourite_class(current_user.id, listing.id) %>
+                <% unless current_user.id == listing.user_id %> 
+                  <%= set_favourite_class(listing.user_id, listing.id) %>
                 <% end %> 
                 </td>
                 
@@ -86,4 +86,5 @@
     </div>
 </div>
 
-<br>
+<brt 7th, Vancouver, BC   
+Testing multiple uploads  1300  123 Seymour St  

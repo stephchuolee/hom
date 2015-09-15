@@ -1,6 +1,43 @@
 <h1>Editing Booking</h1>
 
-<%= render 'form' %>
+<%= form_for([:user, @booking]) do |f| %>
+  <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+      <% @booking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="bookings_form">
+    <div class="field">
+      <%= f.label :date %>
+      <%= f.date_field :date %>
+    </div>
+    <div class="field">
+      <%= f.label :start_time %>
+      <%= f.time_field :start_time %>
+    </div>
+    <div class="field">
+      <%= f.label :end_time %>
+      <%= f.time_field :end_time %>
+    </div>
+    <div class="field">
+      <%= f.label :listing_id %><br>
+      <%= select_tag(:listing_id, options_for_select(Listing.where(user_id: @current_user.id).collect { |listing| [listing.id] }), { include_blank: true }) %>
+    </div>
+    <div>
+      <%= f.hidden_field :user_id %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>
 
 <%= link_to 'Show', @booking %> |
 <%= link_to 'Back', user_bookings_path %>

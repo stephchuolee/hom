@@ -25,11 +25,10 @@
       <li>
         <strong>Book a Viewing Time:</strong><br>
         <% @listing.bookings.each do |booking| %>
-        <a href = "@user">
-        <%= booking.date.to_formatted_s(:short) %>
-        <%= booking.start_time.to_formatted_s(:time) %>
-        <%= booking.end_time.to_formatted_s(:time) %>
-        </a><br>
+          <%= booking.date.to_formatted_s(:short) %>
+          <%= booking.start_time.to_formatted_s(:time) %>
+          <%= booking.end_time.to_formatted_s(:time) %>
+          <%= link_to "Request Viewing", sendrequest_listing_path(booking.user) %><br>
         <% end %>
       </li>
     </div>
@@ -103,11 +102,6 @@
       <li>
         <strong>Minimum lease:</strong>
         <%= @listing.minimum_lease %>
-      </li>
-
-      <li>
-        <strong>Image:</strong>
-        <%= @listing.image %>
       </li>
 
       <li>

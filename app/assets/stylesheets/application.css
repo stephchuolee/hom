@@ -42,11 +42,11 @@ html, body {
 }
 
 a {
-  color: #fff;
+  color: #77BED2;
 }
 
 a:visited {
-  color: #fff;
+  color: #747d7d;
 }
 
 input[type="text"] {
@@ -444,6 +444,10 @@ li {
 
 .bookings_form {
   float:left;
+}
+
+#profile #profile_pic img{
+  border-radius: 50%;
 }
 
 #fave {
