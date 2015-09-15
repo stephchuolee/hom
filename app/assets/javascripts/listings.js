@@ -18,6 +18,7 @@ function initMap() {
       importFoursquare();
       // getWalkScore(); // walkscore requires API key which is not available at this
     }
+
   }
 }
 
@@ -25,7 +26,9 @@ function initMap() {
 function getAddresses(){
   var address = extractAddresses();
   var geocoder = new google.maps.Geocoder();
-  geocodeAddress(geocoder, address);
+  for (var i =0; i<address.length; i++){
+    geocodeAddress(geocoder,address[i],i);
+  }
 }
 
 function extractAddresses(){
@@ -39,31 +42,33 @@ function extractAddresses(){
   return addresses;
 }
 
-function geocodeAddress(geocoder, addresses ) {
-  var coords= [];
-  for (var i =0; i< addresses.length; i++) {
-
-    geocoder.geocode({'address': addresses[i]}, function(results, status) {
-
-      var coord = results[0].geometry.location;
-      coords.push(coord);
-      if (status === google.maps.GeocoderStatus.OK) {
-        map.setCenter(coord);
-        // map = resultsMap;
-        addMarker(coord);
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
-  }
-  return coords;
+function geocodeAddress(geocoder, address, i) {
+  geocoder.geocode({'address': address}, function(results, status) {
+    var coord = results[0].geometry.location;
+    if (status === google.maps.GeocoderStatus.OK) {
+      map.setCenter(coord);
+      addMarker(coord,i);
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
 }
 
-function addMarker(coord){
+function addMarker(coord,i){
   var marker_new = new google.maps.Marker({
     map: map,
     position: coord
   });
+  marker_new.metadata = {type: "point", id: i};
+
+  marker_new.addListener('mouseover', function(){  
+    $("#listing_results .listingDiv:nth-child("+(this.metadata.id+1)+")").addClass("hovered");
+  });
+  marker_new.addListener('mouseout', function(){
+    $("#listing_results .listingDiv:nth-child("+(this.metadata.id+1)+")").removeClass("hovered");
+    // $("#listing_results").find("[data-listing-id='"+i+"']").removeClass("hovered");
+  });
+  
   markers.push(marker_new);
 }
 
@@ -131,8 +136,6 @@ function importFoursquare(){
           if( item.venue.url){
             $('.foursquare_'+i).find('a').attr('href',item.venue.url).attr('target','_blank');
           }
-
-
         }
       }
     });
@@ -140,15 +143,17 @@ function importFoursquare(){
 }
 
 $(function(){
-  $('.listingDiv').on('hover', function(){
-    
+  $('.listingDiv').hover(function(){
     // mouse enter
+    $(this).addClass("hovered");
   }, function(){
     // mouse leave
+    $(this).removeClass("hovered");
   })
+
   $('.listingDiv').on('click', function(){
     var id = $(this).data('listing-id');
-    var address = [$(this).find('.address').html()];
+    var address = $(this).find('.address').html();
     var geocoder = new google.maps.Geocoder();
     geocodeAddress(geocoder, address);
   })
@@ -163,14 +168,10 @@ $(function(){
       dataType: "json",
       success: function(data, status){
         deleteMarkers();
-        var add = [];
-        for (var i =0; i < data.length; i++){
-          add.push(data[i].address);
-        }
-
         var geocoder = new google.maps.Geocoder();
-        geocodeAddress(geocoder, add);
-
+        for (var i =0; i < data.length; i++){
+          geocodeAddress(geocoder, data[i].address)
+        }
         $('#listing_results').html("");
         if (data){
           data.forEach(function(result){
