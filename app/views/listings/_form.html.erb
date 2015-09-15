@@ -10,83 +10,95 @@
       </ul>
     </div>
   <% end %>
+  <div class="col s12 l4 offset-l2">
+    <div class="field">
+      <span style="float:right; color:grey; font-size:small; margin-right: 100px"> * required field </span>
+      <%= f.label :title, "Title<span class=\"required\">*</span>".html_safe%>
+      
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :price,"Price<span class=\"required\">*</span>".html_safe %>
+      <%= f.number_field :price %>
+    </div>
+    
+    <div class="field">
+      <%= f.hidden_field :user_id %>
+    </div>
+    <div class="field">
+      <%= f.label :bedroom, "Bedrooms<span class=\"required\">*</span>".html_safe%>
+      <%= f.number_field :bedroom %>
+    </div>
+    <div class="field">
+      <%= f.label :bathroom %>
+      <%= f.number_field :bathroom %>
+    </div>
+    <div class="field">
+      <%= f.label :address, "Address<span class=\"required\">*</span>".html_safe %>
+      <%= f.text_field :address %>
+    </div>
+    <div class="field">
+      <%= f.label :square_footage %>
+      <%= f.number_field :square_footage %>
+    </div>
+    <div class="field">
+      <%= f.label :rental_type %>
+      <%= f.text_field :rental_type %>
+    </div>
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.hidden_field :user_id %>
+  <div class="col s12 l4 margin-top">
+    <div class="field">
+      <%= f.check_box :furnished, class: "optionalinfo"%>
+      <%= f.label :furnished, class: "optionalinfo"%>
+    </div>
+    <div class="field">  
+      <%= f.check_box :pets, class: "optionalinfo"%>
+      <%= f.label :pets, class: "optionalinfo"%>
+    </div>
+    <div class="field">
+      <%= f.check_box :smoking, class: "optionalinfo"%>
+      <%= f.label :smoking, class: "optionalinfo"%>
+    </div>
+    <div class="field">
+      <%= f.check_box :parking_space, class: "optionalinfo"%>
+      <%= f.label :parking_space, class: "optionalinfo"%>
+    </div>
+    <div class="field">
+      <%= f.check_box :storage_space, class: "optionalinfo"%>
+      <%= f.label :storage_space, class: "optionalinfo"%>
+    </div>
+    <div class="field">
+      <%= f.check_box :balcony, class: "optionalinfo"%>
+      <%= f.label :balcony, class: "optionalinfo"%>
+    </div>
+    <div class="field">
+      <%= f.label :floor_number %>
+      <%= f.number_field :floor_number %>
+    </div>
+    <div class="field">
+      <%= f.label :available_date %>
+      <%= f.date_select :available_date %>
+    </div>
+    <div class="field">
+      <%= f.label :minimum_lease %>
+      <%= f.number_field :minimum_lease %>
+    </div>
+    <div class="field">
+      <%= f.label :image %>
+      <%= f.file_field :image, multiple: true, name: "listing_images[image][]" %>
+    </div>
+    
+
   </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :rental_type %><br>
-    <%= f.text_field :rental_type %>
-  </div>
-  <div class="field">
-    <%= f.label :square_footage %><br>
-    <%= f.number_field :square_footage %>
-  </div>
-  <div class="field">
-    <%= f.label :bedroom %><br>
-    <%= f.number_field :bedroom %>
-  </div>
-  <div class="field">
-    <%= f.label :bathroom %><br>
-    <%= f.number_field :bathroom %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.number_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :furnished %><br>
-    <%= f.check_box :furnished %>
-  </div>
-  <div class="field">
-    <%= f.label :pets %><br>
-    <%= f.check_box :pets %>
-  </div>
-  <div class="field">
-    <%= f.label :smoking %><br>
-    <%= f.check_box :smoking %>
-  </div>
-  <div class="field">
-    <%= f.label :floor_number %><br>
-    <%= f.number_field :floor_number %>
-  </div>
-  <div class="field">
-    <%= f.label :parking_space %><br>
-    <%= f.check_box :parking_space %>
-  </div>
-  <div class="field">
-    <%= f.label :storage_space %><br>
-    <%= f.check_box :storage_space %>
-  </div>
-  <div class="field">
-    <%= f.label :balcony %><br>
-    <%= f.check_box :balcony %>
-  </div>
-  <div class="field">
-    <%= f.label :available_date %><br>
-    <%= f.date_select :available_date %>
-  </div>
-  <div class="field">
-    <%= f.label :minimum_lease %><br>
-    <%= f.number_field :minimum_lease %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.file_field :image, multiple: true, name: "listing_images[image][]"  %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
+
+  <div class="col s12 l4 offset-l4 center">
   <div class="actions">
     <%= f.submit %>
+  </div>
   </div>
 <% end %>

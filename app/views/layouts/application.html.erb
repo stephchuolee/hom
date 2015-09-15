@@ -4,7 +4,8 @@
   <title>Hom</title>
   <%= javascript_include_tag 'application' %>
    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
 
@@ -40,6 +41,7 @@
       </li>
       <% if current_user %>
         <li><a href="/users/<%="#{current_user.id}"%>"> Hi, <%= current_user.first_name %>! </a></li>
+        <li><%= link_to "Create new Listings", new_listing_path %>
         <li><%= link_to "Bookings", bookings_path %></li>
         <li><%= link_to "Listings", listings_path %></li>
         <li><%= link_to "Logout", sessions_path("current"), method: :delete %></li>

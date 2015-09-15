@@ -66,7 +66,7 @@ class ListingsController < ApplicationController
       @city = params[:city]
       @listings = @listings.city(@city)
     # end
-
+    
     if !params[:min_price].empty?
       @listings = @listings.min_price(params[:min_price])
     end

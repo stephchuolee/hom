@@ -439,8 +439,13 @@ li {
   margin: 0 0 0 0;
 }
 
+.listing h5.address {
+  font-size: 1.2em;
+  margin: 0 0 0 0;
+}
+
 .listing h5.user, .listing h2.price {
-  /*font-size: 1.2em;*/
+  font-size: 1em;
   font-style: italic;
   color: #9A9797;
   margin: 0 0 0 0;
@@ -471,7 +476,7 @@ li {
 
 .calendar {
   background-color: #FFE77E;
-  height: 351px;
+  height: 352px;
   width: 100%;
 }
 
@@ -543,6 +548,7 @@ button a {
 
 .feature {
   text-align: center;
+  margin: 20px 0 0 0;
 }
 
 .feature .description-text {
@@ -621,11 +627,9 @@ button a, button a:visited {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 @media (max-width: 600px) {
-
   .map {
     display: none;
   }
-
 }
 
 @media (min-width: 994px){

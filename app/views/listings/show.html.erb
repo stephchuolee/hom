@@ -1,6 +1,9 @@
 <div class="row">
   <div class="col s12 l6">
-    <button class="back"><%= link_to 'Back to Listings', listings_search_path %>
+
+    <button class="back">
+      <%= link_to 'Back to Listings', listings_search_path %>
+
     </button>
     <div class="listing">
     <% @listing.listing_images.each do |listing| %>
@@ -43,12 +46,12 @@
 <div class="row">
   <div class="col s12 l6">
     <div class="feature">
-      <h3 class="center">Features & Amenities</h3>
       <div class="col l12 description">
         <li>
           <div class="description-text"><%= @listing.description %></div>
         </li>
       </div>
+      <h3 class="center">Features & Amenities</h3>
       <div class=" col s4">
         <li>
           <div class="name">Square Footage</div>
