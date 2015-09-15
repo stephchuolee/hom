@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Users</h1>
+<h1>All Users</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
       <th>Email</th>
-      <th>Password</th>
       <th>Location</th>
       <th>Image</th>
       <th>Blurb</th>
@@ -21,7 +20,6 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%= user.password %></td>
         <td><%= user.location %></td>
         <td><%= image_tag(user.image.thumb) %></td>
         <td><%= user.blurb %></td>
