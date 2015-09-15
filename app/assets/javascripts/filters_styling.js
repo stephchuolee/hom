@@ -44,7 +44,7 @@ $(function(){
 
         $(document).click(function() {
             // all dropdowns
-            $('.wrapper-dropdown-1').removeClass('active');
+            $('.wrapper-dropdown').removeClass('active');
         });
 
     });
@@ -54,7 +54,7 @@ $(function(){
     function DropDown2(el) {
         this.dd2 = el;
         this.initEvents();
-    }
+    };
     
     DropDown2.prototype = {
         initEvents : function() {
@@ -64,20 +64,22 @@ $(function(){
                 console.log('dd2 clicked')
             $(this).toggleClass('active');
             event.stopPropagation();
-        }); 
-    }
+            }); 
+        }
+    };
 
-    // $(function() {
+    $(function() {
 
-    //     var dd2 = new DropDown2( $('#dd2') );
+        var dd2 = new DropDown2( $('#dd2') );
 
-    //     $(document).click(function() {
-    //         // all dropdowns
-    //         $('.wrapper-dropdown').removeClass('active');
-    // });
+        $(document).click(function() {
+            // all dropdowns
+            console.log('dd2 clicked')
+            $('.wrapper-dropdown').removeClass('active');
+        });
 
 
-    }
+    });
 
 
 

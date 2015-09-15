@@ -6,12 +6,12 @@
       <%= form_tag "/listings/search", id: "filter_form", method: "get" do %>
         
       <!-- testing -->
-        <div id="dd2" class="wrapper-dropdown wd2">Number of Bedrooms
-        <ul class="dropdown">
-          <li>1</li>
-          <li>2</li>
-        </ul>
-      </div>
+
+          <!--   <div id="dd2" class="wrapper-dropdown wd2">Number of Bedrooms
+            <ul class="dropdown">
+            </ul>
+          </div> -->
+
       <!-- testing -->
 
 
@@ -25,9 +25,10 @@
         </div>
 
         <div class="filters-section row">
-          <div class="col l6 m6 s12 component">
-             <ul class="">
-              <li><%= select_tag(:number_of_bedrooms, options_for_select([[1], [2], [3], [4], [5], [6], [7], [8], [9], [10]]), {:prompt => 'Number of Bedrooms'}) %></li>
+          <div class="col l6 m6 s12">
+             <ul>
+              <li><%= label_tag(:number_of_bedrooms, "Number of Bedrooms") %></li>
+              <li><%= text_field_tag(:number_of_bedrooms) %></li>
             </ul>
           </div>
         
@@ -51,8 +52,6 @@
         </div>
 
       <!-- testing -->
-
-       
 
         <div class="filters-section row"> 
           <ul class="col s12">

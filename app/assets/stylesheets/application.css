@@ -417,25 +417,24 @@ body.nav-open .navbar-collapse {
 }
 
 .wrapper-dropdown .dropdown li input /* Checkboxes */ {
-    position: absolute;
-    display: block;
-    right: 10px;
-    top: 50%;
-    margin-top: -8px;
-}
-
-/* Hover state */
-
-.wrapper-dropdown .dropdown li:hover label {
-    background: #f0f0f0;
+  position: absolute;
+  display: block;
+  right: 10px;
+  top: 50%;
+  margin-top: -8px;
 }
 
 /* Checked state */
 
 .wrapper-dropdown .dropdown li input:checked ~ label {
-    color: #01CEC8;
+  color: #01CEC8;
 }
 
+/* Selected state*/
+
+.wrapper-dropdown .dropdown li input:focus {
+  color: #01CEC8;
+} 
 
 /* Active state */
 
@@ -450,12 +449,10 @@ body.nav-open .navbar-collapse {
 
 /* end of dropdown testing */
 
-.filters-section#price {
-    border: 1px black;
-}
-
-.filters-section.component {
-
+#rental_type {
+  width: 270px;
+  border-radius: 0;
+  -webkit-appearance: none;
   
 }
 
