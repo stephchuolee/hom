@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Hom</title>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -19,7 +19,7 @@
     <div class="logo"><a href="/"><%= image_tag("logo.svg", :alt => "Hom Logo") %></a></div>
     <div class="mobile-nav-button">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Menu</span>
+        <span class="sr-only"><%= image_tag("menu.png", :alt => "Menu") %></span>
       </button>
     </div>
     <!-- <div id="navbar" class="navbar-collapse collapse">
@@ -38,7 +38,7 @@
         <% end %>
       </li>
       <% if current_user %>
-        <li> Hi, <%= current_user.first_name %>! </li>
+        <li><a href="/users/<%="#{current_user.id}"%>"> Hi, <%= current_user.first_name %>! </a></li>
         <li><%= link_to "Bookings", bookings_path %></li>
         <li><%= link_to "Listings", listings_path %></li>
         <li><%= link_to "Logout", sessions_path("current"), method: :delete %></li>

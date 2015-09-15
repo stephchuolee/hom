@@ -20,7 +20,12 @@ Rails.application.routes.draw do
   
   resources :bookings, only: [:index, :destroy]
   
-  resources :listings 
+  resources :listings do
+    member do
+      get 'sendrequest' => 'listings#sendrequest'
+    end
+  end
+
   resources :listing_images
   
   resources :users do
