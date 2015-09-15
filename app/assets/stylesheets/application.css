@@ -41,8 +41,12 @@ html, body {
   height: 88%;
 }
 
+a {
+  color: #77BED2;
+}
+
 a:visited {
-  color: #00B6B1;
+  color: #747d7d;
 }
 
 input[type="text"] {
@@ -85,6 +89,10 @@ li {
 
 :-ms-input-placeholder {
    color: #fff;
+}
+
+.center {
+  text-align: center;
 }
 
 /* Navigation
@@ -134,7 +142,6 @@ nav ul li#search {
 }
 
 @media (max-width: 600px) {
-
   nav {
     margin: 0 0 0 0;
   }
@@ -613,21 +620,30 @@ li {
   padding: 10px;
 }
 
-.listing p.title {
-  font-size: 1.9em;
-  line-height: 1em;
-  text-transform: uppercase;
+.listing h3.title {
+  /*font-size: 1.9em;*/
   color: #00B6B1;
+  margin: 0 0 0 0;
 }
 
-.listing p.user, .listing p.price {
+.listing h5.address {
   font-size: 1.2em;
+  margin: 0 0 0 0;
+}
+
+.listing h5.user, .listing h2.price {
+  font-size: 1em;
   font-style: italic;
   color: #9A9797;
+  margin: 0 0 0 0;
 }
 
 .bookings_form {
   float:left;
+}
+
+#profile #profile_pic img{
+  border-radius: 50%;
 }
 
 #fave {
@@ -640,7 +656,7 @@ li {
 
 .calendar {
   background-color: #FFE77E;
-  height: 100px;
+  height: 352px;
   width: 100%;
 }
 
@@ -670,6 +686,11 @@ li {
 }
 
 
+#map {
+  height: 500px;
+}
+
+
 #map.fixed {
   width: 100%;
   height: 100%;
@@ -682,12 +703,95 @@ li {
 
 
 .neighbourhood {
-  height: 300px;
+  margin: 20px 0 0 0;
   background-color: #00B6B1;
 }
 
 button.back {
   width: 100%;
+  font-weight: 500;
+  font-size: 1em;
+  text-transform: none;
+  border: none;
+}
+
+button a {
+  text-decoration: none;
+}
+
+.row.listings-index {
+  padding: 0;
+  position: relative;
+  height: 100%;
+  margin-bottom: 0px;
+}
+
+.feature {
+  text-align: center;
+  margin: 20px 0 0 0;
+}
+
+.feature .description-text {
+  text-align: justify;
+  margin: 10px 40px;
+}
+
+.feature .desc {
+  width: 90%;
+}
+
+.feature .name {
+  width: 71%;
+}
+
+.feature .name p {
+  margin: 10px 0 0 0;
+}
+
+.feature .desc, .feature .name {
+  padding: 7px;
+  margin: 0 auto;
+  background-color: #00B6B1;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.foursquare {
+  min-height: 300px;
+  padding: 15px;
+}
+
+.foursquare .name  {
+  background-color: #00B6B1;
+  color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  padding: 7px;
+}
+
+.foursquare .address {
+  text-align: center;
+  padding: 7px 0 0 0;
+}
+
+.foursquare .tips {
+  font-style: italic;
+  color: #9A9797;
+  padding: 0 10px;
+}
+
+.foursquare .rating {
+  border: 2px solid #00B6B1;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.foursquare .ratingnumber {
+  padding: 9px;
+  color: #fff;
 }
 
 /* Buttons
@@ -703,11 +807,9 @@ button a, button a:visited {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 @media (max-width: 600px) {
-
   .map {
     display: none;
   }
-
 }
 
 @media (min-width: 994px){
@@ -715,5 +817,3 @@ button a, button a:visited {
     max-width: 1200px;
   }
 }
-
-

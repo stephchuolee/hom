@@ -1,4 +1,29 @@
 .listingDiv {
   height: 200px;
   width: 100%;
+  transition: 500ms;
+}
+
+.listingDiv.hovered {
+  background: red;
+}
+
+
+.optionalinfo {
+  display:inline;
+}
+
+label.optionalinfo {
+  margin-left: 10px;
+}
+
+.margin-top {
+  margin-top: 20px;
+}
+
+.required {
+    color: grey;
+    padding-left: 2px;
+    font-size: small;
+    font-style: italic;
 }

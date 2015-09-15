@@ -10,30 +10,16 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require react
 //= require react_ujs
 //= require fancyselect/fancySelect.js
 //= require components
 //= require_tree .
 
-// to be rendered on listings/id page
-
-// $(function getWalkScore(address, lat, long) {
-
-//   $.ajax({
-//     url: '',
-//     dataType: '',
-//     success:
-//   });
-
-
-
-// });
-
-
-// });
 
 $(document).ready(function(){
+
     $('body').on('click','.navbar-toggle', function(){
       // if ($('body').hasClass('nav-open')) {
       //   $('body').removeClass('nav-open');

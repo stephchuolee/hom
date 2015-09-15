@@ -5,6 +5,7 @@ class Listing < ActiveRecord::Base
   has_many :favourites 
   
   accepts_nested_attributes_for :listing_images
+  
   scope :city, -> (city) {where('address LIKE ?', "%#{city}%")}
   scope :min_price, -> (min_price) {where('price >= ?', min_price)}
   scope :max_price, -> (max_price) {where('price <= ?', max_price)}
@@ -16,6 +17,7 @@ class Listing < ActiveRecord::Base
   scope :furnished, -> (furnished) {where('furnished = ?', furnished)}
   scope :storage, -> (storage) {where('storage_space = ?', storage)}
 
+  validates :title, :address, :price, :bedroom, :description, presence: true  
   
 
 end
