@@ -1,7 +1,7 @@
 <%= form_for(@listing) do |f| %>
   <% if @listing.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+      <h4><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h4>
 
       <ul>
       <% @listing.errors.full_messages.each do |message| %>
@@ -13,6 +13,18 @@
 
   <div class="field">
     <%= f.hidden_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :rental_type %><br>
+    <%= f.text_field :rental_type %>
   </div>
   <div class="field">
     <%= f.label :square_footage %><br>
@@ -29,10 +41,6 @@
   <div class="field">
     <%= f.label :price %><br>
     <%= f.number_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
   </div>
   <div class="field">
     <%= f.label :furnished %><br>
@@ -73,14 +81,6 @@
   <div class="field">
     <%= f.label :image %><br>
     <%= f.file_field :image, multiple: true, name: "listing_images[image][]"  %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :rental_type %><br>
-    <%= f.text_field :rental_type %>
   </div>
   <div class="field">
     <%= f.label :description %><br>

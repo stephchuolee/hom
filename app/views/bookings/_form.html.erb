@@ -26,7 +26,7 @@
     </div>
     <div class="field">
       <%= f.label :listing_id %><br>
-      <%= select_tag(:listing_id, options_for_select(Listing.where(user_id: @current_user.id).collect { |listing| [listing.id] }), { include_blank: true }) %>
+      <%= select_tag(:listing_id, options_for_select(Listing.where(user_id: @current_user.id).collect { |listing| [listing.title, listing.id] }), { include_blank: true }) %>
     </div>
     <div>
       <%= f.hidden_field :user_id %>
