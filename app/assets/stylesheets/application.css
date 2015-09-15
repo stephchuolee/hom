@@ -429,17 +429,17 @@ li {
   padding: 10px;
 }
 
-.listing p.title {
-  font-size: 1.9em;
-  line-height: 1em;
-  text-transform: uppercase;
+.listing h3.title {
+  /*font-size: 1.9em;*/
   color: #00B6B1;
+  margin: 0 0 0 0;
 }
 
-.listing p.user, .listing p.price {
-  font-size: 1.2em;
+.listing h5.user, .listing h2.price {
+  /*font-size: 1.2em;*/
   font-style: italic;
   color: #9A9797;
+  margin: 0 0 0 0;
 }
 
 .bookings_form {
@@ -503,12 +503,20 @@ li {
 
 
 .neighbourhood {
-  height: 300px;
+  margin: 20px 0 0 0;
   background-color: #00B6B1;
 }
 
 button.back {
   width: 100%;
+  font-weight: 500;
+  font-size: 1em;
+  text-transform: none;
+  border: none;
+}
+
+button a {
+  text-decoration: none;
 }
 
 .row.listings-index {
@@ -518,12 +526,41 @@ button.back {
   margin-bottom: 0px;
 }
 
+.feature {
+  text-align: center;
+}
+
+.feature .description-text {
+  text-align: justify;
+  margin: 10px 40px;
+}
+
+.feature .desc {
+  width: 90%;
+}
+
+.feature .name {
+  width: 71%;
+}
+
+.feature .name p {
+  margin: 10px 0 0 0;
+}
+
+.feature .desc, .feature .name {
+  padding: 7px;
+  margin: 0 auto;
+  background-color: #00B6B1;
+  color: #fff;
+  border-radius: 3px;
+}
+
 .foursquare {
   min-height: 300px;
   padding: 15px;
 }
 
-.foursquare .name {
+.foursquare .name  {
   background-color: #00B6B1;
   color: #fff;
   text-align: center;

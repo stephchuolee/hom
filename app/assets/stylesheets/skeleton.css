@@ -52,7 +52,7 @@
   .col.s1                  { width: 8.33333333334%; }
   .col.s2                  { width: 16.6666666667%; }
   .col.s3                  { width: 25%;            }
-  .col.s4                  { width: 30.6666666667%; }
+  .col.s4                  { width: 33.3333333333%; }
   .col.s5                  { width: 41.6666666667%; }
   .col.s6                  { width: 50%;            }
   .col.s7                  { width: 58.3333333334%; }
@@ -71,7 +71,7 @@
   .offset-s1               { margin-left: 8.33333333334%; }
   .offset-s2               { margin-left: 16.6666666667%; }
   .offset-s3               { margin-left: 25%;            }
-  .offset-s4               { margin-left: 30.6666666667%; }
+  .offset-s4               { margin-left: 33.3333333333%; }
   .offset-s5               { margin-left: 41.6666666667%; }
   .offset-s6               { margin-left: 50%;            }
   .offset-s7               { margin-left: 58.3333333334%; }
@@ -95,7 +95,7 @@
   .col.m1                  { width: 8.33333333334%; }
   .col.m2                  { width: 16.6666666667%; }
   .col.m3                  { width: 25%;            }
-  .col.m4                  { width: 30.6666666667%; }
+  .col.m4                  { width: 33.3333333333%; }
   .col.m5                  { width: 41.6666666667%; }
   .col.m6                  { width: 50%;            }
   .col.m7                  { width: 58.3333333334%; }
@@ -114,7 +114,7 @@
   .offset-m1               { margin-left: 8.33333333334%; }
   .offset-m2               { margin-left: 16.6666666667%; }
   .offset-m3               { margin-left: 25%;            }
-  .offset-m4               { margin-left: 30.6666666667%; }
+  .offset-m4               { margin-left: 33.3333333333%; }
   .offset-m5               { margin-left: 41.6666666667%; }
   .offset-m6               { margin-left: 50%;            }
   .offset-m7               { margin-left: 58.3333333334%; }
@@ -139,7 +139,7 @@
   .col.l1                  { width: 8.33333333334%; }
   .col.l2                  { width: 16.6666666667%; }
   .col.l3                  { width: 25%;            }
-  .col.l4                  { width: 30.6666666667%; }
+  .col.l4                  { width: 33.3333333333%; }
   .col.l5                  { width: 41.6666666667%; }
   .col.l6                  { width: 50%;            }
   .col.l7                  { width: 58.3333333334%; }
@@ -158,7 +158,7 @@
   .offset-l1               { margin-left: 8.33333333334%; }
   .offset-l2               { margin-left: 16.6666666667%; }
   .offset-l3               { margin-left: 25%;            }
-  .offset-l4               { margin-left: 30.6666666667%; }
+  .offset-l4               { margin-left: 33.3333333333%; }
   .offset-l5               { margin-left: 41.6666666667%; }
   .offset-l6               { margin-left: 50%;            }
   .offset-l7               { margin-left: 58.3333333334%; }
@@ -184,7 +184,7 @@ body {
   font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 1.6;
   font-weight: 400;
-  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #222; }
 
 

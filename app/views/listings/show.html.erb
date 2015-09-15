@@ -1,18 +1,21 @@
 <div class="row">
   <div class="col s12 l6">
-    <button class="back"><%= link_to 'Back to listings', listings_search_path %>
+    <button class="back"><%= link_to 'Back to Listings', listings_search_path %>
     </button>
     <div class="listing">
     <% @listing.listing_images.each do |listing| %>
       <%= image_tag(listing.image) %>
     <% end %>
         <div class="information col s12" >
-          <p class="title">
+          <h3 class="title">
             <%= @listing.title %>
-          </p>
-          <p class="user">
+          </h3>
+          <h5>
+            <%= @listing.address %>
+          </h5>
+          <h5 class="user">
             <%= @listing.user.name %>
-          </p>
+          </h5>
           <!-- <p class="price">
             $<%= @listing.price %>
           </p> -->
@@ -23,7 +26,7 @@
   <div class="col s12 l6">
     <div class="calendar">
       <li>
-        <strong>Book a Viewing Time:</strong><br>
+        <h3 class="center">Viewing Times</h3>
         <% @listing.bookings.each do |booking| %>
         <a href = "@user">
         <%= booking.date.to_formatted_s(:short) %>
@@ -39,87 +42,122 @@
 
 <div class="row">
   <div class="col s12 l6">
-    <div class="information">
-      <li>
-        <strong>Square footage:</strong>
-        <%= @listing.square_footage %>
-      </li>
+    <div class="feature">
+      <h3 class="center">Features & Amenities</h3>
+      <div class="col l12 description">
+        <li>
+          <div class="description-text"><%= @listing.description %></div>
+        </li>
+      </div>
+      <div class=" col s4">
+        <li>
+          <div class="name">Square Footage:</div>
+          <p><%= @listing.square_footage %>sqft</p>
+        </li>
+      </div>
+        <div class="col s4">
+          <li>
+            <div class="name">Bedroom(s):</div>
+            <p><%= @listing.bedroom %></p>
+          </li>
+        </div>
 
-      <li>
-        <strong>Bedroom:</strong>
-        <%= @listing.bedroom %>
-      </li>
-
-      <li>
-        <strong>Bathroom:</strong>
-        <%= @listing.bathroom %>
-      </li>
-
-      <li>
-        <strong>Address:</strong>
-        <span class="address"><%= @listing.address %></span>
-      </li>
-
-      <li>
-        <strong>Furnished:</strong>
-        <%= @listing.furnished %>
-      </li>
-
-      <li>
-        <strong>Pets:</strong>
-        <%= @listing.pets %>
-      </li>
-
-      <li>
-        <strong>Smoking:</strong>
-        <%= @listing.smoking %>
-      </li>
-
-      <li>
-        <strong>Floor number:</strong>
-        <%= @listing.floor_number %>
-      </li>
-
-      <li>
-        <strong>Parking space:</strong>
-        <%= @listing.parking_space %>
-      </li>
-
-      <li>
-        <strong>Storage space:</strong>
-        <%= @listing.storage_space %>
-      </li>
-
-      <li>
-        <strong>Balcony:</strong>
-        <%= @listing.balcony %>
-      </li>
-
-      <li>
-        <strong>Available date:</strong>
-        <%= @listing.available_date %>
-      </li>
-
-      <li>
-        <strong>Minimum lease:</strong>
-        <%= @listing.minimum_lease %>
-      </li>
-
-      <li>
-        <strong>Image:</strong>
-        <%= @listing.image %>
-      </li>
-
-      <li>
-        <strong>Rental type:</strong>
-        <%= @listing.rental_type %>
-      </li>
-
-      <li>
-        <strong>Description:</strong>
-        <%= @listing.description %>
-      </li>
-
+        <div class="col s4">
+          <li>
+            <div class="name">Bathroom(s):</div>
+            <p><%= @listing.bathroom %></p>
+          </li>
+        </div>
+        <div class="col s4">
+          <li>
+            <div class="name">Furnished:</div>
+            <% if @listing.furnished %>
+              <p>Yes</p>
+            <% else %>
+              <p>No</p>
+            <% end %>
+          </li>
+        </div>
+        <div class="col s4">
+          <li>
+            <div class="name">Pets:</div>
+            <!-- <p><%= @listing.pets %></p> -->
+            <% if @listing.pets %>
+              <p>Allowed</p>
+            <% else %>
+              <p>Not Allowed</p>
+            <% end %>
+          </li>
+        </div>
+        <div class="col s4">
+          <li>
+            <div class="name">Smoking:</div>
+            <!-- <p><%= @listing.smoking %></p> -->
+            <% if @listing.smoking %>
+              <p>Yes</p>
+            <% else %>
+              <p>No</p>
+            <% end %>
+          </li>
+        </div>
+        <div class="col s4">
+          <li>
+            <div class="name">Floor Number:</div>
+            <p><%= @listing.floor_number %></p>
+          </li>
+        </div>
+        <div class="col s4">
+          <li>
+            <div class="name">Parking Space:</div>
+            <!-- <p><%= @listing.parking_space %></p> -->
+            <% if @listing.parking_space %>
+              <p>Included</p>
+            <% else %>
+              <p>Not Included</p>
+            <% end %>
+          </li>
+        </div>
+        <div class="col s4">
+          <li>
+            <div class="name">Storage Space:</div>
+            <!-- <p><%= @listing.storage_space %></p> -->
+            <% if @listing.storage_space %>
+              <p>Included</p>
+            <% else %>
+              <p>Not Included</p>
+            <% end %>
+          </li>
+        </div>
+        <div class="col s4">
+          <li>
+            <div class="name">Balcony:</div>
+            <!-- <p><%= @listing.balcony %></p> -->
+            <% if @listing.balcony %>
+              <p>Yes</p>
+            <% else %>
+              <p>No</p>
+            <% end %>
+          </li>
+        </div>
+        <div class="col s4">
+          <li>
+            <div class="name">Available Date:</div>
+            <p><%= @listing.available_date %></p>
+          </li>
+        </div>
+        <div class="col s4">
+          <li>
+            <div class="name">Minimum Lease:</div>
+            <p><%= @listing.minimum_lease %> Months</p>
+          </li>
+        </div>
+        <div class="col s4">
+          <li>
+            <div class="name">Rental Type:</div>
+            <p><%= @listing.rental_type %></p>
+          </li>
+        </div>
+      </div>
     </div>
   </div>
 
