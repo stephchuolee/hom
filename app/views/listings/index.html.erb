@@ -10,11 +10,13 @@
 
           <div class="filters-section row">
             <div class="col l6 m6 s12 component">
-              <ul>
-                <li><%= label_tag(:min_price, "Price") %></li>
-                <li><%= text_field_tag(:min_price, nil, placeholder: "Min") %></li>
-                <li><%= text_field_tag(:max_price, nil, placeholder: "Max") %></li>
-              </ul>
+              <div class="component-wrapper">
+                <ul>
+                  <li><%= label_tag(:min_price, "Price") %></li>
+                  <li><%= text_field_tag(:min_price, nil, placeholder: "Min") %></li>
+                  <li><%= text_field_tag(:max_price, nil, placeholder: "Max") %></li>
+                </ul>
+              </div>
             </div>
 
             <div class="col l6 m6 s12 component">
@@ -68,7 +70,7 @@
                   <%= image_tag(listing.image) %>
                 <% end %>
               <% end %>
-              <div class="information col s12 m12 l12" >
+              <div class="information col l12 m12 s12" >
                 <h3 class="title">
                   <a href="/listings/<%="#{listing.id}"%>"><%= listing.title %></a>
                 </h3>
@@ -79,7 +81,7 @@
                   <a href="/users/<%="#{listing.user_id}"%>"><%= listing.user.name %></a>
                 </h5>
                 <% unless current_user.id == listing.user_id %> 
-                  <%= set_favourite_class(listing.user_id, listing.id) %>
+                  <%= set_favourite_class(current_user.id, listing.id) %>
                 <% end %> 
               </div>
             </div>  

@@ -399,11 +399,14 @@ body.nav-open .navbar-collapse {
 }
 
 .component {
-/*  background: #FFF;*/
   border: 1px solid white;
   width: 80%;
   height: 150%; 
   margin-bottom: 20px;
+}
+
+.component-wrapper {
+  width: 90%;
 }
 
 .filters-section#submit-btn {
@@ -561,7 +564,7 @@ div.fancy-select ul.options {
   background: #FFF;
   border-top: none;
   border-radius: 0px;
-  width: 86%;
+  width: 88.5%;
 }
 
 div.fancy-select ul.options.open {
@@ -912,6 +915,7 @@ button a, button a:visited {
 /* Media Queries
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+/* Mobile */
 @media (max-width: 600px) {
   .map {
     display: none;
@@ -920,10 +924,32 @@ button a, button a:visited {
   .sub-nav {
     height: 50%;
   }
+
+  div.fancy-select ul.options {
+    width: 88.5%;
+  }
+
+  .listing:last-child {
+    margin-bottom: 20px;
+  }
+
+  .listing {
+    width: 97.5%;
+  }
+
 }
 
+/* Desktop */
 @media (min-width: 994px){
   .container {
     max-width: 1200px;
+  }
+  
+}
+
+/* Tablet */
+@media (max-width: 993px){
+  div.fancy-select ul.options {
+    width: 87.5%;
   }
 }
