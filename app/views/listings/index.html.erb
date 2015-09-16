@@ -2,61 +2,63 @@
 
 <div class="row listings-index">
   <div class="col l7 s12 listings">
-    <div class="sub-nav">
-      <%= form_tag "/listings/search", id: "filter_form", method: "get" do %>
 
-        <div class="filters-section row">
-          <div class="col l6 m6 s12 component">
-            <ul>
-              <li><%= label_tag(:min_price, "Price") %></li>
-              <li><%= text_field_tag(:min_price, nil, placeholder: "Min") %></li>
-              <li><%= text_field_tag(:max_price, nil, placeholder: "Max") %></li>
-            </ul>
-          </div>
+    <% unless @listings_belong_to_user %> 
 
-          <div class="col l6 m6 s12 component">
-             <ul>
-              <li><%= label_tag(:number_of_bedrooms, "Bedrooms") %></li>
-              <li><%= text_field_tag(:number_of_bedrooms, nil, placeholder: "") %></li>
-            </ul>
-          </div>
+      <div class="sub-nav">
+        <%= form_tag "/listings/search", id: "filter_form", method: "get" do %>
 
-        </div>
-
-        <div class="filters-section row">
-  
-          <div  class="col l6 m6 s12">
-            <%= select_tag(:rental_type, options_for_select([["Full Lease"], ["Sublet"], ["Room"]]), {:prompt => 'Rental Type', class: "basic"}) %>
-          </div>
-
-           <!-- testing -->
-    
-          <div class="col l6 m6 s12"> 
-            <div id="dd" class="wrapper-dropdown">Additional Filters
-              <ul class="dropdown">
-              <li><%= check_box_tag(:pets) %><%= label_tag(:pets, "Pets Allowed") %></li>
-              <li><%= check_box_tag(:parking) %><%= label_tag(:parking, "Parking Included") %></li>
-              <li><%= check_box_tag(:smoking) %><%= label_tag(:smoking, "Smoking Allowed") %></li>
-              <li><%= check_box_tag(:furnished) %><%= label_tag(:furnished, "Fully-Furnished") %></li>
-              <li><%= check_box_tag(:storage) %><%= label_tag(:storage, "Storage Included") %></li>
+          <div class="filters-section row">
+            <div class="col l6 m6 s12 component">
+              <ul>
+                <li><%= label_tag(:min_price, "Price") %></li>
+                <li><%= text_field_tag(:min_price, nil, placeholder: "Min") %></li>
+                <li><%= text_field_tag(:max_price, nil, placeholder: "Max") %></li>
               </ul>
             </div>
+
+            <div class="col l6 m6 s12 component">
+               <ul>
+                <li><%= label_tag(:number_of_bedrooms, "Bedrooms") %></li>
+                <li><%= text_field_tag(:number_of_bedrooms, nil, placeholder: "") %></li>
+              </ul>
+            </div>
+
           </div>
 
-        </div>
+          <div class="filters-section row">
+    
+            <div  class="col l6 m6 s12">
+              <%= select_tag(:rental_type, options_for_select([["Full Lease"], ["Sublet"], ["Room"]]), {:prompt => 'Rental Type', class: "basic"}) %>
+            </div>
 
+            <div class="col l6 m6 s12"> 
+              <div id="dd" class="wrapper-dropdown">Additional Filters
+                <ul class="dropdown">
+                <li><%= check_box_tag(:pets) %><%= label_tag(:pets, "Pets Allowed") %></li>
+                <li><%= check_box_tag(:parking) %><%= label_tag(:parking, "Parking Included") %></li>
+                <li><%= check_box_tag(:smoking) %><%= label_tag(:smoking, "Smoking Allowed") %></li>
+                <li><%= check_box_tag(:furnished) %><%= label_tag(:furnished, "Fully-Furnished") %></li>
+                <li><%= check_box_tag(:storage) %><%= label_tag(:storage, "Storage Included") %></li>
+                </ul>
+              </div>
+            </div>
 
-        <div class="filters-section row" id="submit-btn">
-           <div class="col s12 m12 l12">
-            <%= submit_tag "Apply Filters", :class => "submit" %>
-              <% if @city %> 
-                <%= hidden_field_tag(:city, @city) %> 
-              <% end %> 
           </div>
-        </div>
-        
-      <% end %> 
-    </div>
+
+
+          <div class="filters-section row" id="submit-btn">
+             <div class="col s12 m12 l12">
+              <%= submit_tag "Apply Filters", :class => "submit" %>
+                <% if @city %> 
+                  <%= hidden_field_tag(:city, @city) %> 
+                <% end %> 
+            </div>
+          </div>
+          
+        <% end %> 
+      </div>
+    <% end %> 
 
     <div id="listing_results">
       <% @listings.each do |listing| %>

@@ -6,7 +6,7 @@ class ListingsController < ApplicationController
   def index
     @current_user = current_user
     @listings = Listing.where(:user_id => @current_user.id)
-
+    @listings_belong_to_user = true
     respond_to do |format|
       format.html
     end
@@ -62,6 +62,7 @@ class ListingsController < ApplicationController
   def results
     @users = User.all
     @listings = Listing.includes([:favourites, :user])
+    @listings_belong_to_user = false
 
     # if !params[:city].nil?
       @city = params[:city]
