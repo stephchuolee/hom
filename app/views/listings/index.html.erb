@@ -16,8 +16,8 @@
 
           <div class="col l6 m6 s12 component">
              <ul>
-
-              <li><%= text_field_tag(:number_of_bedrooms, nil, placeholder: "Number of Bedrooms") %></li>
+              <li><%= label_tag(:number_of_bedrooms, "Bedrooms") %></li>
+              <li><%= text_field_tag(:number_of_bedrooms, nil, placeholder: "") %></li>
             </ul>
           </div>
 
@@ -47,7 +47,7 @@
 
 
         <div class="filters-section row" id="submit-btn">
-           <div class="col s12">
+           <div class="col s12 m12 l12">
             <%= submit_tag "Apply Filters", :class => "submit" %>
               <% if @city %> 
                 <%= hidden_field_tag(:city, @city) %> 
@@ -60,7 +60,7 @@
 
     <div id="listing_results">
       <% @listings.each do |listing| %>
-          <div class="listingDiv listing information col s6" data-listing-id="<%=listing.id%>">   
+          <div class="listingDiv listing information col s12" data-listing-id="<%=listing.id%>">   
               <% if listing.listing_images %> 
                 <% listing.listing_images.each do |listing| %>
                   <%= image_tag(listing.image) %>

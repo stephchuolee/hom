@@ -400,6 +400,7 @@ body.nav-open .navbar-collapse {
   position: relative;
   margin: 0 auto;
   padding: 10px 10px 10px 30px;
+  margin-bottom: 20px;
 
   /* Styles */
   background: #fff;
@@ -560,7 +561,7 @@ div.fancy-select ul.options li:last-of-type {
 }
 
 div.fancy-select ul.options li.selected {
-  background: none;
+  background: #FFF;
   color: #00B6B1;
 }
 
