@@ -142,7 +142,13 @@ function importFoursquare(){
 }
 
 $(function(){
-
+  $('.bxslider').bxSlider({
+    controls: true,
+    nextText: '',
+    prevText: '',
+    infiniteLoop: false,
+    hideControlOnEnd: true
+  });
   $('#booking_link').on('click', function() {
 
   });

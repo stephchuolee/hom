@@ -10,14 +10,19 @@
 
     </button>
     <div class="listing">
-      <div class="row">
-        <div class="">
-          <div id="slides">
+      <div class="">
+        <ul class="bxslider">
+          <li><%= image_tag("room1.jpg", :alt => "listing image 1") %></li>
+          <li><%= image_tag("room2.jpg", :alt => "listing image 2") %></li>
+          <li><%= image_tag("room3.jpg", :alt => "listing image 3") %></li>
+          <li><%= image_tag("room4.jpg", :alt => "listing image 4") %></li>
+        </ul>
+          <!-- <div id="slides">
             <%= image_tag("room1.jpg", :alt => "listing image 1") %>
             <%= image_tag("room2.jpg", :alt => "listing image 2") %>
             <%= image_tag("room3.jpg", :alt => "listing image 3") %>
             <%= image_tag("room4.jpg", :alt => "listing image 3") %>
-          </div>
+          </div> -->
         </div>
     <% @listing.listing_images.each do |listing| %>
       <%= image_tag(listing.image) %>
@@ -36,7 +41,7 @@
           <!-- <p class="price">
             $<%= @listing.price %>
           </p> -->
-        </div>
+
     </div>
   </div>
 

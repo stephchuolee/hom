@@ -25,6 +25,5 @@ $(function() {
     $('body').on('click','.navbar-toggle', function()
     {
       nav.toggle('show');
-
     });
 });
