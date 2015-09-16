@@ -14,7 +14,8 @@ function initMap() {
           zoom: 14,
         });
     getAddresses();
-    if (document.location.pathname.match(/(\d)+$/)) {
+    debugger;
+    if (document.location.pathname.match(/listings\/(\d)+$/)) {
       importFoursquare();
       // getWalkScore(); // walkscore requires API key which is not available at this
     }
