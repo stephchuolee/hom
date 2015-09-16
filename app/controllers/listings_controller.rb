@@ -60,7 +60,8 @@ class ListingsController < ApplicationController
   end
 
   def results
-    @listings = Listing.includes(:favourites)
+    @users = User.all
+    @listings = Listing.includes([:favourites, :user])
 
     # if !params[:city].nil?
       @city = params[:city]
@@ -108,7 +109,8 @@ class ListingsController < ApplicationController
     @listings = @listings.map do |listing|
       {
         listing: listing,
-        favourites: listing.favourites.where(user_id: current_user.id).first
+        favourites: listing.favourites.where(user_id: current_user.id).first,
+        user: @users.where(id: listing.user_id)
       }
     end
     render json: @listings
