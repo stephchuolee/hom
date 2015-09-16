@@ -44,7 +44,19 @@ class UsersController < ApplicationController
       end
     end
   end
-
+  
+  def sendrequest 
+    @user = User.find(params[:id])
+    @current_user = current_user  
+   
+    respond_to do |format|
+      if @current_user
+        UserMailer.contact_email(@user).deliver
+        format.html { redirect_to @user, notice: 'Request for viewing sent.' }
+      end
+    end
+  end
+ 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update

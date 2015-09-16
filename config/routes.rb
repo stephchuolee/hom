@@ -29,6 +29,10 @@ Rails.application.routes.draw do
   resources :listing_images
   
   resources :users do
+    member do
+      get 'sendrequest' => 'users#sendrequest'
+    end
+
     resources :bookings, only: [:new, :create, :edit]
     resources :favourites, only: [:new, :create, :destroy, :index, :show]
   end
