@@ -13,12 +13,13 @@ $(function(){
     var user = $("<h5 class='user'><a href='/users/" + result.user[0]["id"] + "'>" + result.user[0]["name"] + "</a></h5>").appendTo(infoDiv)
 
 
-    
+    // users shouldn't be able to see favourite if it is their own listing
+    // favourites don't always persist
 
 
     var class_name = result.favourites ? "favourited" : "unfavourite"
     $("<button class='favourite_btn " + class_name + "'></button>").appendTo(infoDiv);
-
+    debugger
     listingDiv.appendTo('#listing_results');
 
 
