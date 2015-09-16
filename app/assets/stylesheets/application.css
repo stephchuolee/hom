@@ -350,6 +350,10 @@ li {
   list-style-type: none;
 }
 
+#new-listing {
+  float:left;
+}
+
 .collapsing {
     -webkit-transition: none;
     -moz-transition: none;
@@ -460,7 +464,14 @@ li {
 }
 
 #profile #profile_pic img{
-  border-radius: 50%;
+  border-radius: 0%;
+}
+
+#profile {
+  max-width: 400px;
+  max-height: 500px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 #fave {
