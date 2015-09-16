@@ -49,13 +49,34 @@ a:visited {
   color: #747d7d;
 }
 
+.heading {
+  font-weight: 400;
+  margin-left: 50px;
+}
+
+.required {
+    color: grey;
+    padding-left: 2px;
+    font-size: small;
+    font-style: italic;
+}
+
 #search input[type="text"] {
   color: #fff;
+
   background-color: #01CEC8;
   border: none;
   height: 30px;
   width: 300px;
-  /*margin: 7px 0 0 0;*/
+  margin: 7px 0 0 0;*/
+  height: 38px;
+  width: 300px;
+  padding: 6px 10px;  
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box;
 }
 
 .field input[type="text"] {

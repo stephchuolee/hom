@@ -22,7 +22,7 @@
   <div class="container">
     <div class="logo"><a href="/"><%= image_tag("logo.svg", :alt => "Hom Logo") %></a></div>
     <div class="mobile-nav-button">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" <data></data>-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only"><%= image_tag("menu.png", :alt => "Menu") %></span>
       </button>
     </div>
@@ -35,7 +35,6 @@
     </div> -->
 
     <ul class="desktop-nav">
-      <li id="new-listing"><%= link_to "Create New Listing", new_listing_path %></li>
       <li id="search">
         <%= form_tag "/listings/search", method: "get" do %>
         <%= text_field_tag :city, nil, placeholder: 'Find your home...' %>
@@ -67,6 +66,7 @@
     <% end %>  </ul>
 </div>
 <div class="container">
+<p id="notice"><%= notice %></p>
   <%= yield %>
 </div>
 

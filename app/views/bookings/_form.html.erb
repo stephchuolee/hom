@@ -11,28 +11,31 @@
     </div>
   <% end %>
 
-  <div class="bookings_form">
-    <div class="field">
-      <%= f.label :date %>
-      <%= f.date_field :date %>
-    </div>
-    <div class="field">
-      <%= f.label :start_time %>
-      <%= f.time_field :start_time %>
-    </div>
-    <div class="field">
-      <%= f.label :end_time %>
-      <%= f.time_field :end_time %>
-    </div>
-    <div class="field">
-      <%= f.label :listing_id %><br>
-      <%= select_tag(:listing_id, options_for_select(Listing.where(user_id: @current_user.id).collect { |listing| [listing.title, listing.id] }), { include_blank: true }) %>
-    </div>
-    <div>
-      <%= f.hidden_field :user_id %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
+  <div class="col s12 l4 offset-l2">
+    <div class="bookings_form">
+      <div class="field">
+        <span style="float:right; color:grey; font-size:small; margin-right: 50px; margin-top: 2px;"> * required field </span>
+        <%= f.label :date, "Date<span class=\"required\">*</span>".html_safe%>
+        <%= f.date_field :date %>
+      </div>
+      <div class="field">
+        <%= f.label :start_time, "Start Time<span class=\"required\">*</span>".html_safe %>
+        <%= f.time_field :start_time %>
+      </div>
+      <div class="field">
+        <%= f.label :end_time, "End Time<span class=\"required\">*</span>".html_safe %>
+        <%= f.time_field :end_time %>
+      </div>
+      <div class="field">
+        <%= f.label :listing_id, "Listing<span class=\"required\">*</span>".html_safe %>
+        <%= select_tag(:listing_id, options_for_select(Listing.where(user_id: @current_user.id).collect { |listing| [listing.title, listing.id] }), { include_blank: true }) %>
+      </div>
+      <div>
+        <%= f.hidden_field :user_id %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
     </div>
   </div>
 <% end %>
