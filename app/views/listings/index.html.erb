@@ -2,89 +2,93 @@
 
 <div class="row listings-index">
   <div class="col l7 s12 listings">
-    <div class="sub-nav">
-      <%= form_tag "/listings/search", id: "filter_form", method: "get" do %>
-        <ul>
-          <div class="filters-section-intro">
-            <li><%= label_tag(:min_price, "Price Range") %></li>
-            <li><%= text_field_tag(:min_price, nil, placeholder: "Min") %></li>
-            <li><%= text_field_tag(:max_price, nil, placeholder: "Max") %></li>
-            <li><%= label_tag(:rental_type, "Rental Type") %></li>
-            <li><%= select_tag(:rental_type, options_for_select([["Full Lease"], ["Sublet"], ["Room"]]), {:prompt => 'Select Rental Type'}) %></li>
-          </div>
-          <div class="filters-section-secondary"> 
-            <li><%= label_tag(:number_of_bedrooms, "Bedrooms") %></li>
-            <li><%= text_field_tag(:number_of_bedrooms) %></li>
-            <li><%= label_tag(:pets) %></li> 
-            <li><%= check_box_tag(:pets) %></li>
-            <li><%= label_tag(:parking, "Parking") %></li>
-            <li><%= check_box_tag(:parking) %></li>
-            <li><%= label_tag(:smoking, "Smoking") %></li>
-            <li><%= check_box_tag(:smoking) %></li>
-            <br/>
-            <li><%= label_tag(:furnished, "Furnished") %></li>
-            <li><%= check_box_tag(:furnished) %></li>
-            <li><%= label_tag(:storage, "Storage") %></li>
-            <li><%= check_box_tag(:storage) %></li>
-          </div>
-          <div class="filters-submit"> 
-            <li><%= submit_tag "Apply Filters", :class => "submit" %></li>
-            <% if @city %> 
-              <%= hidden_field_tag(:city, @city) %> 
-            <% end %> 
-          </div>
-        </ul>
-      <% end %> 
-    </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Price</th>
-          <th>Address</th>
-          <th>Image</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+    <% unless @listings_belong_to_user %> 
 
-      <tbody id="listing_results">
-        <% @listings.each do |listing| %>
-          <tr data-listing-id="<%=listing.id%>" class="listingDiv">
-              <div>
-                <td><%= link_to "#{listing.title}", listing_path(listing.id) %></td>
-                <td><%= listing.price %></td>
-                <td class="address"><%= listing.address %></td>
-                <td>
-                <% listing.listing_images.each do |array| %>
-                  <%= image_tag(array.image.thumb) %>
+      <div class="sub-nav">
+        <%= form_tag "/listings/search", id: "filter_form", method: "get" do %>
+
+          <div class="filters-section row">
+            <div class="col l6 m6 s12 component">
+              <ul>
+                <li><%= label_tag(:min_price, "Price") %></li>
+                <li><%= text_field_tag(:min_price, nil, placeholder: "Min") %></li>
+                <li><%= text_field_tag(:max_price, nil, placeholder: "Max") %></li>
+              </ul>
+            </div>
+
+            <div class="col l6 m6 s12 component">
+               <ul>
+                <li><%= label_tag(:number_of_bedrooms, "Bedrooms") %></li>
+                <li><%= text_field_tag(:number_of_bedrooms, nil, placeholder: "") %></li>
+              </ul>
+            </div>
+
+          </div>
+
+          <div class="filters-section row">
+    
+            <div  class="col l6 m6 s12">
+              <%= select_tag(:rental_type, options_for_select([["Full Lease"], ["Sublet"], ["Room"]]), {:prompt => 'Rental Type', class: "basic"}) %>
+            </div>
+
+            <div class="col l6 m6 s12"> 
+              <div id="dd" class="wrapper-dropdown">Additional Filters
+                <ul class="dropdown">
+                <li><%= check_box_tag(:pets) %><%= label_tag(:pets, "Pets Allowed") %></li>
+                <li><%= check_box_tag(:parking) %><%= label_tag(:parking, "Parking Included") %></li>
+                <li><%= check_box_tag(:smoking) %><%= label_tag(:smoking, "Smoking Allowed") %></li>
+                <li><%= check_box_tag(:furnished) %><%= label_tag(:furnished, "Fully-Furnished") %></li>
+                <li><%= check_box_tag(:storage) %><%= label_tag(:storage, "Storage Included") %></li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="filters-section row" id="submit-btn">
+             <div class="col s12 m12 l12">
+              <%= submit_tag "Apply Filters", :class => "submit" %>
+                <% if @city %> 
+                  <%= hidden_field_tag(:city, @city) %> 
+                <% end %> 
+            </div>
+          </div>
+          
+        <% end %> 
+      </div>
+    <% end %> 
+
+    <div id="listing_results">
+      <% @listings.each do |listing| %>
+          <div class="listingDiv listing information col s12" data-listing-id="<%=listing.id%>">   
+              <% if listing.listing_images %> 
+                <% listing.listing_images.each do |listing| %>
+                  <%= image_tag(listing.image) %>
                 <% end %>
-                </td>
-
-                <td> 
+              <% end %>
+              <div class="information col s12" >
+                <h3 class="title">
+                  <a href="/listings/<%="#{listing.id}"%>"><%= listing.title %></a>
+                </h3>
+                <h5 class="address">
+                  <%= listing.address %>
+                </h5>
+                <h5 class="user">
+                  <a href="/users/<%="#{listing.user_id}"%>"><%= listing.user.name %></a>
+                </h5>
                 <% unless current_user.id == listing.user_id %> 
                   <%= set_favourite_class(listing.user_id, listing.id) %>
                 <% end %> 
-                </td>
-                
-                <% if @current_user == listing.user_id %>
-                  <td>  <%= link_to 'Edit', edit_listing_path(listing.id) %></td>
-                  <td><%= link_to 'Destroy', listing_path(id: listing.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                <%end%>
-
               </div>
+            </div>  
+      <% end %>
+    </div>
 
-          </tr>
-        
-        <% end %>
-      </tbody>
-    </table>
   </div>
 
   <div class="col l5 s12 map">
     <div id="map" class="fixed"></div>
     </div>
-</div>
-
-<brt 7th, Vancouver, BC   
-Testing multiple uploads  1300  123 Seymour St  
+  </div>

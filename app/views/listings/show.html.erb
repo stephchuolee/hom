@@ -30,8 +30,9 @@
             <%= @listing.address %>
           </h5>
           <h5 class="user">
-            <%= @listing.user.name %>
-          </h5> -->
+
+            <a href="/users/<%="#{@listing.user_id}"%>"><%= @listing.user.name %></a>
+          </h5>
           <!-- <p class="price">
             $<%= @listing.price %>
           </p> -->
@@ -65,26 +66,26 @@
         <h3 class="center">Features & Amenities</h3>
       </div>
 
-      <div class="col s4">
+      <div class=" col s4 m4 l4">
         <li>
           <div class="name">Square Footage</div>
           <p><%= @listing.square_footage %>sqft</p>
         </li>
       </div>
-        <div class="col s4">
+        <div class="col s4 m4 l4">
           <li>
             <div class="name">Bedroom(s)</div>
             <p><%= @listing.bedroom %></p>
           </li>
         </div>
 
-        <div class="col s4">
+        <div class="col s4 m4 l4">
           <li>
             <div class="name">Bathroom(s)</div>
             <p><%= @listing.bathroom %></p>
           </li>
         </div>
-        <div class="col s4">
+        <div class="col s4 m4 l4">
           <li>
             <div class="name">Furnished</div>
             <% if @listing.furnished %>
@@ -94,7 +95,7 @@
             <% end %>
           </li>
         </div>
-        <div class="col s4">
+        <div class="col s4 m4 l4">
           <li>
             <div class="name">Pets</div>
             <!-- <p><%= @listing.pets %></p> -->
@@ -105,7 +106,7 @@
             <% end %>
           </li>
         </div>
-        <div class="col s4">
+        <div class="col s4 m4 l4">
           <li>
             <div class="name">Smoking</div>
             <!-- <p><%= @listing.smoking %></p> -->
@@ -116,13 +117,13 @@
             <% end %>
           </li>
         </div>
-        <div class="col s4">
+        <div class="col s4 m4 l4">
           <li>
             <div class="name">Floor Number</div>
             <p><%= @listing.floor_number %></p>
           </li>
         </div>
-        <div class="col s4">
+        <div class="col s4 m4 l4">
           <li>
             <div class="name">Parking Space</div>
             <!-- <p><%= @listing.parking_space %></p> -->
@@ -133,7 +134,7 @@
             <% end %>
           </li>
         </div>
-        <div class="col s4">
+        <div class="col s4 m4 l4">
           <li>
             <div class="name">Storage Space</div>
             <!-- <p><%= @listing.storage_space %></p> -->
@@ -144,7 +145,7 @@
             <% end %>
           </li>
         </div>
-        <div class="col s4">
+        <div class="col s4 m4 l4">
           <li>
             <div class="name">Balcony</div>
             <!-- <p><%= @listing.balcony %></p> -->
@@ -155,19 +156,19 @@
             <% end %>
           </li>
         </div>
-        <div class="col s4">
+        <div class="col s4 m4 l4">
           <li>
             <div class="name">Available Date</div>
             <p><%= @listing.available_date %></p>
           </li>
         </div>
-        <div class="col s4">
+        <div class="col s4 m4 l4">
           <li>
             <div class="name">Minimum Lease</div>
             <p><%= @listing.minimum_lease %> Months</p>
           </li>
         </div>
-        <div class="col s4">
+        <div class="col s4 m4 l4">
           <li>
             <div class="name">Rental Type</div>
             <p><%= @listing.rental_type %></p>
