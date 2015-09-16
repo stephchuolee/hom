@@ -1,3 +1,7 @@
+
+</head>
+<body>
+
 <div class="row">
   <div class="col s12 l6">
 
@@ -6,10 +10,19 @@
 
     </button>
     <div class="listing">
+      <div class="row">
+        <div class="">
+          <div id="slides">
+            <%= image_tag("room1.jpg", :alt => "listing image 1") %>
+            <%= image_tag("room2.jpg", :alt => "listing image 2") %>
+            <%= image_tag("room3.jpg", :alt => "listing image 3") %>
+            <%= image_tag("room4.jpg", :alt => "listing image 3") %>
+          </div>
+        </div>
     <% @listing.listing_images.each do |listing| %>
       <%= image_tag(listing.image) %>
     <% end %>
-        <div class="information col s12" >
+        <!-- <div class="information col s12" >
           <h3 class="title">
             <%= @listing.title %>
           </h3>
@@ -18,7 +31,7 @@
           </h5>
           <h5 class="user">
             <%= @listing.user.name %>
-          </h5>
+          </h5> -->
           <!-- <p class="price">
             $<%= @listing.price %>
           </p> -->
@@ -49,9 +62,10 @@
         <li>
           <div class="description-text"><%= @listing.description %></div>
         </li>
+        <h3 class="center">Features & Amenities</h3>
       </div>
-      <h3 class="center">Features & Amenities</h3>
-      <div class=" col s4">
+
+      <div class="col s4">
         <li>
           <div class="name">Square Footage</div>
           <p><%= @listing.square_footage %>sqft</p>
@@ -190,4 +204,5 @@
       </div>
       <%end%>
   </div>
+</div>
 </div>
