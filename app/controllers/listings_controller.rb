@@ -6,7 +6,7 @@ class ListingsController < ApplicationController
   def index
     @current_user = current_user
     @listings = Listing.where(:user_id => @current_user.id)
-
+    @listings_belong_to_user = true
     respond_to do |format|
       format.html
     end
@@ -60,7 +60,9 @@ class ListingsController < ApplicationController
   end
 
   def results
-    @listings = Listing.includes(:favourites)
+    @users = User.all
+    @listings = Listing.includes([:favourites, :user])
+    @listings_belong_to_user = false
 
     # if !params[:city].nil?
       @city = params[:city]
@@ -108,7 +110,8 @@ class ListingsController < ApplicationController
     @listings = @listings.map do |listing|
       {
         listing: listing,
-        favourites: listing.favourites.where(user_id: current_user.id).first
+        favourites: listing.favourites.where(user_id: current_user.id).first,
+        user: @users.where(id: listing.user_id)
       }
     end
     render json: @listings
