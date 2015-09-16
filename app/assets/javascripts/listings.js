@@ -14,7 +14,6 @@ function initMap() {
           zoom: 14,
         });
     getAddresses();
-    debugger;
     if (document.location.pathname.match(/listings\/(\d)+$/)) {
       importFoursquare();
       // getWalkScore(); // walkscore requires API key which is not available at this
@@ -177,9 +176,10 @@ $(function(){
       dataType: "json",
       success: function(data, status){
         deleteMarkers();
+        debugger;
         var geocoder = new google.maps.Geocoder();
         for (var i =0; i < data.length; i++){
-          geocodeAddress(geocoder, data[i].address)
+          geocodeAddress(geocoder, data[i].listing.address)
         }
         $('#listing_results').html("");
         if (data){
@@ -210,7 +210,7 @@ $(function(){
         }
       }
     })
-
-    return false;
+    // should NOT return anything, DO NOT use "return false"
+    // return false; 
   });
 });
