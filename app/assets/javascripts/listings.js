@@ -107,7 +107,6 @@ function importFoursquare(){
   var client_secret = "4HQLZ1DKORVCBURYHPIBYANQPXR55F2PWMZUCXNKPD3FQDQ4";
   var address = $('.information').find('.address').html();
   var geocoder = new google.maps.Geocoder();
-  console.log(address)
   geocoder.geocode({'address': address}, function(results, status) {
     var coord = results[0].geometry.location;
     $.ajax({

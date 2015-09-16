@@ -10,8 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
 //= require react
 //= require react_ujs
 //= require components
@@ -34,21 +32,29 @@
 
 // });
 
-$(document).ready(function(){
+$(function() {
 
-    $('body').on('click','.navbar-toggle', function(){
-      // if ($('body').hasClass('nav-open')) {
-      //   $('body').removeClass('nav-open');
+    var nav = $('.mobile-nav')
+
+    $('body').on('click','.navbar-toggle', function()
+    {
+      nav.toggle('show');
+      // // if ($('body').hasClass('nav-open')) {
+      // //   $('body').removeClass('nav-open');
+      // // } else {
+      // //   $('body').addClass('nav-open');
+      // // }
+      // if nav.hasClass('show') {
+      //   nav.removeClass('show');
+      //   // console.log('Nav Hidden')
       // } else {
-      //   $('body').addClass('nav-open');
+      //   nav.addClass('show');
+      // //   console.log('Show Nav')
       // }
-      if ($('.mobile-nav').hasClass('show')) {
-        $('.mobile-nav').removeClass('show');
-        console.log('Nav Hidden')
-      } else {
-        $('.mobile-nav').addClass('show');
-        console.log('Show Nav')
-      }
     });
 
+    $('#slides').slidesjs({
+      width: 940,
+      height: 528
+    });
 });
