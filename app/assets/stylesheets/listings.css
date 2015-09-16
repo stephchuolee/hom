@@ -8,8 +8,8 @@
   transition: 300ms;
 }
 
-.listingDiv.hovered .information {
-  background: #9FE0DB;
+.listingDiv.hovered {
+  border: 2px solid #FFE77E; 
 }
 
 

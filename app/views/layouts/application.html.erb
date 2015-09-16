@@ -2,17 +2,9 @@
 <html>
 <head>
   <title>Hom</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <%= javascript_include_tag 'application' %>
-   <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
-
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
-
-
-
-
 </head>
 <body>
 
@@ -37,8 +29,12 @@
     <ul class="desktop-nav">
       <li id="search">
         <%= form_tag "/listings/search", method: "get" do %>
-        <%= text_field_tag :city, nil, placeholder: 'Find your home...' %>
-        <%= submit_tag("Search") %>
+          <div id="search-field">
+            <%= text_field_tag :city, nil, placeholder: 'Find your home...' %>
+          </div>
+          <div id="search-button">
+            <%= submit_tag("Search") %>
+          </div>
         <% end %>
       </li>
       <% if current_user %>
@@ -57,18 +53,24 @@
 <div class="mobile-nav">
   <ul>
     <% if current_user %>
-      <li> Hi, <%= current_user.first_name %>! </li>
+      <li><a href="/users/<%="#{current_user.id}"%>"> Hi, <%= current_user.first_name %>! </a></li>
       <li><%= link_to "Bookings", bookings_path %></li>
       <li><%= link_to "Listings", listings_path %></li>
       <li><%= link_to "Logout", sessions_path("current"), method: :delete %></li>
     <% else %>
       <li><%= link_to "Login", new_sessions_path %></li>
-    <% end %>  </ul>
-</div>
-<div class="container">
-<p id="notice"><%= notice %></p>
-  <%= yield %>
+    <% end %>
+  </ul>
 </div>
 
+  <div class="container">
+    <%= yield %>
+  </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <%= javascript_include_tag 'application' %>
+  <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+  <%= yield :scripts %>
 </body>
 </html>
