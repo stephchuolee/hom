@@ -357,6 +357,7 @@ body.nav-open .navbar-collapse {
   margin: 0 10px 0 0 ;
   padding: 10px 5px;
   z-index: 9999;
+  height: 29%;
 }
 
 .sub-nav col {
@@ -906,6 +907,10 @@ button a, button a:visited {
 @media (max-width: 600px) {
   .map {
     display: none;
+  }
+
+  .sub-nav {
+    height: 50%;
   }
 }
 
