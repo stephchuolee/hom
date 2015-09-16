@@ -13,7 +13,7 @@
 
 //= require react
 //= require react_ujs
-//= require fancyselect/fancySelect.js
+//= require fancySelect.js
 //= require components
 //= require_tree .
 
