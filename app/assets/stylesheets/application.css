@@ -71,7 +71,7 @@ a:visited {
   margin: 7px 0 0 0;*/
   height: 38px;
   width: 300px;
-  padding: 6px 10px;  
+  padding: 6px 10px;
   background-color: #fff;
   border: 1px solid #D1D1D1;
   border-radius: 4px;
@@ -163,6 +163,10 @@ nav ul li#search {
 
 .mobile-nav-button {
   display: none;
+}
+
+#search-field {
+  display: inline;
 }
 
 @media (max-width: 600px) {
@@ -699,9 +703,6 @@ button a, button a:visited {
 }
 
 @media (max-width: 993px){
-  #search {
-
-  }
 
   #search-field {
     max-width: 100px;
@@ -715,14 +716,6 @@ button a, button a:visited {
 @media (min-width: 994px){
   .container {
     max-width: 1200px;
-  }
-
-  #search {
-
-  }
-
-  #search-field {
-
   }
 
   #search-button {
