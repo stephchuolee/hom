@@ -2,6 +2,7 @@ $(function(){
 
 
   function renderResults(result){
+    console.log(result);
 
     var listingDiv = $("<div class='listingDiv listing information col s6' data-listing-id=" + result.listing.id + ">");
 
@@ -18,7 +19,7 @@ $(function(){
 
 
     var class_name = result.favourites ? "favourited" : "unfavourite"
-    $("<button class='favourite_btn " + class_name + "'></button>").appendTo(infoDiv);
+    $("<button data-listing-id='" + result.listing.id + "' class='favourite_btn " + class_name + "'></button>").appendTo(infoDiv);
 
     listingDiv.appendTo('#listing_results');
 
@@ -27,7 +28,8 @@ $(function(){
 
 
 
-  $('#filter_form').on('submit', function(event){
+  $('#filter_form').on('submit', function(event) {
+
     event.preventDefault;
     var city = $('#city').val();
     var input = $(this).serialize();
@@ -45,15 +47,16 @@ $(function(){
     $.ajax({
       url: '/listings/results?' + input, 
       dataType: "json", 
-      success: function(data, status){
-        $('#listing_results').html("");
+      success: function(data, status) {
+        $('#listing_results').empty();
         if (data){
           data.forEach(function(result){
             renderResults(result)
           });
         }
       }
-    })
+    });
+    return false;
 
     // var currentState = history.state;
 

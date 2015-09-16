@@ -3,6 +3,8 @@ var markers = [];
 var infoWindow;
 var service;
 
+var addresses = [];
+
 
 function initMap() {
   if (document.getElementById('map') != null ){
@@ -11,15 +13,16 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
           zoom: 14,
         });
+    // console.log('Google ready, geocode', addresses);
     getAddresses();
     if (document.location.pathname.match(/listings\/(\d)+$/)) {
+      console.log('Importing FourSquare')
       importFoursquare();
       // getWalkScore(); // walkscore requires API key which is not available at this
     }
 
   }
 }
-
 
 function getAddresses(){
   var address = extractAddresses();
@@ -38,6 +41,10 @@ function extractAddresses(){
     }
   }
   return addresses;
+
+  // $('.address')
+  //     .map(function(idx, t) { return t.innerText; })
+  //     .filter(function(x) { return !x; })
 }
 
 function geocodeAddress(geocoder, address, i) {
@@ -103,10 +110,13 @@ function deleteMarkers() {
 function importFoursquare(){
   var client_id = "ACY5FCHS13VT51FDX4FRG5YN25CY30534NV34ADSC1DX2WTE";
   var client_secret = "4HQLZ1DKORVCBURYHPIBYANQPXR55F2PWMZUCXNKPD3FQDQ4";
-  var address = $('.information').find('.address').html();
+  // var address = $('.information').find('.address').html();
+  var address = $('.address').html();
+  // var address = addresses[0];
   var geocoder = new google.maps.Geocoder();
 
   geocoder.geocode({'address': address}, function(results, status) {
+    if(results.length === 0) { return; }
     var coord = results[0].geometry.location;
     $.ajax({
       url: 'https://api.foursquare.com/v2/venues/explore?'

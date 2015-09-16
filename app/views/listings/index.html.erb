@@ -80,9 +80,11 @@
                 <h5 class="user">
                   <a href="/users/<%="#{listing.user_id}"%>"><%= listing.user.name %></a>
                 </h5>
+                <% if current_user %>
                 <% unless current_user.id == listing.user_id %> 
                   <%= set_favourite_class(current_user.id, listing.id) %>
                 <% end %> 
+                <% end %>
               </div>
             </div>  
       <% end %>
