@@ -10,18 +10,17 @@
       </ul>
     </div>
   <% end %>
+
   <div class="col s12 l4 offset-l2">
     <div class="field">
       <span style="float:right; color:grey; font-size:small; margin-right: 100px"> * required field </span>
       <%= f.label :title, "Title<span class=\"required\">*</span>".html_safe%>
-      
       <%= f.text_field :title %>
     </div>
     <div class="field">
       <%= f.label :price,"Price<span class=\"required\">*</span>".html_safe %>
       <%= f.number_field :price %>
     </div>
-    
     <div class="field">
       <%= f.hidden_field :user_id %>
     </div>
@@ -92,13 +91,11 @@
       <%= f.label :image %>
       <%= f.file_field :image, multiple: true, name: "listing_images[image][]" %>
     </div>
-    
-
   </div>
 
   <div class="col s12 l4 offset-l4 center">
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
   </div>
 <% end %>
