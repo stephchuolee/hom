@@ -107,12 +107,13 @@ function importFoursquare(){
   var client_secret = "4HQLZ1DKORVCBURYHPIBYANQPXR55F2PWMZUCXNKPD3FQDQ4";
   var address = $('.information').find('.address').html();
   var geocoder = new google.maps.Geocoder();
-  console.log(address)
+  
   geocoder.geocode({'address': address}, function(results, status) {
     var coord = results[0].geometry.location;
+    debugger;
     $.ajax({
       url: 'https://api.foursquare.com/v2/venues/explore?'
-          +'ll='+ coord["G"].toFixed(3) +","+coord["K"].toFixed(3)
+          +'ll='+ coord["H"].toFixed(3) +","+coord["L"].toFixed(3)
           +"&client_id=" + client_id
           +"&client_secret=" + client_secret
           +"&v=20150910", // today date is hardcoded. may need to update/automate it later
