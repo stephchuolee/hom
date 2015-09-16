@@ -5,10 +5,14 @@ $(function(){
 
     var listingDiv = $("<div class='listingDiv listing information col s6' data-listing-id=" + result.listing.id + ">");
 
+    var image = $("<img src='" + result.listing.listing_images + "'>")
     var infoDiv = $("<div class='information col s12'>").appendTo(listingDiv)
     var title = $("<h3 class='title'><a href='/listings/" + result.listing.id + "'>" + result.listing.title + "</a></h3>").appendTo(infoDiv)
     var address = $("<h5 class='address'>" + result.listing.address + "</h5>").appendTo(infoDiv)
+
     var user = $("<h5 class='user'><a href='/users/" + result.user[0]["id"] + "'>" + result.user[0]["name"] + "</a></h5>").appendTo(infoDiv)
+
+
     
 
 

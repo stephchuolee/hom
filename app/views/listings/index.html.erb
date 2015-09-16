@@ -16,8 +16,8 @@
 
           <div class="col l6 m6 s12 component">
              <ul>
-              <li><%= label_tag(:number_of_bedrooms, "Number of Bedrooms") %></li>
-              <li><%= text_field_tag(:number_of_bedrooms) %></li>
+
+              <li><%= text_field_tag(:number_of_bedrooms, nil, placeholder: "Number of Bedrooms") %></li>
             </ul>
           </div>
 
@@ -43,19 +43,16 @@
             </div>
           </div>
 
-           <!-- testing -->
-
-
         </div>
 
 
-        <div class="filters-section row"> 
-          <ul class="col s12">
-            <li><%= submit_tag "Apply Filters", :class => "submit" %></li>
-            <% if @city %> 
-              <%= hidden_field_tag(:city, @city) %> 
-            <% end %> 
-          </ul>
+        <div class="filters-section row" id="submit-btn">
+           <div class="col s12">
+            <%= submit_tag "Apply Filters", :class => "submit" %>
+              <% if @city %> 
+                <%= hidden_field_tag(:city, @city) %> 
+              <% end %> 
+          </div>
         </div>
         
       <% end %> 
@@ -86,18 +83,6 @@
             </div>  
       <% end %>
     </div>
-      
-
-
-
-<!-- testing -->
-
-
-
-<!-- testing -->
-
-
-
 
   </div>
 

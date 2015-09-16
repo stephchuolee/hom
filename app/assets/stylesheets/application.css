@@ -335,6 +335,7 @@ body.nav-open .navbar-collapse {
   background-color: #9FE0DB;
   margin: 0 10px 0 0 ;
   padding: 10px 5px;
+  z-index: 9999;
 }
 
 .sub-nav col {
@@ -343,11 +344,10 @@ body.nav-open .navbar-collapse {
 
 .sub-nav input[type="text"] {
   width: 70px;
-  border-bottom: 1px solid #01CEC8;
 }
 
 .sub-nav label {
-  padding: 6px 0 0 6px;
+  padding: 11px 0 0 6px;
   text-transform: uppercase;
 }
 
@@ -371,12 +371,26 @@ body.nav-open .navbar-collapse {
 .filters-section input[type="text"] {
   border-radius: 0px;
   text-align: center;
+  background-color: #9FE0DB;
+  border: 1px solid white;
+
 }
 
 .component {
-  background: #FFF;
-  border: 1px solid silver;
-  height: 135%; /*confirm*/
+/*  background: #FFF;*/
+  border: 1px solid white;
+  width: 80%;
+  height: 150%; 
+  margin-bottom: 20px;
+}
+
+.filters-section#submit-btn {
+  text-align: center;
+}
+
+.filters-section input[type="submit"] {
+  height: 40px;
+  width: 200px;
 }
 
 /* Dropdown styling */
@@ -418,6 +432,7 @@ body.nav-open .navbar-collapse {
   margin-top: 1px; /* border of wrapper */
   left: -1px;
   right: -1px;
+  z-index: 99999;
 
   /* Styles */
   background: white;
@@ -435,6 +450,7 @@ body.nav-open .navbar-collapse {
   position: relative; /* Enable absolute positioning for checkboxes */
   display: block;
   float: none;
+
 }
 
 .wrapper-dropdown .dropdown li label {
@@ -444,6 +460,9 @@ body.nav-open .navbar-collapse {
     transition: all 0.3s ease-out;
 }
 
+.wrapper-dropdown .dropdown li label:hover {
+  color: #00B6B1;
+}
 
 .wrapper-dropdown .dropdown li:last-of-type label {
   border: none;
@@ -460,13 +479,13 @@ body.nav-open .navbar-collapse {
 /* Checked state */
 
 .wrapper-dropdown .dropdown li input:checked ~ label {
-  color: #01CEC8;
+  color: #00B6B1; 
 }
 
 /* Selected state*/
 
 .wrapper-dropdown .dropdown li input:focus {
-  color: #01CEC8;
+  color: #00B6B1;
 } 
 
 /* Active state */
@@ -483,6 +502,9 @@ body.nav-open .navbar-collapse {
 
 /* Modified Fancy Select */
 
+div.fancy-select {
+  margin-bottom: 20px;
+}
 div.fancy-select div.trigger {
   border-radius: 0px;
   background: #FFF;
@@ -516,8 +538,7 @@ div.fancy-select ul.options {
   background: #FFF;
   border-top: none;
   border-radius: 0px;
-  width: 100%;
-  /*min-width:;*/
+  width: 86%;
 }
 
 div.fancy-select ul.options.open {
@@ -527,6 +548,7 @@ div.fancy-select ul.options.open {
 
 div.fancy-select ul.options li {
   position: relative; 
+  color: #3C3C3C;
   display: block;
   float: none;
   border-bottom: 1px solid silver;
@@ -535,6 +557,15 @@ div.fancy-select ul.options li {
 
 div.fancy-select ul.options li:last-of-type {
   border: none;
+}
+
+div.fancy-select ul.options li.selected {
+  background: none;
+  color: #00B6B1;
+}
+
+div.fancy-select ul.options li.hover {
+  color: #00B6B1;
 }
 
 /* end of dropdown styling */
@@ -630,7 +661,7 @@ li {
   background-color: #FCFDEF;
   opacity: 0.9;
   position: absolute;
-  z-index: 99999;
+  z-index: 9999;
   bottom: 0;
   padding: 10px;
 }
