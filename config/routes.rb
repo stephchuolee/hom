@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # custom routing /dashboard, will use jsx to render actual page
   # get "/dashboard"
   
-  resource :sessions
+  resource :sessions, only: [:new, :create, :index, :destroy]
   
   resources :bookings, only: [:index, :destroy]
   
