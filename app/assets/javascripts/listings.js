@@ -3,6 +3,8 @@ var markers = [];
 var infoWindow;
 var service;
 
+var addresses = [];
+
 
 function initMap() {
   if (document.getElementById('map') != null ){
@@ -11,15 +13,16 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
           zoom: 14,
         });
+    // console.log('Google ready, geocode', addresses);
     getAddresses();
-    if (document.location.pathname.match(/(\d)+$/)) {
+    if (document.location.pathname.match(/listings\/(\d)+$/)) {
+      console.log('Importing FourSquare')
       importFoursquare();
       // getWalkScore(); // walkscore requires API key which is not available at this
     }
 
   }
 }
-
 
 function getAddresses(){
   var address = extractAddresses();
@@ -38,6 +41,10 @@ function extractAddresses(){
     }
   }
   return addresses;
+
+  // $('.address')
+  //     .map(function(idx, t) { return t.innerText; })
+  //     .filter(function(x) { return !x; })
 }
 
 function geocodeAddress(geocoder, address, i) {
@@ -103,10 +110,13 @@ function deleteMarkers() {
 function importFoursquare(){
   var client_id = "ACY5FCHS13VT51FDX4FRG5YN25CY30534NV34ADSC1DX2WTE";
   var client_secret = "4HQLZ1DKORVCBURYHPIBYANQPXR55F2PWMZUCXNKPD3FQDQ4";
-  var address = $('.information').find('.address').html();
+  // var address = $('.information').find('.address').html();
+  var address = $('.address').html();
+  // var address = addresses[0];
   var geocoder = new google.maps.Geocoder();
 
   geocoder.geocode({'address': address}, function(results, status) {
+    if(results.length === 0) { return; }
     var coord = results[0].geometry.location;
     $.ajax({
       url: 'https://api.foursquare.com/v2/venues/explore?'
@@ -164,50 +174,71 @@ $(function(){
     geocodeAddress(geocoder, address);
   })
 
-  $('#filter_form').on('submit', function(event){
+  function renderResults(result){
+    console.log(result);
+
+    var listingDiv = $("<div class='listingDiv listing information col s6' data-listing-id=" + result.listing.id + ">");
+
+    // var image = $("<img src='/uploads/listing_image/image/'" + result.listing.images + ">").appendto(listingDiv)
+    var infoDiv = $("<div class='information col s12'>").appendTo(listingDiv)
+    var title = $("<h3 class='title'><a href='/listings/" + result.listing.id + "'>" + result.listing.title + "</a></h3>").appendTo(infoDiv)
+    var address = $("<h5 class='address'>" + result.listing.address + "</h5>").appendTo(infoDiv)
+
+    var user = $("<h5 class='user'><a href='/users/" + result.user[0]["id"] + "'>" + result.user[0]["name"] + "</a></h5>").appendTo(infoDiv)
+
+
+    // users shouldn't be able to see favourite if it is their own listing
+    // favourites don't always persist
+
+
+    var class_name = result.favourites ? "favourited" : "unfavourite"
+    $("<button data-listing-id='" + result.listing.id + "' class='favourite_btn " + class_name + "'></button>").appendTo(infoDiv);
+
+    listingDiv.appendTo('#listing_results');
+
+
+  }
+
+
+
+  $('#filter_form').on('submit', function(event) {
+
     event.preventDefault;
     var city = $('#city').val();
     var input = $(this).serialize();
+    var min_price = $('#min_price').val();
+    var max_price = $('#max_price').val();
+    var number_of_bedrooms = $('#number_of_bedrooms').val();
+    var rental_type = $('#rental_type').val();
+    var pets = $('#pets').val();
+    var parking = $('#parking').val();
+    var smoking = $('#smoking').val();
+    var furnished = $('#furnished').val();
+    var storage = $('#storage').val();
+
 
     $.ajax({
-      url: '/listings/results?' + input,
-      dataType: "json",
-      success: function(data, status){
-        deleteMarkers();
-        var geocoder = new google.maps.Geocoder();
-        for (var i =0; i < data.length; i++){
-          geocodeAddress(geocoder, data[i].address)
-        }
-        $('#listing_results').html("");
+      url: '/listings/results?' + input, 
+      dataType: "json", 
+      success: function(data, status) {
+        $('#listing_results').empty();
         if (data){
           data.forEach(function(result){
-            var tr = $("<tr>");
-            var td = $("<td>").text(result.user_id).appendTo(tr);
-            var td = $("<td>").text(result.square_footage).appendTo(tr);
-            var td = $("<td>").text(result.bedroom).appendTo(tr);
-            var td = $("<td>").text(result.bathroom).appendTo(tr);
-            var td = $("<td>").text(result.price).appendTo(tr);
-            var td = $("<td>").text(result.address).appendTo(tr);
-            var td = $("<td>").text(result.furnished).appendTo(tr);
-            var td = $("<td>").text(result.pets).appendTo(tr);
-            var td = $("<td>").text(result.smoking).appendTo(tr);
-            var td = $("<td>").text(result.floor_number).appendTo(tr);
-            var td = $("<td>").text(result.parking_space).appendTo(tr);
-            var td = $("<td>").text(result.storage_space).appendTo(tr);
-            var td = $("<td>").text(result.balcony).appendTo(tr);
-            var td = $("<td>").text(result.available_date).appendTo(tr);
-            var td = $("<td>").text(result.minimum_lease).appendTo(tr);
-            var td = $("<td>").text(result.image).appendTo(tr);
-            var td = $("<td>").text(result.title).appendTo(tr);
-            var td = $("<td>").text(result.rental_type).appendTo(tr);
-            var td = $("<td>").text(result.description).appendTo(tr);
-            tr.appendTo('#listing_results')
-
+            renderResults(result)
           });
         }
       }
-    })
-
+    });
     return false;
+
+    // var currentState = history.state;
+
+    // var state = {id: 'search_results_page'}
+    // var url = "'&min_price=' + min_price + '&max_price=' + max_price + ' &number_of_bedrooms=' + number_of_bedrooms + '&rental_type=' + rental_type + '&pets=' + pets + '&parking=' + parking + '&smoking=' + smoking + '&furnished=' + furnished + '&storage=' + storage"
+
+    // search?utf8=✓&min_price=&max_price=&number_of_bedrooms=&rental_type=Sublet&more_filters=&commit=Apply+Filters
+    // history.pushState(state, '', url)
+
   });
+
 });

@@ -399,11 +399,14 @@ body.nav-open .navbar-collapse {
 }
 
 .component {
-/*  background: #FFF;*/
   border: 1px solid white;
   width: 80%;
   height: 150%; 
   margin-bottom: 20px;
+}
+
+.component-wrapper {
+  width: 90%;
 }
 
 .filters-section#submit-btn {
@@ -561,7 +564,7 @@ div.fancy-select ul.options {
   background: #FFF;
   border-top: none;
   border-radius: 0px;
-  width: 86%;
+  width: 88.5%;
 }
 
 div.fancy-select ul.options.open {
@@ -672,7 +675,7 @@ li {
   height: 300px;
   position: relative;
   background-color: #FCFDEF;
-  border: 2px solid #FFE77E;
+  border: 2px solid #9FE0DB;
   overflow: hidden;
   width: 98.5%;
   margin-bottom: 20px;
@@ -717,9 +720,12 @@ li {
   margin: 0 0 0 0;
 }
 
-a.slidesjs-previous .slidesjs-navigation {
-  position: absolute;
-  z-index: 9999999;
+.listing h3 a {
+  color: #00B6B1;
+}
+
+.listing h3 a:link {
+  text-decoration: none;
 }
 
 .bookings_form {
@@ -926,6 +932,7 @@ button a, button a:visited {
 /* Media Queries
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+/* Mobile */
 @media (max-width: 600px) {
   .map {
     display: none;
@@ -934,7 +941,23 @@ button a, button a:visited {
   .sub-nav {
     height: 50%;
   }
+
+  div.fancy-select ul.options {
+    width: 88.5%;
+  }
+
+  .listing:last-child {
+    margin-bottom: 20px;
+  }
+
+  .listing {
+    width: 97.5%;
+  }
+
 }
+
+
+/* Desktop */
 
 @media (max-width: 993px){
   #search {
@@ -950,20 +973,16 @@ button a, button a:visited {
   }
 }
 
+
 @media (min-width: 994px){
   .container {
     max-width: 1200px;
   }
+}
 
-  #search {
-
-  }
-
-  #search-field {
-
-  }
-
-  #search-button {
-    display: inline;
+/* Tablet */
+@media (max-width: 993px){
+  div.fancy-select ul.options {
+    width: 87.5%;
   }
 }

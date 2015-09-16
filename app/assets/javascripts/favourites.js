@@ -1,24 +1,27 @@
 $(function(){
 
   $('body').on('click', '.favourite_btn', function(){
-    var user_id = $("#fave_user_id").val();
-    var listing_id = $(this).find('#fave_listing_id').val();
-    var that = $(this);
-    
-    if ($(that).hasClass('favourited')){ 
-        unfavourite(user_id, listing_id, that)
-    } else {
-        favourite(user_id, listing_id, that);
 
+    // var user_id = $("#fave_user_id").val();
+    // var listing_id = $(this).find('#fave_listing_id').val();
+
+
+    var that = $(this);
+    var listing_id = that.data('listingId');
+    
+    if ($(that).hasClass('favourited')) { 
+        unfavourite(listing_id, that)
+    } else {
+        favourite(listing_id, that);
     }
     // console.log('favourite clicked')
   });
  
-  function favourite(user_id, listing_id, that){ 
+  function favourite(listing_id, that) { 
     $.ajax({
-      url: '/users/' + user_id + '/favourites',
+      url: '/users/0/favourites',
       type: "POST",
-      data: {user_id: user_id, listing_id: listing_id },
+      data: {listing_id: listing_id },
       success: function(){ 
         that.addClass('favourited')
         that.removeClass('unfavourite')
@@ -27,10 +30,9 @@ $(function(){
     });
   }
     
-  function unfavourite(user_id, listing_id, that){
-  
+  function unfavourite(listing_id, that) {
     $.ajax({
-      url: '/users/' + user_id + '/favourites?listing_id=' + listing_id,
+      url: '/users/0/favourites?listing_id=' + listing_id,
       type: "DELETE",
       success: function(){
         that.addClass('unfavourite');
@@ -38,11 +40,7 @@ $(function(){
           // console.log('unfavourited')
       }
     });    
-
   }
-
-  
-
 });
 
 
