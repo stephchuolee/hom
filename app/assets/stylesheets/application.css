@@ -672,7 +672,7 @@ li {
   height: 300px;
   position: relative;
   background-color: #FCFDEF;
-  border: 2px solid #FFE77E;
+  border: 2px solid #9FE0DB;
   overflow: hidden;
   width: 98.5%;
   margin-bottom: 20px;
@@ -715,6 +715,14 @@ li {
   font-style: italic;
   color: #9A9797;
   margin: 0 0 0 0;
+}
+
+.listing h3 a {
+  color: #00B6B1;
+}
+
+.listing h3 a:link {
+  text-decoration: none;
 }
 
 .bookings_form {
