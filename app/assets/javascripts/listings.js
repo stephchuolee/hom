@@ -110,7 +110,6 @@ function importFoursquare(){
   
   geocoder.geocode({'address': address}, function(results, status) {
     var coord = results[0].geometry.location;
-    debugger;
     $.ajax({
       url: 'https://api.foursquare.com/v2/venues/explore?'
           +'ll='+ coord["H"].toFixed(3) +","+coord["L"].toFixed(3)
