@@ -1,44 +1,63 @@
 <p id="notice"><%= notice %></p>
 
 <div>
-  <%= link_to 'Edit', edit_user_path(@user) %> |
   <%= link_to 'Back', users_path %> 
-  <% if @current_user.id == @user.id %>
-  | <%= link_to 'Bookings', bookings_path(@user)%>
-  <% end %>
 </div>
 
-<div id="profile">
-  <div id="profile_pic">
-    <%= image_tag(@user.image.profile) %>
+<div class="row">
+  <h2><%= @user.name %></h2>
+  <div class="col l3">
+    <%= image_tag(@user.image.profile) %><br>
+    <button><%= link_to 'Edit', edit_user_path(@user) %></button>
+    <button><%= link_to 'Contact', sendrequest_user_path %></button>
+    <li>
+      <strong>Email:</strong>
+      <%= @user.email %>
+    </li>
+    
+    <li>
+      <strong>Location:</strong>
+      <%= @user.location %>
+    </li>
+
+    <% if @current_user.id == @user.id %>
+      <%= link_to 'Bookings', bookings_path(@user)%>
+      <% @user.bookings.each do |booking| %>
+        <li><%= booking.date.to_formatted_s(:long) %><%= booking.start_time.to_formatted_s(:time) %> <%= booking.end_time.to_formatted_s(:time)%></li>
+      <% end %>
+    <% end %>
   </div>
 
-  <p>
-    <strong>Name:</strong>
-    <%= @user.name %>
-  </p>
-  
-  <p>
-    <strong>Email:</strong>
-    <%= @user.email %>
-  </p>
-  
-  <p>
-    <strong>Location:</strong>
-    <%= @user.location %>
-  </p>
-  
-  
-  <p>
-    <strong>Blurb:</strong>
-    <%= @user.blurb %>
-  </p>
-  
-  <p>
-    <strong>Rental Properties Owned:</strong><br>
-    <% @user.listings.each do |listing| %>
-    <a><%= link_to "#{listing.title}", listing_path(id: listing.id, user_id: @user.id) %><br>
-    <% end %>
-  </p>
+  <div class="col l9">
+    <div id="blurb">
+      <li>
+        <strong>Blurb</strong>
+      </li>
+      <div>
+        <%= @user.blurb %>
+      </div>
+    </div>
+    
+    <div id="rental-table">
+      <strong>Rental Properties</strong><br>
+      <table>
+        <thead>
+          <tr>
+            <th>Listing Title</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          <% @user.listings.each do |listing| %>
+            <td><a><%= link_to "#{listing.title}", listing_path(id: listing.id, user_id: @user.id) %></td>
+            <td><%= listing.address %></td>
+          <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
 
