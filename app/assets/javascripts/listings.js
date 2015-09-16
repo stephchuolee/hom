@@ -1,5 +1,3 @@
-
-
 var map;
 var markers = [];
 var infoWindow;
@@ -28,7 +26,7 @@ function getAddresses(){
   var geocoder = new google.maps.Geocoder();
   for (var i =0; i<address.length; i++){
     geocodeAddress(geocoder,address[i],i);
-  } 
+  }
 }
 
 function extractAddresses(){
@@ -107,7 +105,7 @@ function importFoursquare(){
   var client_secret = "4HQLZ1DKORVCBURYHPIBYANQPXR55F2PWMZUCXNKPD3FQDQ4";
   var address = $('.information').find('.address').html();
   var geocoder = new google.maps.Geocoder();
-  
+
   geocoder.geocode({'address': address}, function(results, status) {
     var coord = results[0].geometry.location;
     $.ajax({

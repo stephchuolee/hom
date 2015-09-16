@@ -18,22 +18,13 @@
 //= require_tree .
 
 
-$(document).ready(function(){
+$(function() {
 
-    $('body').on('click','.navbar-toggle', function(){
-      // if ($('body').hasClass('nav-open')) {
-      //   $('body').removeClass('nav-open');
-      // } else {
-      //   $('body').addClass('nav-open');
-      // }
-      if ($('.mobile-nav').hasClass('show')) {
-        $('.mobile-nav').removeClass('show');
-        console.log('Nav Hidden')
-      } else {
-        $('.mobile-nav').addClass('show');
-        console.log('Show Nav')
-      }
+    var nav = $('.mobile-nav')
+
+    $('body').on('click','.navbar-toggle', function()
+    {
+      nav.toggle('show');
+
     });
-
-
 });
