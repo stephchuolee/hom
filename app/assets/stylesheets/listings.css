@@ -4,8 +4,8 @@
   transition: 500ms;
 }
 
-.listingDiv.hovered {
-  background: red;
+.listingDiv.hovered .information {
+  background: #9FE0DB;
 }
 
 

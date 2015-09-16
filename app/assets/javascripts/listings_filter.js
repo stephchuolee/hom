@@ -19,7 +19,7 @@ $(function(){
 
     var class_name = result.favourites ? "favourited" : "unfavourite"
     $("<button class='favourite_btn " + class_name + "'></button>").appendTo(infoDiv);
-    debugger
+
     listingDiv.appendTo('#listing_results');
 
 
