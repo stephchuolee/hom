@@ -651,6 +651,16 @@ li {
   background-color: #FCFDEF;
   border: 2px solid #FFE77E;
   overflow: hidden;
+  width: 98.5%;
+  margin-bottom: 20px;
+}
+
+.listing:first-child {
+  margin-top: 10px;
+}
+
+.listing:last-child {
+  margin-bottom: 0;
 }
 
 .listing img {
