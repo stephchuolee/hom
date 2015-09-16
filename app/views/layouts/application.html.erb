@@ -62,12 +62,15 @@
     <% end %>
   </ul>
 </div>
+
   <div class="container">
-  <p id="notice"><%= notice %></p>
     <%= yield %>
   </div>
+
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <%= javascript_include_tag 'application' %>
   <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+  <%= yield :scripts %>
 </body>
 </html>

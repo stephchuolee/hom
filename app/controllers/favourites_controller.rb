@@ -1,6 +1,8 @@
 class FavouritesController < ApplicationController
   before_action :set_favourite, only: [:show, :edit, :update]
-  protect_from_forgery :except => [:delete]
+  # protect_from_forgery :except => [:delete]
+  skip_before_action :verify_authenticity_token
+
 
   # GET /favourites
   # GET /favourites.json
@@ -25,7 +27,7 @@ class FavouritesController < ApplicationController
   # POST /favourites
   # POST /favourites.json
   def create
-    @favourite = Favourite.create(user_id: params[:user_id], listing_id: params[:listing_id])
+    @favourite = Favourite.create(user_id: current_user.id, listing_id: params[:listing_id])
     render nothing: true
   end
 
@@ -46,7 +48,7 @@ class FavouritesController < ApplicationController
   # DELETE /favourites/1
   # DELETE /favourites/1.json
   def destroy
-    @user_id = params[:user_id]
+    @user_id = current_user.id
     @listing_id = params[:listing_id]
     Favourite.destroy_all(:user_id => @user_id, :listing_id => @listing_id)
     render nothing: true
@@ -60,6 +62,6 @@ class FavouritesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def favourite_params
-      params.require(:favourite).permit(:user_id, :listing_id)
+      params.require(:favourite).permit(:listing_id)
     end
 end

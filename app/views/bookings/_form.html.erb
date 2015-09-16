@@ -10,32 +10,34 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="col s12 l4 offset-l2">
-    <div class="bookings_form">
-      <div class="field">
+  
+<div class="row">
+  <div class="col s10 m8 l4 offset-l4 offset-m2 offset-s1">
+    <div class="bookings_form col s12 m12 l12">
+      <div class="field col s12 m12 l12">
         <span style="float:right; color:grey; font-size:small; margin-right: 50px; margin-top: 2px;"> * required field </span>
         <%= f.label :date, "Date<span class=\"required\">*</span>".html_safe%>
         <%= f.date_field :date %>
       </div>
-      <div class="field">
+      <div class="field col s12 m5 l5">
         <%= f.label :start_time, "Start Time<span class=\"required\">*</span>".html_safe %>
         <%= f.time_field :start_time %>
       </div>
-      <div class="field">
+      <div class="field col s12 m5 l5 offset-m2 offset-l2">
         <%= f.label :end_time, "End Time<span class=\"required\">*</span>".html_safe %>
         <%= f.time_field :end_time %>
       </div>
-      <div class="field">
+      <div class="field col s12 m12 l12">
         <%= f.label :listing_id, "Listing<span class=\"required\">*</span>".html_safe %>
         <%= select_tag(:listing_id, options_for_select(Listing.where(user_id: @current_user.id).collect { |listing| [listing.title, listing.id] }), { include_blank: true }) %>
       </div>
       <div>
         <%= f.hidden_field :user_id %>
       </div>
-      <div class="actions">
+      <div class="actions col s12 m12 l12 center">
         <%= f.submit %>
       </div>
     </div>
   </div>
+</div>
 <% end %>

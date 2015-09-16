@@ -1,11 +1,15 @@
 .listingDiv {
   height: 200px;
   width: 100%;
-  transition: 500ms;
+  
 }
 
-.listingDiv.hovered .information {
-  background: #9FE0DB;
+.listingDiv .information {
+  transition: 300ms;
+}
+
+.listingDiv.hovered {
+  border: 2px solid #FFE77E; 
 }
 
 
