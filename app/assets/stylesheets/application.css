@@ -49,7 +49,17 @@ a:visited {
   color: #747d7d;
 }
 
+.heading {
+  font-weight: 400;
+  margin-left: 50px;
+}
 
+.required {
+    color: grey;
+    padding-left: 2px;
+    font-size: small;
+    font-style: italic;
+}
 
 #search input[type="text"] {
   color: #fff;
