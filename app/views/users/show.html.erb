@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <div>
-  <%= link_to 'Back', users_path %> 
+  <%#= link_to 'Back', users_path %> 
 </div>
 
 <div class="row">
-  <h2><%= @user.name %></h2>
+  
   <div class="col l3">
     <%= image_tag(@user.image.profile) %><br>
     <button><%= link_to 'Edit', edit_user_path(@user) %></button>
@@ -30,32 +30,18 @@
 
   <div class="col l9">
     <div id="blurb">
-      <li>
-        <strong>Blurb</strong>
-      </li>
+      <li><h1><%= @user.name %></h1></li>
       <div>
         <%= @user.blurb %>
       </div>
     </div>
     
-    <div id="rental-table">
-      <strong>Rental Properties</strong><br>
-      <table>
-        <thead>
-          <tr>
-            <th>Listing Title</th>
-            <th>Address</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-          <% @user.listings.each do |listing| %>
-            <td><a><%= link_to "#{listing.title}", listing_path(id: listing.id, user_id: @user.id) %></td>
-            <td><%= listing.address %></td>
-          <% end %>
-          </tr>
-        </tbody>
-      </table>
+    <div id="rental-properties">
+      <h2>Rental Properties</h2>
+        <% @user.listings.each do |listing| %>
+          <li><%= link_to "#{listing.title}", listing_path(id: listing.id, user_id: @user.id) %></li>
+          <li><%= listing.address %></li>
+        <% end %>
     </div>
   </div>
 

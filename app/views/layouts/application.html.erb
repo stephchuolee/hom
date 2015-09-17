@@ -14,9 +14,9 @@
   <div class="container">
     <div class="logo"><a href="/"><%= image_tag("logo.svg", :alt => "Hom Logo") %></a></div>
     <div class="mobile-nav-button">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" <data></data>-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only"><%= image_tag("menu.png", :alt => "Menu") %></span>
-      </button>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+       <span class="sr-only"><%= image_tag("menu.png", :alt => "Menu") %></span>
+     </button>
     </div>
     <!-- <div id="navbar" class="navbar-collapse collapse">
        <ul class="nav navbar-nav atitel-menu-links">
@@ -39,9 +39,9 @@
       </li>
       <% if current_user %>
         <li><a href="/users/<%="#{current_user.id}"%>"> Hi, <%= current_user.first_name %>! </a></li>
-        <li><%= link_to "Create new Listings", new_listing_path %>
-        <li><%= link_to "Bookings", bookings_path %></li>
-        <li><%= link_to "Listings", listings_path %></li>
+        <li><%= link_to "Create a Listing", new_listing_path %>
+        <li><%= link_to "My Bookings", bookings_path %></li>
+        <li><%= link_to "My Listings", listings_path %></li>
         <li><%= link_to "Logout", sessions_path, method: :delete %></li>
       <% else %>
         <li><%= link_to "Login", new_sessions_path %></li>
