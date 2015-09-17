@@ -76,6 +76,7 @@
                 <%= image_tag(listing.listing_images[0].image) %>
               <% end %>
               <div class="information col l12 m12 s12" >
+                <h3 class="price">$<%= listing.price %>/mo</h3>
                 <h3 class="title">
                   <a href="/listings/<%="#{listing.id}"%>"><%= listing.title %></a>
                 </h3>
