@@ -385,6 +385,12 @@ body.nav-open .navbar-collapse {
   text-transform: uppercase;
 }
 
+
+.sub-nav ::-webkit-input-placeholder {
+   color: #FFF;
+}
+
+
 .filters-section {
   /*margin-bottom: 5px;*/
   height: 40px;
@@ -709,6 +715,10 @@ li {
   padding: 8px 0 0 0;
 }
 
+#missing-image {
+  opacity: 0.2;
+}
+
 .listing {
   height: 395px;
   position: relative;
@@ -984,8 +994,21 @@ label.optionalinfo {
   height: 150px;
 }
 
+#listing_description {
+  width: 100%;
+  height: 200px;
+}
+
 .field_listing input[type='text'] {
-  width: 300px;
+  width: 100%;
+}
+
+.field_listing input[type="number"] {
+  width: 100%;
+}
+
+#listing_furnished {
+  margin-top: 33px;
 }
 
 #rental-properties h2 {
@@ -1129,6 +1152,13 @@ button a, button a:visited {
     width: 97.5%;
   }
 
+  #listing_furnished {
+    margin-top: 0px;
+  }
+
+  .profile-section {
+    text-align: center;
+  }
 
 }
 

@@ -4,7 +4,7 @@
 
 <div class="row">
   
-  <div class="col l3">
+  <div class="col s12 l3 profile-section">
     <%= image_tag(@user.image.profile) %><br>
     <% if @current_user == @user %>
       <button><%= link_to 'Edit My Profile', edit_user_path(@user) %></button>

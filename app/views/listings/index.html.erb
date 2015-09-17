@@ -68,10 +68,12 @@
                   <%= set_favourite_class(current_user.id, listing.id) %>
                 <% end %> 
 
-              <% if listing.listing_images %> 
+              <% if listing.listing_images.empty? %>
+                <div id="missing-image">
+                  <%= image_tag("no-hom.png") %> 
+                </div>
+              <% else %>
                 <%= image_tag(listing.listing_images[0].image) %>
-              <% elsif listing.listing_images == nil %>
-                <img src="https://edbacker.com/themes/edbacker/images/no-image.png"/>
               <% end %>
               <div class="information col l12 m12 s12" >
                 <h3 class="title">
