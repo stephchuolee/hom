@@ -24,11 +24,12 @@
     <% end %>
 
         <div class="information col s12" >
+          <h3 class="price">$<%= @listing.price %>/mo</h3>
           <h3 class="title">
-            <%= @listing.title %>
+            <%= @listing.title %> 
           </h3>
           <h5 class="address">
-            <%= @listing.address %>
+            <%= @listing.address %> 
           </h5>
           <h5 class="user">
             <a href="/users/<%="#{@listing.user_id}"%>"><%= @listing.user.name %></a>
