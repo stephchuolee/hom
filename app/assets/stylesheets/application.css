@@ -677,7 +677,7 @@ li {
 }
 
 .listing {
-  height: 300px;
+  height: 395px;
   position: relative;
   background-color: #FCFDEF;
   border: 2px solid #9FE0DB;
@@ -771,7 +771,7 @@ li {
 
 .calendar {
   background-color: #FFE77E;
-  height: 352px;
+  height: 446px;
   width: 100%;
 }
 
