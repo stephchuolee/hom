@@ -151,7 +151,13 @@ function importFoursquare(){
 }
 
 $(function(){
-
+  $('.bxslider').bxSlider({
+    controls: true,
+    nextText: '',
+    prevText: '',
+    infiniteLoop: false,
+    hideControlOnEnd: true
+  });
   $('#booking_link').on('click', function() {
 
   });
@@ -222,8 +228,8 @@ $(function(){
 
 
     $.ajax({
-      url: '/listings/results?' + input, 
-      dataType: "json", 
+      url: '/listings/results?' + input,
+      dataType: "json",
       success: function(data, status) {
         $('#listing_results').empty();
 
@@ -231,7 +237,7 @@ $(function(){
           deleteMarkers();
           var geocoder = new google.maps.Geocoder();
           for (var i =0; i < data.length; i++){
-            geocodeAddress(geocoder, data[i].listing.address,i)
+            geocodeAddress(geocoder, data[i].listing.address)
           }
           data.forEach(function(result){
             renderResults(result)
@@ -240,7 +246,6 @@ $(function(){
       }
 
     });
-
     return false;
 
     // var currentState = history.state;
