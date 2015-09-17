@@ -124,9 +124,10 @@ class ListingsController < ApplicationController
     @current_user = current_user  
     
     respond_to do |format|
+
       if @current_user
         UserMailer.contact_email(@user).deliver
-        format.html { redirect_to @listing, notice: 'Request for viewing sent.' }
+        format.html { redirect_to listing_path(@listing.id), notice: 'Request for viewing sent.' }
       end
     end
   end
