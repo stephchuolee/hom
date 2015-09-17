@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   
   resource :sessions, only: [:new, :create, :index, :destroy]
   
-  resources :bookings, only: [:index, :destroy]
+  resources :bookings, only: [:index, :edit, :update, :destroy]
   
   resources :listings do
     member do
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
       get 'sendrequest' => 'users#sendrequest'
     end
 
-    resources :bookings, only: [:new, :create, :edit]
+    resources :bookings, only: [:new, :create]
     resources :favourites, only: [:new, :create, :destroy, :index, :show]
   end
   
