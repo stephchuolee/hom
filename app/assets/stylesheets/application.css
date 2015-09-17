@@ -820,6 +820,11 @@ li {
   position: relative;
 }
 
+#listing_results .listing {
+  height: 100%;
+  width: 98.5%;
+}
+
 .col.map {
   height: 100%;
   position: relative;
@@ -1116,6 +1121,11 @@ button a, button a:visited {
   .hero-search {
     left: 22%;
   }
+
+  #listing_results .listing {
+    width: 97.5%;
+  }
+
 
 }
 
