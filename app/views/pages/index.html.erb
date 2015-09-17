@@ -2,7 +2,7 @@
   <h1>Find the perfect neighbourhood.<br>Find the perfect home.</h1>
    <div class="hero-search" >
        <%= form_tag "/listings/search", method: "get" do %>
-         <div id="search-field" class="col s12 m4 l4 center">
+         <div id="search-field-home" class="col s12 m4 l4 center">
            <%= text_field_tag :city, nil, placeholder: 'Find your home' %>
          </div>
        <% end %>

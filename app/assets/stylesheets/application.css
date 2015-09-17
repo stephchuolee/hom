@@ -686,24 +686,28 @@ li {
 .hero {
   background-image: url('background.jpg');
   background-size: cover;
-  min-height: 700px;
+  min-height: 100%;
   position: relative;
 }
 
 .hero h1 {
-  color: #fff;
-  text-align: center;
-  position: absolute;
-  argin: 0 auto;
-  top: 32%;
-  width: 100%;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    top: 32%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
 .hero-search {
   position: absolute;
-  top: 50%;
-  /* width: 340px; */
+  left: 0;
+  right: 0;
   margin: 0 auto;
+  bottom: 0;
+  top: 50%;
 }
 
 .hero-search input[type="text"] {
@@ -1129,6 +1133,16 @@ button a, button a:visited {
 
 }
 
+#search-field-home {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    width: 100%;
+  }
+
 
 
 
@@ -1161,9 +1175,6 @@ button a, button a:visited {
     top: 24%;
     font-size: 2.1em;
   }
-  .hero-search {
-    left: 22%;
-  }
 
   #listing_results .listing {
     width: 97.5%;
@@ -1188,12 +1199,7 @@ button a, button a:visited {
 
 @media (max-width: 993px){
 
-  /*#search-field {
-    max-width: 100px;
-    float: left;
-  }
-
-  #search-button {
+  /*#search-button {
     display: none;
   }*/
 
@@ -1206,11 +1212,6 @@ button a, button a:visited {
 @media (min-width: 994px){
   .container {
     max-width: 1200px;
-  }
-
-  .hero-search {
-    top: 55%;
-    left: 37%;
   }
 
   ::-webkit-input-placeholder {
