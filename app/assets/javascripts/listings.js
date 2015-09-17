@@ -164,9 +164,9 @@ function renderResults(result){
     }
     // debugger;
 
-
-
     var infoDiv = $("<div class='information col s12'>").appendTo(listingDiv)
+    
+    var price = $("<h3 class='price'>$" + result.listing.price + "/mo</h3>").appendTo(infoDiv)
     var title = $("<h3 class='title'><a href='/listings/" + result.listing.id + "'>" + result.listing.title + "</a></h3>").appendTo(infoDiv)
     var address = $("<h5 class='address'>" + result.listing.address + "</h5>").appendTo(infoDiv)
 
