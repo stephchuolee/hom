@@ -122,10 +122,12 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @user = @listing.user
     @current_user = current_user  
+    
     respond_to do |format|
+
       if @current_user
         UserMailer.contact_email(@user).deliver
-        format.html { redirect_to @listing, notice: 'Request for viewing sent.' }
+        format.html { redirect_to listing_path(@listing.id), notice: 'Request for viewing sent.' }
       end
     end
   end
@@ -135,6 +137,9 @@ class ListingsController < ApplicationController
   def update
     respond_to do |format|
       if @listing.update(listing_params)
+            params[:listing_images]['image'].each do |a|
+            @listing_image = @listing.listing_images.create!(:image => a)
+        end
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
         format.json { render :show, status: :ok, location: @listing }
       else

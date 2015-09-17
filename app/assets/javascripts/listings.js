@@ -151,25 +151,34 @@ function importFoursquare(){
 }
 
 function renderResults(result){
-  var listingDiv = $("<div class='listingDiv listing information col s6' data-listing-id=" + result.listing.id + ">");
+    console.log(result);
 
-  // var image = $("<img src='/uploads/listing_image/image/'" + result.listing.images + ">").appendto(listingDiv)
-  var infoDiv = $("<div class='information col s12'>").appendTo(listingDiv)
-  var title = $("<h3 class='title'><a href='/listings/" + result.listing.id + "'>" + result.listing.title + "</a></h3>").appendTo(infoDiv)
-  var address = $("<h5 class='address'>" + result.listing.address + "</h5>").appendTo(infoDiv)
+    var listingDiv = $("<div class='listingDiv listing information col s6' data-listing-id=" + result.listing.id + ">");
 
-  var user = $("<h5 class='user'><a href='/users/" + result.user[0]["id"] + "'>" + result.user[0]["name"] + "</a></h5>").appendTo(infoDiv)
+    if (result.listing_images){
+      var first_img = result.listing_images[0]["image"]["url"]
+      var image = $("<img src='" + first_img + "'>").appendTo(listingDiv)
+    } 
+    // debugger;
+
+    var infoDiv = $("<div class='information col s12'>").appendTo(listingDiv)
+    var title = $("<h3 class='title'><a href='/listings/" + result.listing.id + "'>" + result.listing.title + "</a></h3>").appendTo(infoDiv)
+    var address = $("<h5 class='address'>" + result.listing.address + "</h5>").appendTo(infoDiv)
+
+    var user = $("<h5 class='user'><a href='/users/" + result.user[0]["id"] + "'>" + result.user[0]["name"] + "</a></h5>").appendTo(infoDiv)
 
 
-  // users shouldn't be able to see favourite if it is their own listing
-  // favourites don't always persist
+    // users shouldn't be able to see favourite if it is their own listing
+    // favourites don't always persist
 
 
-  var class_name = result.favourites ? "favourited" : "unfavourite"
-  $("<button data-listing-id='" + result.listing.id + "' class='favourite_btn " + class_name + "'></button>").appendTo(infoDiv);
+    var class_name = result.favourites ? "favourited" : "unfavourite"
+    $("<button data-listing-id='" + result.listing.id + "' class='favourite_btn " + class_name + "'></button>").appendTo(infoDiv);
 
-  listingDiv.appendTo('#listing_results');
-}
+    listingDiv.appendTo('#listing_results');
+
+
+  }
 
 $(function(){
   $('.bxslider').bxSlider({
