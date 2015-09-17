@@ -1,6 +1,6 @@
 <h1 class="col s12 m12 l12 center">Editing Booking</h1>
 
-<%= form_for([:user, @booking]) do |f| %>
+<%= form_for([@booking]) do |f| %>
   <% if @booking.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
@@ -26,10 +26,6 @@
       <%= f.label :end_time %>
       <%= f.time_field :end_time %>
     </div>
-    <div class="field">
-      <%= f.label :listing_id %><br>
-      <%= select_tag(:listing_id, options_for_select(Listing.where(user_id: @current_user.id).collect { |listing| [listing.id] }), { include_blank: true }) %>
-    </div>
     <div>
       <%= f.hidden_field :user_id %>
     </div>
@@ -39,5 +35,4 @@
   </div>
 <% end %>
 
-<%= link_to 'Show', @booking %> |
-<%= link_to 'Back', user_bookings_path %>
+<%= link_to 'Back', bookings_path %>

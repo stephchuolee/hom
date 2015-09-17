@@ -226,7 +226,7 @@ $(function(){
           deleteMarkers();
           var geocoder = new google.maps.Geocoder();
           for (var i =0; i < data.length; i++){
-            geocodeAddress(geocoder, data[i].listing.address)
+            geocodeAddress(geocoder, data[i].listing.address,i)
           }
           data.forEach(function(result){
             renderResults(result)

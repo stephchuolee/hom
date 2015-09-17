@@ -23,7 +23,9 @@
           <td><%= booking.start_time.to_formatted_s(:time) %></td>
           <td><%= booking.end_time.to_formatted_s(:time) %></td>
           <td><%= booking.date.to_formatted_s(:long) %></td>
-          <td><%= link_to 'Edit', edit_user_booking_path(user_id: booking.user_id, id: booking.id) %></td>
+          <% if @current_user.id == booking.user_id %>
+          <td><%= link_to 'Edit', edit_booking_path(id: booking.id, user_id: current_user.id) %></td>
+        <% end %>
           <td><%= link_to 'Delete', booking_path(id: booking.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
