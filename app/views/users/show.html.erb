@@ -53,7 +53,7 @@
       </div>
     <% end %>
     
-    <% if @current_user && !@user.favourites.empty? %>
+    <% if @current_user && !@user.favourites.empty? && @current_user == @user%>
       <div id="favourites">
         <h2>My Favourites</h2>
           <ul>
