@@ -13,24 +13,24 @@
     </div>
   <% end %>
   <div class="row">
-    <div class="col s10 m8 l4 offset-l5 offset-m2 offset-s1">
-      <div class="bookings_form">
-        <div class="field_booking">
+    <div class="col s10 m8 l4 offset-l4 offset-m2 offset-s1">
+      <div class="bookings_form col s12 m12 l12">
+        <div class="field">
           <%= f.label :date %>
           <%= f.date_field :date %>
         </div>
-        <div class="field_booking">
+        <div class="field col s12 m5 l5">
           <%= f.label :start_time %>
           <%= f.time_field :start_time %>
         </div>
-        <div class="field_booking">
+        <div class="field col s12 m5 l5 offset-m2 offset-l2">
           <%= f.label :end_time %>
           <%= f.time_field :end_time %>
         </div>
         <div>
           <%= f.hidden_field :user_id %>
         </div>
-        <div class="actions">
+        <div class="actions col s12 m12 l12 center">
           <%= f.submit %>
         </div>
       </div>
@@ -39,4 +39,4 @@
 
 <% end %>
 
-<%= link_to 'Back', bookings_path %>
+
