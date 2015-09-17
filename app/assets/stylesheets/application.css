@@ -814,8 +814,8 @@ li {
 }
 
 .calendar {
-  background-color: #FFE77E;
-  height: 447px;
+  border: 2px #FFE77E solid;
+  height: 395px;
   width: 100%;
 }
 
@@ -828,7 +828,20 @@ li {
 }
 
 .location {
+  margin-top: 10px;
 
+}
+
+#edit-button {
+  height: 48px;
+}
+
+.calendar #description {
+  margin-top: 30px;
+}
+
+.calendar #viewing {
+  margin-top: 30px;
 }
 
 .row.listings-index {
@@ -908,13 +921,13 @@ button a {
   width: 71%;
 }
 
-.feature .name p {
-  margin: 10px 0 0 0;
+.feature.name p {
+  margin: 10px 0 10px 0;
 }
 
 .feature .desc, .feature .name {
   padding: 3px 0px;
-  margin: 0 auto 13px auto;
+  margin: 10px auto 13px auto;
   background-color: #00B6B1;
   color: #fff;
   border-radius: 3px;
