@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  
+
+  get 'pages/index'
+
   get "listings/search"
   get "listings/results"
   delete "/users/:user_id/favourites", to: "favourites#destroy"
-  
+
   # ActionMailer path that will send an email every time a booking time is clicked
   #scope "(:locale)" do
   #  resources :listings, :path => "routes.listings", only: [:index, :show]
@@ -11,15 +13,15 @@ Rails.application.routes.draw do
 
   # The main hompage of the app will be the index page of sessions. This
   # will include login, logout, signup, etc
-  root :to => "sessions#index"
-  
+  root :to => "pages#index"
+
   # custom routing /dashboard, will use jsx to render actual page
   # get "/dashboard"
-  
+
   resource :sessions, only: [:new, :create, :index, :destroy]
-  
+
   resources :bookings, only: [:index, :edit, :update, :destroy]
-  
+
   resources :listings do
     member do
       get 'sendrequest' => 'listings#sendrequest'
@@ -27,7 +29,7 @@ Rails.application.routes.draw do
   end
 
   resources :listing_images
-  
+
   resources :users do
     member do
       get 'sendrequest' => 'users#sendrequest'
@@ -36,7 +38,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
     resources :favourites, only: [:new, :create, :destroy, :index, :show]
   end
-  
+
   # resources :listing_images
 
   # The priority is based upon order of creation: first created -> highest priority.

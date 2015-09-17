@@ -241,12 +241,6 @@ $(function(){
       }
 
     });
-<<<<<<< HEAD
-    // should NOT return anything, DO NOT use "return false"
-    // return false;
-=======
-    
->>>>>>> development
     return false;
 
     // var currentState = history.state;

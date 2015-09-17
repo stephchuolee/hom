@@ -1,0 +1,10 @@
+<div class="hero">
+  <h1>Find the perfect neighbourhood.<br>Find the perfect home.</h1>
+   <div class="hero-search">
+       <%= form_tag "/listings/search", method: "get" do %>
+         <div id="search-field">
+           <%= text_field_tag :city, nil, placeholder: 'Find your home' %>
+         </div>
+       <% end %>
+   </div>
+ </div>
