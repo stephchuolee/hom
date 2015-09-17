@@ -1146,10 +1146,14 @@ button a, button a:visited {
     width: 97.5%;
   }
 
-
   #listing_furnished {
     margin-top: 0px;
   }
+
+  .profile-section {
+    text-align: center;
+  }
+
 }
 
 @media (min-width: 601px) and (max-width: 993px) {
