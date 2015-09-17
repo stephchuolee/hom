@@ -19,9 +19,9 @@ class BookingsController < ApplicationController
   # GET /bookings/1.json
   def show
     @current_user = current_user
-    @user = User.find(params[:id])
+    @user = @current_user.id
     @booking = Booking.where(user_id: @current_user.id)
-    if @current_user.id == @user.id
+    if @current_user
       @booking
     else
       redirect_to user_path
@@ -37,6 +37,9 @@ class BookingsController < ApplicationController
 
   # GET /bookings/1/edit
   def edit
+    @booking = Booking.find(params[:id])
+    @current_user = current_user
+    @user = @current_user
   end
 
   # POST /bookings
@@ -63,9 +66,9 @@ class BookingsController < ApplicationController
   def update
     respond_to do |format|
       @user = @booking.user_id
+      @booking = Booking.find(params[:id])
       if @booking.update(booking_params)
-        UserMailer.contact_email(@user).deliver
-        format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
+        format.html { redirect_to bookings_url, notice: 'Booking was successfully updated.' }
         format.json { render :show, status: :ok, location: @booking }
       else
         format.html { render :edit }
