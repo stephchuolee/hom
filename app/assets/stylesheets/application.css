@@ -917,13 +917,13 @@ button a {
   width: 71%;
 }
 
-.feature .name p {
-  margin: 10px 0 0 0;
+.feature.name p {
+  margin: 10px 0 10px 0;
 }
 
 .feature .desc, .feature .name {
   padding: 3px 0px;
-  margin: 0 auto 13px auto;
+  margin: 10px auto 13px auto;
   background-color: #00B6B1;
   color: #fff;
   border-radius: 3px;
