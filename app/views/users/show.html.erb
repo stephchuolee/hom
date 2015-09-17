@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <div>
   <%#= link_to 'Back', users_path %> 
 </div>
@@ -40,7 +38,8 @@
         <%= @user.blurb %>
       </div>
     </div>
-    
+   
+    <% if @current_user && !@user.listings.empty? %>
     <div id="rental-properties">
       <h2>Rental Properties</h2>
         <ul>
@@ -51,9 +50,10 @@
             </li>
           <% end %>
         </ul>
-    </div>
+      </div>
+    <% end %>
     
-    <% if @current_user == @user %>
+    <% if @current_user && !@user.favourites.empty? %>
       <div id="favourites">
         <h2>My Favourites</h2>
           <ul>

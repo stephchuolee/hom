@@ -21,16 +21,16 @@
 
     <ul class="desktop-nav">
       <div class="row">
+      <% unless @hide_search == true %>
       <li id="search">
         <%= form_tag "/listings/search", method: "get" do %>
           <div id="search-field">
             <%= text_field_tag :city, nil, placeholder: 'Find your home...' %>
-          </div>
-          <div id="search-button" >
             <%= submit_tag("Search") %>
           </div>
         <% end %>
       </li>
+      <% end %>
       <% if current_user %>
         <li><a href="/users/<%="#{current_user.id}"%>"> Hi, <%= current_user.first_name %>! </a></li>
         <li><%= link_to "Create a Listing", new_listing_path %>
@@ -40,7 +40,6 @@
       <% else %>
         <li><%= link_to "Login", new_sessions_path %></li>
       <% end %>
-      </div>
     </ul>
   </div>
 </nav>
@@ -59,6 +58,7 @@
 </div>
 
   <div class="container">
+    <p id="notice"><%= notice %></p>
     <%= yield %>
   </div>
 
