@@ -383,6 +383,12 @@ body.nav-open .navbar-collapse {
   text-transform: uppercase;
 }
 
+
+.sub-nav ::-webkit-input-placeholder {
+   color: #FFF;
+}
+
+
 .filters-section {
   /*margin-bottom: 5px;*/
   height: 40px;
