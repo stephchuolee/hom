@@ -122,6 +122,7 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @user = @listing.user
     @current_user = current_user  
+    
     respond_to do |format|
       if @current_user
         UserMailer.contact_email(@user).deliver

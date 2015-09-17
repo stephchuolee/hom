@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <div class="row">
   <div class="col s12 l6">
 
@@ -48,7 +50,7 @@
           <%= booking.date.to_formatted_s(:short) %>
           <%= booking.start_time.to_formatted_s(:time) %>
           <%= booking.end_time.to_formatted_s(:time) %>
-          <%= link_to "Request Viewing", sendrequest_listing_path(booking.user) %><br>
+          <%= link_to "Request Viewing", sendrequest_listing_path(booking.listing) %><br>
         <% end %>
       </li>
     </div>
