@@ -10,6 +10,7 @@
 
 .listingDiv.hovered {
   border: 2px solid #FFE77E; 
+
 }
 
 
@@ -37,3 +38,6 @@ label.optionalinfo {
   height: 150px;
 }
 
+.field_listing input[type='text'] {
+  width: 300px;
+}
