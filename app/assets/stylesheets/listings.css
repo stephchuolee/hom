@@ -1,7 +1,11 @@
 .listingDiv {
   height: 200px;
   width: 100%;
-  transition: 500ms;
+  
+}
+
+.listingDiv .information {
+  transition: 300ms;
 }
 
 .listingDiv.hovered {
