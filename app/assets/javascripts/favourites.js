@@ -25,7 +25,7 @@ $(function(){
       success: function(){ 
         that.addClass('favourited')
         that.removeClass('unfavourite')
-        // console.log('favourited')
+        console.log('favourited')
       }
     });
   }
@@ -37,7 +37,7 @@ $(function(){
       success: function(){
         that.addClass('unfavourite');
         that.removeClass('favourited');
-          // console.log('unfavourited')
+          console.log('unfavourited')
       }
     });    
   }
