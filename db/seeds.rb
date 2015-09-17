@@ -27,7 +27,11 @@ Listing.create(user_id: 4, square_footage: 500, bedroom: 2, bathroom: 1, price: 
 
 Listing.create(user_id: 5, square_footage: 1200, bedroom: 2, bathroom: 1, price: 1000, address: "128 West Hastings, Vancouver, BC, Canada", furnished: true, pets: true, smoking: false, floor_number: 4, parking_space: true, storage_space: true, balcony: true, available_date: Date.today, minimum_lease: 12, title: "The Apartment Above Jerry's", rental_type: "Full Lease", description: "Someone died in here.")
 
-
+# ListingImage.create(listing_id: 1, image: "jerry-apt.jpg")
+# ListingImage.create(listing_id: 2, image: "jerry-nice-apt.jpg")
+# ListingImage.create(listing_id: 1, image: "dresser.jpg")
+# ListingImage.create(listing_id: 1, image: "costanza.jpg")
+# ListingImage.create(listing_id: 1, image: "elaine.jpg")
 
 
 

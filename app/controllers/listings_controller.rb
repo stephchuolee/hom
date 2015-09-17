@@ -137,6 +137,9 @@ class ListingsController < ApplicationController
   def update
     respond_to do |format|
       if @listing.update(listing_params)
+            params[:listing_images]['image'].each do |a|
+            @listing_image = @listing.listing_images.create!(:image => a)
+        end
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
         format.json { render :show, status: :ok, location: @listing }
       else
