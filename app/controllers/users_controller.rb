@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     else
       @user = User.find(params[:id])
     end
+    @favourites = @user.favourites
     # @current_user = current_user
   end
 
