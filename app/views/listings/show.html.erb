@@ -36,6 +36,7 @@
           <h5 class="user">
             <a href="/users/<%="#{@listing.user_id}"%>"><%= @listing.user.name %></a>
           </h5>
+
         </div>
 
     </div>
@@ -44,9 +45,11 @@
   <div class="col s12 l6">
     <div class="calendar">
       <li>
+        <% if current_user.id == @listing.user_id %>
+          <%= link_to 'Edit Listing', edit_listing_path(id: @listing.id) %>
+        <% end %>  
         <h3 class="center">Viewing Times</h3>
         <% @listing.bookings.each do |booking| %>
-
           <%= booking.date.to_formatted_s(:short) %>
           <%= booking.start_time.to_formatted_s(:time) %>
           <%= booking.end_time.to_formatted_s(:time) %>
