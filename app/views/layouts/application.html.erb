@@ -20,13 +20,10 @@
     </div>
 
     <ul class="desktop-nav">
-      <div class="row">
       <li id="search">
         <%= form_tag "/listings/search", method: "get" do %>
           <div id="search-field">
             <%= text_field_tag :city, nil, placeholder: 'Find your home...' %>
-          </div>
-          <div id="search-button" >
             <%= submit_tag("Search") %>
           </div>
         <% end %>
@@ -40,7 +37,6 @@
       <% else %>
         <li><%= link_to "Login", new_sessions_path %></li>
       <% end %>
-      </div>
     </ul>
   </div>
 </nav>
