@@ -150,6 +150,27 @@ function importFoursquare(){
   });
 }
 
+function renderResults(result){
+  var listingDiv = $("<div class='listingDiv listing information col s6' data-listing-id=" + result.listing.id + ">");
+
+  // var image = $("<img src='/uploads/listing_image/image/'" + result.listing.images + ">").appendto(listingDiv)
+  var infoDiv = $("<div class='information col s12'>").appendTo(listingDiv)
+  var title = $("<h3 class='title'><a href='/listings/" + result.listing.id + "'>" + result.listing.title + "</a></h3>").appendTo(infoDiv)
+  var address = $("<h5 class='address'>" + result.listing.address + "</h5>").appendTo(infoDiv)
+
+  var user = $("<h5 class='user'><a href='/users/" + result.user[0]["id"] + "'>" + result.user[0]["name"] + "</a></h5>").appendTo(infoDiv)
+
+
+  // users shouldn't be able to see favourite if it is their own listing
+  // favourites don't always persist
+
+
+  var class_name = result.favourites ? "favourited" : "unfavourite"
+  $("<button data-listing-id='" + result.listing.id + "' class='favourite_btn " + class_name + "'></button>").appendTo(infoDiv);
+
+  listingDiv.appendTo('#listing_results');
+}
+
 $(function(){
 
   $('#booking_link').on('click', function() {
@@ -159,6 +180,7 @@ $(function(){
 
   $('.listingDiv').hover(function(){
     // mouse enter
+
     $(this).addClass("hovered");
   }, function(){
     // mouse leave
@@ -173,30 +195,7 @@ $(function(){
     geocodeAddress(geocoder, address);
   })
 
-  function renderResults(result){
-    console.log(result);
-
-    var listingDiv = $("<div class='listingDiv listing information col s6' data-listing-id=" + result.listing.id + ">");
-
-    // var image = $("<img src='/uploads/listing_image/image/'" + result.listing.images + ">").appendto(listingDiv)
-    var infoDiv = $("<div class='information col s12'>").appendTo(listingDiv)
-    var title = $("<h3 class='title'><a href='/listings/" + result.listing.id + "'>" + result.listing.title + "</a></h3>").appendTo(infoDiv)
-    var address = $("<h5 class='address'>" + result.listing.address + "</h5>").appendTo(infoDiv)
-
-    var user = $("<h5 class='user'><a href='/users/" + result.user[0]["id"] + "'>" + result.user[0]["name"] + "</a></h5>").appendTo(infoDiv)
-
-
-    // users shouldn't be able to see favourite if it is their own listing
-    // favourites don't always persist
-
-
-    var class_name = result.favourites ? "favourited" : "unfavourite"
-    $("<button data-listing-id='" + result.listing.id + "' class='favourite_btn " + class_name + "'></button>").appendTo(infoDiv);
-
-    listingDiv.appendTo('#listing_results');
-
-
-  }
+  
 
 
 
@@ -231,10 +230,20 @@ $(function(){
           data.forEach(function(result){
             renderResults(result)
           });
+          $('.listingDiv').hover(function(){
+          // mouse enter
+            $(this).addClass("hovered");
+          }, function(){
+            // mouse leave
+            $(this).removeClass("hovered");
+          });
+
+
         }
       }
 
     });
+
     // should NOT return anything, DO NOT use "return false"
     // return false; 
     return false;
