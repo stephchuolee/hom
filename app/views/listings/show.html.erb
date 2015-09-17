@@ -33,7 +33,6 @@
           <h5 class="user">
             <a href="/users/<%="#{@listing.user_id}"%>"><%= @listing.user.name %></a>
           </h5>
-
         </div>
 
     </div>
@@ -42,7 +41,7 @@
   <div class="col s12 l6">
       <% if current_user.id == @listing.user_id %>
         <%= link_to 'Edit Listing', edit_listing_path(id: @listing.id) %>
-      <% end %>  
+      <% end %>
     <div class="calendar">
       <li class="center">
         <h3 class="center">Description</h3>
@@ -71,145 +70,160 @@
       </div>
 
       <div class=" col s4 m4 l4">
-        <li>
-          <div class="name">Square Footage</div>
-          <p><%= @listing.square_footage %>sqft</p>
-        </li>
+        <div class="name">
+          Square Footage
+        </div>
+        <p>
+          <%= @listing.square_footage %>sqft
+        </p>
       </div>
-        <div class="col s4 m4 l4">
-          <li>
-            <div class="name">Bedroom(s)</div>
-            <p><%= @listing.bedroom %></p>
-          </li>
-        </div>
 
-        <div class="col s4 m4 l4">
-          <li>
-            <div class="name">Bathroom(s)</div>
-            <p><%= @listing.bathroom %></p>
-          </li>
+      <div class="col s4 m4 l4">
+        <div class="name">
+          Bedroom(s)
         </div>
-        <div class="col s4 m4 l4">
-          <li>
-            <div class="name">Furnished</div>
-            <% if @listing.furnished %>
-              <p>Yes</p>
-            <% else %>
-              <p>No</p>
-            <% end %>
-          </li>
+        <p><%= @listing.bedroom %></p>
+      </div>
+
+      <div class="col s4 m4 l4">
+        <div class="name">
+          Bathroom(s)
         </div>
-        <div class="col s4 m4 l4">
-          <li>
-            <div class="name">Pets</div>
-            <!-- <p><%= @listing.pets %></p> -->
-            <% if @listing.pets %>
-              <p>Allowed</p>
-            <% else %>
-              <p>Not Allowed</p>
-            <% end %>
-          </li>
+        <p><%= @listing.bathroom %></p>
+      </div>
+
+      <div class="col s4 m4 l4">
+        <div class="name">
+          Furnished
         </div>
-        <div class="col s4 m4 l4">
-          <li>
-            <div class="name">Smoking</div>
-            <!-- <p><%= @listing.smoking %></p> -->
-            <% if @listing.smoking %>
-              <p>Yes</p>
-            <% else %>
-              <p>No</p>
-            <% end %>
-          </li>
+        <% if @listing.furnished %>
+          <p>Yes</p>
+        <% else %>
+          <p>No</p>
+        <% end %>
+      </div>
+
+      <div class="col s4 m4 l4">
+        <div class="name">
+          Pets
         </div>
-        <div class="col s4 m4 l4">
-          <li>
-            <div class="name">Floor Number</div>
-            <p><%= @listing.floor_number %></p>
-          </li>
+        <!-- <p><%= @listing.pets %></p> -->
+        <% if @listing.pets %>
+          <p>Allowed</p>
+        <% else %>
+          <p>Not Allowed</p>
+        <% end %>
+      </div>
+
+      <div class="col s4 m4 l4">
+        <div class="name">
+          Smoking
         </div>
-        <div class="col s4 m4 l4">
-          <li>
-            <div class="name">Parking Space</div>
-            <!-- <p><%= @listing.parking_space %></p> -->
-            <% if @listing.parking_space %>
-              <p>Included</p>
-            <% else %>
-              <p>Not Included</p>
-            <% end %>
-          </li>
+        <% if @listing.smoking %>
+          <p>Yes</p>
+        <% else %>
+          <p>No</p>
+        <% end %>
+      </div>
+
+      <div class="col s4 m4 l4">
+        <div class="name">
+          Floor Number
         </div>
-        <div class="col s4 m4 l4">
-          <li>
-            <div class="name">Storage Space</div>
-            <!-- <p><%= @listing.storage_space %></p> -->
-            <% if @listing.storage_space %>
-              <p>Included</p>
-            <% else %>
-              <p>Not Included</p>
-            <% end %>
-          </li>
+        <p>
+          <%= @listing.floor_number %>
+        </p>
+      </div>
+
+      <div class="col s4 m4 l4">
+        <div class="name">
+          Parking Space
         </div>
-        <div class="col s4 m4 l4">
-          <li>
-            <div class="name">Balcony</div>
-            <!-- <p><%= @listing.balcony %></p> -->
-            <% if @listing.balcony %>
-              <p>Yes</p>
-            <% else %>
-              <p>No</p>
-            <% end %>
-          </li>
+        <!-- <p><%= @listing.parking_space %></p> -->
+        <% if @listing.parking_space %>
+          <p>Included</p>
+        <% else %>
+          <p>Not Included</p>
+        <% end %>
+      </div>
+
+      <div class="col s4 m4 l4">
+        <div class="name">
+          Storage Space
         </div>
-        <div class="col s4 m4 l4">
-          <li>
-            <div class="name">Available Date</div>
-            <p><%= @listing.available_date %></p>
-          </li>
+        <!-- <p><%= @listing.storage_space %></p> -->
+        <% if @listing.storage_space %>
+          <p>Included</p>
+        <% else %>
+          <p>Not Included</p>
+        <% end %>
+      </div>
+
+      <div class="col s4 m4 l4">
+        <div class="name">
+          Balcony
         </div>
-        <div class="col s4 m4 l4">
-          <li>
-            <div class="name">Minimum Lease</div>
-            <p><%= @listing.minimum_lease %> Months</p>
-          </li>
+        <!-- <p><%= @listing.balcony %></p> -->
+        <% if @listing.balcony %>
+          <p>Yes</p>
+        <% else %>
+          <p>No</p>
+        <% end %>
+      </div>
+
+      <div class="col s4 m4 l4">
+        <div class="name">
+          Available Date
         </div>
-        <div class="col s4 m4 l4">
-          <li>
-            <div class="name">Rental Type</div>
-            <p><%= @listing.rental_type %></p>
-          </li>
+        <p><%= @listing.available_date %></p>
+      </div>
+
+      <div class="col s4 m4 l4">
+        <div class="name">
+          Minimum Lease
         </div>
+        <p><%= @listing.minimum_lease %> Months</p>
+      </div>
+
+      <div class="col s4 m4 l4">
+          <div class="name">
+            Rental Type
+          </div>
+          <p><%= @listing.rental_type %></p>
+      </div>
+
+      </div>
+    </div>
+
+    <div class="col s12 l6">
+      <div class="location">
+        <div id="map" data-listing-id="<%=@listing.id%>"></div>
       </div>
     </div>
   </div>
 
-  <div class="col s12 l6">
-    <div class="location">
-      <div id="map" data-listing-id="<%=@listing.id%>"></div>
-    </div>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col s12">
-    <h1 class="center">More about the neighbourhood</h1>
-      <div class="foursqure-container">
-      <% (0..7).each do |i| %>
-      <div class="col s6 l3">
-          <div class="foursquare">
-            <div class="foursquare_<%=i%>">
-              <a>
-                <div class="name"></div>
-              </a>
-              <div class="rating">
-                <div class="ratingnumber"></div>
+    <div class="col s12">
+      <h1 class="center">More about the neighbourhood</h1>
+        <% (0..7).each do |i| %>
+        <div class="col s6 l3">
+            <div class="foursquare">
+              <div class="foursquare_<%=i%>">
+                <a>
+                  <div class="name">
+                  </div>
+                </a>
+                <div class="rating">
+                  <div class="ratingnumber">
+                  </div>
+                </div>
+                <div class="address">
+                </div>
+                <div class="tips">
+                </div>
               </div>
-              <div class="address"></div>
-              <div class="tips"></div>
-            </div>
+          </div>
         </div>
-      </div>
-      <%end%>
+        <%end%>
     </div>
   </div>
-</div>
-</div>
