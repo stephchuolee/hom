@@ -16,7 +16,6 @@ function initMap() {
     // console.log('Google ready, geocode', addresses);
     getAddresses();
     if (document.location.pathname.match(/listings\/(\d)+$/)) {
-      console.log('Importing FourSquare')
       importFoursquare();
       // getWalkScore(); // walkscore requires API key which is not available at this
     }
@@ -222,13 +221,22 @@ $(function(){
       dataType: "json", 
       success: function(data, status) {
         $('#listing_results').empty();
+
         if (data){
+          deleteMarkers();
+          var geocoder = new google.maps.Geocoder();
+          for (var i =0; i < data.length; i++){
+            geocodeAddress(geocoder, data[i].listing.address,i)
+          }
           data.forEach(function(result){
             renderResults(result)
           });
         }
       }
+
     });
+    // should NOT return anything, DO NOT use "return false"
+    // return false; 
     return false;
 
     // var currentState = history.state;
@@ -238,6 +246,7 @@ $(function(){
 
     // search?utf8=✓&min_price=&max_price=&number_of_bedrooms=&rental_type=Sublet&more_filters=&commit=Apply+Filters
     // history.pushState(state, '', url)
+
 
   });
 
