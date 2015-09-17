@@ -709,6 +709,10 @@ li {
   padding: 8px 0 0 0;
 }
 
+#missing-image {
+  opacity: 0.2;
+}
+
 .listing {
   height: 395px;
   position: relative;
