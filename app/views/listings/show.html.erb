@@ -39,23 +39,28 @@
   </div>
 
   <div class="col s12 l6">
-      <% if current_user.id == @listing.user_id %>
-        <%= link_to 'Edit Listing', edit_listing_path(id: @listing.id) %>
-      <% end %>
+    <% if current_user.id == @listing.user_id %>
+      <div id="edit-button">
+        <button class="offset-l8"><%= link_to 'Edit Listing', edit_listing_path(id: @listing.id) %></button>
+      </div>
+    <% else %>
+      <div id="edit-button">
+      </div>
+    <% end %>
     <div class="calendar">
-      <li class="center">
-        <h3 class="center">Description</h3>
+      <div id="description" class="offset-l1">
+        <h3>Description</h3>
         <%= @listing.description %>
-      </li>
-      <li>
-        <h3 class="center">Viewing Times</h3>
+      </div>
+      <div id="viewing" class="offset-l1">
+        <h3>Viewing Times</h3>
         <% @listing.bookings.each do |booking| %>
-          <%= booking.date.to_formatted_s(:short) %>
-          <%= booking.start_time.to_formatted_s(:time) %>
-          <%= booking.end_time.to_formatted_s(:time) %>
+          <%= booking.date.to_formatted_s(:long) %> |
+          From <%= booking.start_time.to_formatted_s(:time) %>  To
+          <%= booking.end_time.to_formatted_s(:time) %>  |
           <%= link_to "Request Viewing", sendrequest_listing_path(booking.listing) %><br>
         <% end %>
-      </li>
+      </div>
 
     </div>
   </div>

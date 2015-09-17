@@ -810,8 +810,8 @@ li {
 }
 
 .calendar {
-  background-color: #FFE77E;
-  height: 447px;
+  border: 2px #FFE77E solid;
+  height: 395px;
   width: 100%;
 }
 
@@ -824,7 +824,20 @@ li {
 }
 
 .location {
+  margin-top: 10px;
 
+}
+
+#edit-button {
+  height: 48px;
+}
+
+.calendar #description {
+  margin-top: 30px;
+}
+
+.calendar #viewing {
+  margin-top: 30px;
 }
 
 .row.listings-index {
