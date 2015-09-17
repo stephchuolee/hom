@@ -61,7 +61,7 @@ class ListingsController < ApplicationController
 
   def results
     @users = User.all
-    @listings = Listing.includes([:favourites, :user])
+    @listings = Listing.includes([:favourites, :user, :listing_images])
     @listings_belong_to_user = false
 
     # if !params[:city].nil?
@@ -111,7 +111,8 @@ class ListingsController < ApplicationController
       {
         listing: listing,
         favourites: listing.favourites.where(user_id: current_user.id).first,
-        user: @users.where(id: listing.user_id)
+        user: @users.where(id: listing.user_id),
+        listing_images: listing.listing_images
       }
     end
     render json: @listings
