@@ -155,11 +155,16 @@ function renderResults(result){
 
     var listingDiv = $("<div class='listingDiv listing information col s6' data-listing-id=" + result.listing.id + ">");
 
+    var class_name = result.favourites ? "favourited" : "unfavourite"
+    $("<div data-listing-id='" + result.listing.id + "' class='favourite_btn heart-shape " + class_name + "'></div>").appendTo(listingDiv);
+
     if (result.listing_images){
       var first_img = result.listing_images[0]["image"]["url"]
       var image = $("<img src='" + first_img + "'>").appendTo(listingDiv)
     }
     // debugger;
+
+
 
     var infoDiv = $("<div class='information col s12'>").appendTo(listingDiv)
     var title = $("<h3 class='title'><a href='/listings/" + result.listing.id + "'>" + result.listing.title + "</a></h3>").appendTo(infoDiv)
@@ -170,8 +175,7 @@ function renderResults(result){
 
 
 
-    var class_name = result.favourites ? "favourited" : "unfavourite"
-    $("<div data-listing-id='" + result.listing.id + "' class='favourite_btn " + class_name + "'></div>").appendTo(infoDiv);
+   
 
     listingDiv.appendTo('#listing_results');
 

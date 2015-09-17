@@ -65,6 +65,11 @@
     <div id="listing_results">
       <% @listings.each do |listing| %>
           <div class="listingDiv listing information col s12" data-listing-id="<%=listing.id%>">   
+              <% if current_user %>
+                <% unless current_user.id == listing.user_id %> 
+                  <%= set_favourite_class(current_user.id, listing.id) %>
+                <% end %> 
+
               <% if listing.listing_images %> 
                 <% listing.listing_images.each do |listing| %>
                   <%= image_tag(listing.image) %>
@@ -80,10 +85,6 @@
                 <h5 class="user">
                   <a href="/users/<%="#{listing.user_id}"%>"><%= listing.user.name %></a>
                 </h5>
-                <% if current_user %>
-                <% unless current_user.id == listing.user_id %> 
-                  <%= set_favourite_class(current_user.id, listing.id) %>
-                <% end %> 
                 <% end %>
               </div>
             </div>  
