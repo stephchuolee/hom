@@ -125,6 +125,7 @@ li {
 
 .center {
   text-align: center;
+  margin-top: 10px;
 }
 
 /* Navigation
@@ -892,8 +893,8 @@ button a {
 }
 
 .feature .desc, .feature .name {
-  padding: 7px;
-  margin: 0 auto;
+  padding: 3px 0px;
+  margin: 0 auto 13px auto;
   background-color: #00B6B1;
   color: #fff;
   border-radius: 3px;
@@ -901,6 +902,7 @@ button a {
 
 .foursquare {
   min-height: 300px;
+  max-width: 1000px;
   padding: 15px;
 }
 
@@ -935,6 +937,11 @@ button a {
 .foursquare .ratingnumber {
   padding: 9px;
   color: #fff;
+}
+
+.foursqure-container {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .listingDiv {
@@ -1130,6 +1137,7 @@ button a, button a:visited {
 
   #search-field {
     max-width: 100px;
+    float: left;
   }
 
   #search-button {
