@@ -941,6 +941,81 @@ button a {
   color: #fff;
 }
 
+.listingDiv {
+  height: 200px;
+  width: 100%;
+  
+}
+
+.listingDiv .information {
+  transition: 300ms;
+}
+
+.listingDiv.hovered {
+  border: 2px solid #FFE77E; 
+
+}
+
+
+.optionalinfo {
+  display:inline;
+}
+
+label.optionalinfo {
+  margin-left: 10px;
+}
+
+.margin-top {
+  margin-top: 20px;
+}
+
+.required {
+    color: grey;
+    padding-left: 2px;
+    font-size: small;
+    font-style: italic;
+}
+
+.text_area {
+  width: 300px;
+  height: 150px;
+}
+
+.field_listing input[type='text'] {
+  width: 300px;
+}
+
+#rental-properties h2 {
+  margin-bottom: 0;
+}
+#rental-properties p {
+  margin-top: -2.5%;
+  
+}
+
+#rental-properties a, #rental-properties a:visited {
+  color: #77BED2;
+}
+
+#favourites h2 {
+  margin-bottom: 0;
+  padding-top: 20px;
+}
+
+#favourites p {
+  margin-top: -2.5%;
+
+}
+
+#favourites a, #favourites a:visited {
+  color: #77BED2;
+}
+
+#profile-info {
+  font-size: medium;
+}
+
+
 /* Slider
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 

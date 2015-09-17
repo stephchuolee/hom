@@ -61,7 +61,7 @@ class ListingsController < ApplicationController
 
   def results
     @users = User.all
-    @listings = Listing.includes([:favourites, :user])
+    @listings = Listing.includes([:favourites, :user, :listing_images])
     @listings_belong_to_user = false
 
     # if !params[:city].nil?
@@ -111,7 +111,8 @@ class ListingsController < ApplicationController
       {
         listing: listing,
         favourites: listing.favourites.where(user_id: current_user.id).first,
-        user: @users.where(id: listing.user_id)
+        user: @users.where(id: listing.user_id),
+        listing_images: listing.listing_images
       }
     end
     render json: @listings
@@ -121,10 +122,12 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @user = @listing.user
     @current_user = current_user  
+    
     respond_to do |format|
+
       if @current_user
         UserMailer.contact_email(@user).deliver
-        format.html { redirect_to @listing, notice: 'Request for viewing sent.' }
+        format.html { redirect_to listing_path(@listing.id), notice: 'Request for viewing sent.' }
       end
     end
   end
@@ -134,6 +137,9 @@ class ListingsController < ApplicationController
   def update
     respond_to do |format|
       if @listing.update(listing_params)
+            params[:listing_images]['image'].each do |a|
+            @listing_image = @listing.listing_images.create!(:image => a)
+        end
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
         format.json { render :show, status: :ok, location: @listing }
       else

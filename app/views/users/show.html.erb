@@ -8,17 +8,22 @@
   
   <div class="col l3">
     <%= image_tag(@user.image.profile) %><br>
-    <button><%= link_to 'Edit', edit_user_path(@user) %></button>
-    <button><%= link_to 'Contact', sendrequest_user_path %></button>
-    <li>
-      <strong>Email:</strong>
-      <%= @user.email %>
-    </li>
-    
-    <li>
-      <strong>Location:</strong>
-      <%= @user.location %>
-    </li>
+    <% if @current_user == @user %>
+      <button><%= link_to 'Edit My Profile', edit_user_path(@user) %></button>
+    <% else %>
+      <button><%= link_to 'Contact', sendrequest_user_path %></button>
+    <% end %>
+    <ul id="profile-info">
+      <li>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </li>
+      
+      <li>
+        <strong>Location:</strong>
+        <%= @user.location %>
+      </li>
+    </ul>
 
     <% if @current_user.id == @user.id %>
       <%= link_to 'Bookings', bookings_path(@user)%>
@@ -30,7 +35,7 @@
 
   <div class="col l9">
     <div id="blurb">
-      <li><h1><%= @user.name %></h1></li>
+      <h1><%= @user.name %></h1>
       <div>
         <%= @user.blurb %>
       </div>
@@ -38,11 +43,29 @@
     
     <div id="rental-properties">
       <h2>Rental Properties</h2>
-        <% @user.listings.each do |listing| %>
-          <li><%= link_to "#{listing.title}", listing_path(id: listing.id, user_id: @user.id) %></li>
-          <li><%= listing.address %></li>
-        <% end %>
+        <ul>
+          <% @user.listings.each do |listing| %>
+            <li>
+              <h5><%= link_to "#{listing.title}", listing_path(id: listing.id, user_id: @user.id) %></h5>
+              <p><%= listing.address %></p>
+            </li>
+          <% end %>
+        </ul>
     </div>
+    
+    <% if @current_user == @user %>
+      <div id="favourites">
+        <h2>My Favourites</h2>
+          <ul>
+            <% @favourites.each do |favourite| %>
+              <li>
+                <h5><%= link_to"#{favourite.listing.title}", listing_path(id: favourite.listing.id, user_id: @user.id) %></h5>
+                <p><%= favourite.listing.address %></p>
+              </li>
+            <% end %>
+          </ul>
+      </div>
+    <% end %>
   </div>
 
 </div>

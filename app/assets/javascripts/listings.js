@@ -150,41 +150,17 @@ function importFoursquare(){
   });
 }
 
-$(function(){
-  $('.bxslider').bxSlider({
-    controls: true,
-    nextText: '',
-    prevText: '',
-    infiniteLoop: false,
-    hideControlOnEnd: true
-  });
-  $('#booking_link').on('click', function() {
-
-  });
-
-
-  $('.listingDiv').hover(function(){
-    // mouse enter
-    $(this).addClass("hovered");
-  }, function(){
-    // mouse leave
-    $(this).removeClass("hovered");
-  })
-
-
-  $('.listingDiv').on('click', function(){
-    var id = $(this).data('listing-id');
-    var address = $(this).find('.address').html();
-    var geocoder = new google.maps.Geocoder();
-    geocodeAddress(geocoder, address);
-  })
-
-  function renderResults(result){
+function renderResults(result){
     console.log(result);
 
     var listingDiv = $("<div class='listingDiv listing information col s6' data-listing-id=" + result.listing.id + ">");
 
-    // var image = $("<img src='/uploads/listing_image/image/'" + result.listing.images + ">").appendto(listingDiv)
+    if (result.listing_images){
+      var first_img = result.listing_images[0]["image"]["url"]
+      var image = $("<img src='" + first_img + "'>").appendTo(listingDiv)
+    }
+    // debugger;
+
     var infoDiv = $("<div class='information col s12'>").appendTo(listingDiv)
     var title = $("<h3 class='title'><a href='/listings/" + result.listing.id + "'>" + result.listing.title + "</a></h3>").appendTo(infoDiv)
     var address = $("<h5 class='address'>" + result.listing.address + "</h5>").appendTo(infoDiv)
@@ -203,6 +179,38 @@ $(function(){
 
 
   }
+
+$(function(){
+  $('.bxslider').bxSlider({
+    controls: true,
+    nextText: '',
+    prevText: '',
+    infiniteLoop: false,
+    hideControlOnEnd: true
+  });
+  $('#booking_link').on('click', function() {
+
+  });
+
+
+  $('.listingDiv').hover(function(){
+    // mouse enter
+
+    $(this).addClass("hovered");
+  }, function(){
+    // mouse leave
+    $(this).removeClass("hovered");
+  })
+
+
+  $('.listingDiv').on('click', function(){
+    var id = $(this).data('listing-id');
+    var address = $(this).find('.address').html();
+    var geocoder = new google.maps.Geocoder();
+    geocodeAddress(geocoder, address);
+  })
+
+
 
 
 
@@ -237,6 +245,15 @@ $(function(){
           data.forEach(function(result){
             renderResults(result)
           });
+          $('.listingDiv').hover(function(){
+          // mouse enter
+            $(this).addClass("hovered");
+          }, function(){
+            // mouse leave
+            $(this).removeClass("hovered");
+          });
+
+
         }
       }
 
