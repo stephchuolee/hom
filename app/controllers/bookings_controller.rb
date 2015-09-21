@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
   def index
     @current_user = current_user
     @bookings = Booking.where(user_id: @current_user.id)
+    
     if @bookings.empty?
       redirect_to new_user_booking_path(user_id: @current_user.id)
     elsif @current_user.id == @bookings.find_by(params[:user_id]).user_id
