@@ -165,21 +165,12 @@ function renderResults(result){
     // debugger;
 
     var infoDiv = $("<div class='information col s12'>").appendTo(listingDiv)
-    
     var price = $("<h3 class='price'>$" + result.listing.price + "/mo</h3>").appendTo(infoDiv)
     var title = $("<h3 class='title'><a href='/listings/" + result.listing.id + "'>" + result.listing.title + "</a></h3>").appendTo(infoDiv)
     var address = $("<h5 class='address'>" + result.listing.address + "</h5>").appendTo(infoDiv)
-
     var user = $("<h5 class='user'><a href='/users/" + result.user[0]["id"] + "'>" + result.user[0]["name"] + "</a></h5>").appendTo(infoDiv)
 
-
-
-
-   
-
     listingDiv.appendTo('#listing_results');
-
-
   }
 
 $(function(){
@@ -212,10 +203,6 @@ $(function(){
     geocodeAddress(geocoder, address);
   })
 
-
-
-
-
   $('#filter_form').on('submit', function(event) {
 
     event.preventDefault;
@@ -230,7 +217,6 @@ $(function(){
     var smoking = $('#smoking').val();
     var furnished = $('#furnished').val();
     var storage = $('#storage').val();
-
 
     $.ajax({
       url: '/listings/results?' + input,
@@ -254,22 +240,19 @@ $(function(){
             // mouse leave
             $(this).removeClass("hovered");
           });
-
-
         }
       }
 
     });
+
     return false;
 
     // var currentState = history.state;
 
     // var state = {id: 'search_results_page'}
     // var url = "'&min_price=' + min_price + '&max_price=' + max_price + ' &number_of_bedrooms=' + number_of_bedrooms + '&rental_type=' + rental_type + '&pets=' + pets + '&parking=' + parking + '&smoking=' + smoking + '&furnished=' + furnished + '&storage=' + storage"
-
     // search?utf8=✓&min_price=&max_price=&number_of_bedrooms=&rental_type=Sublet&more_filters=&commit=Apply+Filters
     // history.pushState(state, '', url)
-
 
   });
 
